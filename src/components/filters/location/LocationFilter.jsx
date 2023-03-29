@@ -1,15 +1,27 @@
 import TextField from "@mui/material/TextField";
 import ConfirmBtn from "../ConfirmBtn.jsx";
-import { useState } from "react";
-// import { queryCtxt } from '../../../context/QyParamsCtxt.jsx';
-const LocationFilter = ({ updateQyParams }) => {
-  const [location, setLocation] = useState("");
-  const handleChange = (evt) => setLocation(evt.target.value);
-  const handleSubmit = () => location && updateQyParams("location", location) 
+import { useEffect } from "react";
+
+const LocationFilter = ({ updateQyParams, dispatch, filters, locationQyParams }) => {
+  const chgReducerLocation = (newLocation) =>
+    dispatch({
+      type: "locationChgd",
+      location: newLocation,
+    });
+  const handleChange = (evt) => chgReducerLocation(evt.target.value);
+  const handleSubmit = () => filters.location && updateQyParams("location", filters.location) 
+
+  useEffect(() => {
+    locationQyParams !== null && chgReducerLocation(locationQyParams);
+  }, [locationQyParams])
+  
+  
+  
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <TextField
         label="Ubicación"
+        value = {filters.location || ""}
         variant="outlined"
         onChange={handleChange}
       />

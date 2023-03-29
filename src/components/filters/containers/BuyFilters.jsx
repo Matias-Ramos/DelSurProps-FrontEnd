@@ -5,9 +5,9 @@ import SurfaceFilter from "../surface/SurfaceFilter.jsx";
 import { useContext } from "react";
 import { queryCtxt } from "../../../context/QyParamsCtxt.jsx";
 
-const BuyFilters = () => {
-  const { updateQyParams } = useContext(queryCtxt);
-  
+const BuyFilters = ({dispatch, filters}) => {
+  const { searchParams ,updateQyParams } = useContext(queryCtxt);
+
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
       <div
@@ -17,7 +17,12 @@ const BuyFilters = () => {
           display: "inline-block",
         }}
       >
-        <LocationFilter updateQyParams={updateQyParams} />
+        <LocationFilter
+          updateQyParams={updateQyParams}
+          dispatch={dispatch}
+          filters={filters}
+          locationQyParams={searchParams.get("location")}
+        />
       </div>
       <div
         style={{
@@ -28,7 +33,7 @@ const BuyFilters = () => {
       >
         <PriceFilter updateQyParams={updateQyParams} />
       </div>
-      <SliderContainer updateQyParams={updateQyParams}/>
+      <SliderContainer updateQyParams={updateQyParams} />
       <div
         style={{
           border: "1px solid orange",
@@ -36,7 +41,7 @@ const BuyFilters = () => {
           display: "inline-block",
         }}
       >
-        <SurfaceFilter updateQyParams={updateQyParams}/>
+        <SurfaceFilter updateQyParams={updateQyParams} />
       </div>
     </div>
   );

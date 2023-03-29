@@ -8,18 +8,18 @@ function ReducerCtxtProvider({ children }) {
           type: 'locationChgd',
           location: newLocation,
         });
-      }
+    }
 
-      function filterModifier(currentFilters, actionObj) {
-        switch (actionObj.type) {
-          case 'locationChgd': {
-            return {
-                ...currentFilters,
-                location: actionObj.location
-            }
+    function filterModifier(currentFilters, actionObj) {
+      switch (actionObj.type) {
+        case 'locationChgd': {
+          return {
+              ...currentFilters,
+              location: actionObj.location
           }
         }
       }
+    }
     const filterStructure = {
         location: null,
         // price: null,
