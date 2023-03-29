@@ -3,11 +3,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // Css
 import './App.css'
 // Components
-import Buy from "./routes/Buy.jsx"
-import Entrepreneurship from "./routes/Entrepreneurship.jsx"
-import Rent from "./routes/Rent.jsx"
-import Welcome from "./routes/Welcome.jsx"
-import RouteError from "./routes/RouteError.jsx"
+import Buy from "./pages/Buy.jsx"
+import Entrepreneurship from "./pages/Entrepreneurship.jsx"
+import Rent from "./pages/Rent.jsx"
+import Welcome from "./pages/Welcome.jsx"
+import RouteError from "./pages/RouteError.jsx"
 
 
 const App = () => {
@@ -32,9 +32,9 @@ const router = createBrowserRouter([
 ])
 
 return(
-  <div>
+  <>
     <RouterProvider router={router} />
-  </div>
+  </>
   )
 }
 

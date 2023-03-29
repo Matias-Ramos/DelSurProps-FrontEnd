@@ -1,5 +1,6 @@
 import { createContext } from "react";
 import { useSearchParams } from "react-router-dom";
+
 const queryCtxt = createContext();
 
 function QyParamsCtxtProvider({ children }) {
@@ -7,7 +8,7 @@ function QyParamsCtxtProvider({ children }) {
 
   function updateQyParams(name, value) {
     searchParams.set(name, value);
-    setSearchParams(params);
+    setSearchParams(searchParams);
   }
   
   const deleteQyParams = () => {

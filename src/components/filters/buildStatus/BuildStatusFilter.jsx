@@ -5,8 +5,9 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Typography from "@mui/material/Typography";
+import ConfirmBtn from '../ConfirmBtn';
 
-export default function EntrStatusFilter() {
+export default function BuidlStatusFilter() {
   const [status, setStatus] = useState('');
 
   const handleChange = (event) => {
@@ -32,6 +33,7 @@ export default function EntrStatusFilter() {
           <MenuItem value={"pre-venta"}>Pre-venta</MenuItem>
         </Select>
       </FormControl>
+      <ConfirmBtn/>
     </Box>
   );
 }
