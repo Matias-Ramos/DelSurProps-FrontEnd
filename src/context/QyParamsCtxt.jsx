@@ -22,11 +22,17 @@ function QyParamsCtxtProvider({ children }) {
     setSearchParams(returnEmptySearchParams());
   };
 
+  const deleteQyParam = (qyParamName) => {
+    searchParams.delete(qyParamName);
+    setSearchParams(searchParams);
+  };
+
   return (
     <queryCtxt.Provider
       value={{
         updateQyParams: updateQyParams,
         deleteQyParams: deleteQyParams,
+        deleteQyParam: deleteQyParam,
         searchParams: searchParams,
       }}
     >

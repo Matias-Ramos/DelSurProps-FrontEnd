@@ -10,7 +10,10 @@ const LocationFilter = ({ updateQyParams, deleteQyParams, dispatch, filters, loc
     });
   const handleChange = (evt) => chgReducerLocation(evt.target.value);
   const handleSubmit = () => filters.location ? updateQyParams("location", filters.location): deleteQyParams();
-
+  const handleClean = () => {
+    deleteQyParams();
+    chgReducerLocation('')
+  }
   useEffect(() => {
     locationQyParams !== null && chgReducerLocation(locationQyParams);
   }, [locationQyParams])
@@ -26,6 +29,7 @@ const LocationFilter = ({ updateQyParams, deleteQyParams, dispatch, filters, loc
         onChange={handleChange}
       />
       <ConfirmBtn handleSubmit={handleSubmit} />
+      <span onClick={handleClean}>Limpiar</span>
     </div>
   );
 };
