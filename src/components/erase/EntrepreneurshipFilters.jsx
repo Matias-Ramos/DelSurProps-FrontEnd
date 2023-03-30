@@ -1,8 +1,8 @@
-import SliderContainer from "../Slider/SliderContainer.jsx";
-import LocationFilter from "../location/LocationFilter.jsx";
-import PriceFilter from "../price/PriceFilter.jsx";
-import SurfaceFilter from "../surface/SurfaceFilter.jsx";
-import BuildStatusFilter from "../BuildStatus/BuildStatusFilter.jsx"
+import SliderContainer from "../filters/Slider/SliderContainer.jsx";
+import LocationFilter from "../filters/location/LocationFilter.jsx";
+import PriceFilter from "../filters/price/PriceFilter.jsx";
+import SurfaceFilter from "../filters/surface/SurfaceFilter.jsx";
+import BuildStatusFilter from "../filters/BuildStatus/BuildStatusFilter.jsx"
 
 const EntrepreneurshipFilters = () => {
   return (

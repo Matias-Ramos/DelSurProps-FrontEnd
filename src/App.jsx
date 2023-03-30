@@ -3,9 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // Css
 import './App.css'
 // Components
-import Buy from "./pages/Buy.jsx"
-import Entrepreneurship from "./pages/Entrepreneurship.jsx"
-import Rent from "./pages/Rent.jsx"
+import Gallery from "./pages/Gallery.jsx"
 import Welcome from "./pages/Welcome.jsx"
 import RouteError from "./pages/RouteError.jsx"
 
@@ -19,15 +17,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/alquiler-inmuebles",
-    element: <Rent />
+    element: <Gallery />
   },
   {
     path: "/venta-inmuebles",
-    element: <Buy />
+    element: <Gallery />
   },
   {
     path: "/emprendimientos",
-    element: <Entrepreneurship />
+    element: <Gallery />
   },
 ])
 
