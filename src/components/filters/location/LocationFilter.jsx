@@ -12,6 +12,7 @@ const LocationFilter = ({ updateQyParams, deleteQyParam, dispatch, filters, loca
   const handleSubmit = () => filters.location ? updateQyParams("location", filters.location): deleteQyParam('location');
   const handleClean = () => {
     deleteQyParam("location");
+    chgReducerLocation('');
   }
   useEffect(() => {
     locationQyParams !== null && chgReducerLocation(locationQyParams);
@@ -21,8 +22,9 @@ const LocationFilter = ({ updateQyParams, deleteQyParam, dispatch, filters, loca
   
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
+      <span>Ubicación</span>
       <TextField
-        label="Ubicación"
+        label="barrio, ciudad..."
         value = {filters.location || ""}
         variant="outlined"
         onChange={handleChange}

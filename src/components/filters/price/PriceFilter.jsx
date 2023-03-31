@@ -16,30 +16,26 @@ const PriceFilter = ({
       newPrice: newPrice,
     });
   const handleChange = (evt, edge) => {
-    edge === "init" && chgReducerPrice(evt.target.value, "initPriceChgd");
-    edge === "limit" && chgReducerPrice(evt.target.value, "limitPriceChgd");
+    chgReducerPrice(evt.target.value, `${edge}PriceChgd`);
   };
   const handleSubmit = () => {
-    filters.price.init
-      ? updateQyParams("price_init", filters.price.init)
-      : deleteQyParam("price_init");
-
-    filters.price.limit
-      ? updateQyParams("price_limit", filters.price.limit)
-      : deleteQyParam("price_limit");
+    for (const edge in filters.price) {
+      filters.price[edge] 
+       ? updateQyParams(`price_${edge}`, filters.price[edge])
+       : deleteQyParam(`price_${edge}`)
+    }
   };
   const handleClean = () => {
-    deleteQyParam("price_init");
-    deleteQyParam("price_limit");
-    chgReducerPrice('', "initPriceChgd");
-    chgReducerPrice('', "limitPriceChgd");
+    const edge = ['init', 'limit'];
+    for(let i=0; i<=1; i++){
+      deleteQyParam(`price_${edge[i]}`);
+      chgReducerPrice("", `${edge[i]}PriceChgd`);
+    }
   };
 
   useEffect(() => {
-    priceInitQyParams !== null &&
-      chgReducerPrice(priceInitQyParams, "initPriceChgd");
-    priceLimitQyParams !== null &&
-      chgReducerPrice(priceLimitQyParams, "limitPriceChgd");
+    priceInitQyParams !== null && chgReducerPrice(priceInitQyParams, "initPriceChgd");
+    priceLimitQyParams !== null && chgReducerPrice(priceLimitQyParams, "limitPriceChgd");
   }, [priceInitQyParams, priceLimitQyParams]);
 
   return (
