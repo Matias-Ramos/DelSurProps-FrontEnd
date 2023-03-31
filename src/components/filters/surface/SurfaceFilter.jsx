@@ -1,6 +1,5 @@
 import TextField from '@mui/material/TextField';
 import ConfirmBtn from "../ConfirmBtn.jsx"
-import { useEffect } from 'react';
 
 const SurfaceFilter = ({
   updateQyParams,
@@ -56,12 +55,7 @@ const SurfaceFilter = ({
       chgReducerSurface(evt.target.value, "totalSurfaceChgd", edge);
   };
 
-  useEffect(() => {
-    coveredSurfaceInitQyParams !== null && chgReducerSurface(coveredSurfaceInitQyParams,"coveredSurfaceChgd","init")
-    coveredSurfaceLimitQyParams!== null && chgReducerSurface(coveredSurfaceLimitQyParams,"coveredSurfaceChgd","limit")
-    totalSurfaceInitQyParams !== null && chgReducerSurface(totalSurfaceInitQyParams,"totalSurfaceChgd","init")
-    totalSurfaceLimitQyParams !== null && chgReducerSurface(totalSurfaceLimitQyParams,"totalSurfaceChgd","limit")
-  }, [coveredSurfaceInitQyParams, coveredSurfaceLimitQyParams, totalSurfaceInitQyParams, totalSurfaceLimitQyParams ]);
+
 
 
   return (
