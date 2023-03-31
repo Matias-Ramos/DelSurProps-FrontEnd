@@ -9,73 +9,117 @@ const filterStructure = {
   bedr: null,
   buildStatus: null,
   surface: {
-    total: null,
-    covered: null
+    total: {
+      init: null,
+      limit: null,
+    },
+    covered: {
+      init: null,
+      limit: null,
+    }
   },
   //env="ambientes"
   env: null,
 }
 function filterModifier(currentFilters, actionObj) {
   switch (actionObj.type) {
-    case 'locationChgd': {
+    case "locationChgd": {
       return {
+        ...currentFilters,
+        location: actionObj.location,
+      };
+    }
+    case "initPriceChgd": {
+      return {
+        ...currentFilters,
+        price: { ...currentFilters.price, init: actionObj.newPrice },
+      };
+    }
+    case "limitPriceChgd": {
+      return {
+        ...currentFilters,
+        price: { ...currentFilters.price, limit: actionObj.newPrice },
+      };
+    }
+    case "coveredSurfaceChgd": {
+      if (actionObj.edge === "init") {
+        return {
           ...currentFilters,
-          location: actionObj.location
+          surface: {
+            ...currentFilters.surface,
+            covered: {
+              ...currentFilters.surface.covered,
+              init: actionObj.newSurface,
+            },
+          },
+        };
+      } else if (actionObj.edge === "limit") {
+        return {
+          ...currentFilters,
+          surface: {
+            ...currentFilters.surface,
+            covered: {
+              ...currentFilters.surface.covered,
+              limit: actionObj.newSurface,
+            },
+          },
+        };
       }
     }
-    case 'initPriceChgd': {
-      return {
+    case "totalSurfaceChgd": {
+      if (actionObj.edge === "init") {
+        return {
           ...currentFilters,
-          price: { ...currentFilters.price,init:actionObj.newPrice }
+          surface: {
+            ...currentFilters.surface,
+            total: {
+              ...currentFilters.surface.total,
+              init: actionObj.newSurface,
+            },
+          },
+        };
+      } else if (actionObj.edge === "limit") {
+        return {
+          ...currentFilters,
+          surface: {
+            ...currentFilters.surface,
+            total: {
+              ...currentFilters.surface.total,
+              limit: actionObj.newSurface,
+            },
+          },
+        };
       }
     }
-    case 'limitPriceChgd': {
+    case "envChgd": {
       return {
-          ...currentFilters,
-          price: { ...currentFilters.price,limit:actionObj.newPrice }
-      }
+        ...currentFilters,
+        env: actionObj.env,
+      };
     }
-    // case 'totalSurfaceChgd': {
-    //   return {
-    //       ...currentFilters,
-    //       surface.total: actionObj.surface.total
-    //   }
-    // }
-    // case 'coveredSurfaceChgd': {
-    //   return {
-    //       ...currentFilters,
-    //       surface.covered: actionObj.surface.covered
-    //   }
-    // }
-    case 'envChgd': {
+    case "garageChgd": {
       return {
-          ...currentFilters,
-          env: actionObj.env
-      }
+        ...currentFilters,
+        garage: actionObj.garage,
+      };
     }
-    case 'garageChgd': {
+    case "bathrChgd": {
       return {
-          ...currentFilters,
-          garage: actionObj.garage
-      }
+        ...currentFilters,
+        bathr: actionObj.bathr,
+      };
     }
-    case 'bathrChgd': {
+    case "bedrChgd": {
       return {
-          ...currentFilters,
-          bathr: actionObj.bathr
-      }
+        ...currentFilters,
+        bedr: actionObj.bedr,
+      };
     }
-    case 'bedrChgd': {
+    case "buildStatusChgd": {
       return {
-          ...currentFilters,
-          bedr: actionObj.bedr
-      }
-    }
-    case 'buildStatusChgd': {
-      return {
-          ...currentFilters,
-          buildStatus: actionObj.buildStatus
-      }
+        ...currentFilters,
+        buildStatus: actionObj.buildStatus,
+      };
     }
   }
 }

@@ -2,17 +2,16 @@ import TextField from "@mui/material/TextField";
 import ConfirmBtn from "../ConfirmBtn.jsx";
 import { useEffect } from "react";
 
-const LocationFilter = ({ updateQyParams, deleteQyParams, dispatch, filters, locationQyParams }) => {
+const LocationFilter = ({ updateQyParams, deleteQyParam, dispatch, filters, locationQyParams }) => {
   const chgReducerLocation = (newLocation) =>
     dispatch({
       type: "locationChgd",
       location: newLocation,
     });
   const handleChange = (evt) => chgReducerLocation(evt.target.value);
-  const handleSubmit = () => filters.location ? updateQyParams("location", filters.location): deleteQyParams();
+  const handleSubmit = () => filters.location ? updateQyParams("location", filters.location): deleteQyParam('location');
   const handleClean = () => {
-    deleteQyParams();
-    chgReducerLocation('')
+    deleteQyParam("location");
   }
   useEffect(() => {
     locationQyParams !== null && chgReducerLocation(locationQyParams);

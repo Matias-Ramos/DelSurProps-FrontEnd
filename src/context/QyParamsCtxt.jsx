@@ -21,6 +21,7 @@ function QyParamsCtxtProvider({ children }) {
     }
     setSearchParams(returnEmptySearchParams());
   };
+  
 
   const deleteQyParam = (qyParamName) => {
     searchParams.delete(qyParamName);
