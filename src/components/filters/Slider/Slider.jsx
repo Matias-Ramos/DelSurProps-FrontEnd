@@ -10,7 +10,18 @@ const Input = styled(MuiInput)`
   width: 35px;
 `;
 
-export default function Slider({room}) {
+export default function Slider({
+  props : { 
+  chgReducerRoom,
+  handleChange,
+  handleClean,
+  room,
+  roomInitQyParams,
+  roomLimitQyParams,
+  roomFilter,
+   }
+}) {
+
   const [value, setValue] = React.useState([1, 7]);
 
   const handleSliderChange = (event, newValue) => {

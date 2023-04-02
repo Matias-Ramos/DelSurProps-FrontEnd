@@ -1,12 +1,28 @@
+/*******************/
+// env = "ambientes"
+
 const filterStructure = {
   location: null,
   price: {
     init: null,
     limit: null,
   },
-  garage: null,
-  bathr: null,
-  bedr: null,
+  env: {
+    init: null,
+    limit: null,
+  },
+  garage: {
+    init: null,
+    limit: null,
+  },
+  bathroom: {
+    init: null,
+    limit: null,
+  },
+  bedroom: {
+    init: null,
+    limit: null,
+  },
   buildStatus: null,
   surface: {
     total: {
@@ -17,9 +33,7 @@ const filterStructure = {
       init: null,
       limit: null,
     }
-  },
-  //env="ambientes"
-  env: null,
+  }
 }
 function filterModifier(currentFilters, actionObj) {
   switch (actionObj.type) {

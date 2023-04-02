@@ -1,6 +1,8 @@
 import LocationFilter from "../location/LocationFilter.jsx";
 import PriceFilter from "../price/PriceFilter.jsx";
 import SliderContainer from "../Slider/SliderContainer.jsx";
+import Slider from "../Slider/Slider.jsx";
+import ConfirmBtn from "../ConfirmBtn.jsx";
 import BuildStatusFilter from "../buildStatus/BuildStatusFilter.jsx"
 import SurfaceFilterContainer from "../surface/SurfaceFilterContainer.jsx";
 import { useContext, useReducer } from "react";
@@ -12,7 +14,7 @@ const FiltersContainer = () => {
   const { searchParams, updateQyParams, deleteQyParam } = useContext(queryCtxt);
   const [ filters, dispatch ] = useReducer(filterModifier, filterStructure);
   const URLpath = useLocation().pathname;
-  
+
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
       <div
@@ -53,7 +55,13 @@ const FiltersContainer = () => {
           display: "inline-block",
         }}
       >
-        <SliderContainer updateQyParams={updateQyParams} />
+        <SliderContainer
+          updateQyParams={updateQyParams}
+          deleteQyParam={deleteQyParam}
+          searchParams={searchParams}
+          filters={filters}
+          dispatch={dispatch}
+        />
       </div>
 
       {(URLpath === "/venta-inmuebles" || URLpath === "/emprendimientos") && (

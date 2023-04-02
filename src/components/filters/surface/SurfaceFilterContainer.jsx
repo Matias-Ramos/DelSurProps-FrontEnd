@@ -12,6 +12,16 @@ const SurfaceFilterContainer = ({
   totalSurfaceLimitQyParams,
 }) => {
 
+  const chgReducerSurface = (newSurface, dispatchEvt, edge) => {
+    dispatch({
+      newSurface: newSurface,
+      type: dispatchEvt,
+      edge: edge,
+    });
+  };
+  const handleChange = (evt, surfaceType, edge) => {
+    chgReducerSurface(evt.target.value, `${surfaceType}SurfaceChgd`, edge);
+  };
   const handleSubmit = (surfaceTypeParam) => {
     // It analizes the properties inside filters.surface, which can eaither be "covered" or "total"
     for (const surfaceType in filters.surface) {
@@ -37,16 +47,7 @@ const SurfaceFilterContainer = ({
       chgReducerSurface("", `${surfaceType}SurfaceChgd`, `${edge[i]}`);
     }
   };
-  const handleChange = (evt, surfaceType, edge) => {
-    chgReducerSurface(evt.target.value, `${surfaceType}SurfaceChgd`, edge);
-  };
-  const chgReducerSurface = (newSurface, dispatchEvt, edge) => {
-    dispatch({
-      newSurface: newSurface,
-      type: dispatchEvt,
-      edge: edge,
-    });
-  };
+
 
   return (
     <>
