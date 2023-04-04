@@ -1,7 +1,7 @@
 // Route
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // Css
-import './App.css'
+import './App.scss'
 // Components
 import Gallery from "./pages/Gallery.jsx"
 import Welcome from "./pages/Welcome.jsx"

@@ -8,20 +8,20 @@ const filterStructure = {
     limit: null,
   },
   env: {
-    init: null,
-    limit: null,
+    init: 1,
+    limit: 7,
   },
   garage: {
-    init: null,
-    limit: null,
+    init: 1,
+    limit: 7,
   },
   bathroom: {
-    init: null,
-    limit: null,
+    init: 1,
+    limit: 7,
   },
   bedroom: {
-    init: null,
-    limit: null,
+    init: 1,
+    limit: 7,
   },
   buildStatus: null,
   surface: {
@@ -56,59 +56,37 @@ function filterModifier(currentFilters, actionObj) {
       };
     }
     case "coveredSurfaceChgd": {
-      if (actionObj.edge === "init") {
         return {
           ...currentFilters,
           surface: {
             ...currentFilters.surface,
             covered: {
               ...currentFilters.surface.covered,
-              init: actionObj.newSurface,
+              ...(actionObj.edge === "init" ? {init: actionObj.newSurface}:{limit: actionObj.newSurface} )
             },
           },
         };
-      } else if (actionObj.edge === "limit") {
-        return {
-          ...currentFilters,
-          surface: {
-            ...currentFilters.surface,
-            covered: {
-              ...currentFilters.surface.covered,
-              limit: actionObj.newSurface,
-            },
-          },
-        };
-      }
     }
     case "totalSurfaceChgd": {
-      if (actionObj.edge === "init") {
-        return {
-          ...currentFilters,
-          surface: {
-            ...currentFilters.surface,
-            total: {
-              ...currentFilters.surface.total,
-              init: actionObj.newSurface,
-            },
+      return {
+        ...currentFilters,
+        surface: {
+          ...currentFilters.surface,
+          total: {
+            ...currentFilters.surface.total,
+            ...(actionObj.edge === "init" ? {init: actionObj.newSurface}:{limit: actionObj.newSurface} )
           },
-        };
-      } else if (actionObj.edge === "limit") {
-        return {
-          ...currentFilters,
-          surface: {
-            ...currentFilters.surface,
-            total: {
-              ...currentFilters.surface.total,
-              limit: actionObj.newSurface,
-            },
-          },
-        };
-      }
+        },
+      };
     }
+
     case "envChgd": {
       return {
         ...currentFilters,
-        env: actionObj.env,
+        env: {
+          init: parseInt(actionObj.newRoomValue[0]),
+          limit: parseInt(actionObj.newRoomValue[1]),
+        },
       };
     }
     case "garageChgd": {

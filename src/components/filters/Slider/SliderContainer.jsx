@@ -1,6 +1,6 @@
 import ConfirmBtn from "../ConfirmBtn.jsx";
 import Slider from "./Slider.jsx";
-import { useMemo, useEffect } from "react";
+import { useMemo, useCallback, useEffect } from "react";
 
 const SliderContainer = ({
   updateQyParams,
@@ -18,20 +18,26 @@ const SliderContainer = ({
   const handleChange = (evt, room, edge) => {
     chgReducerRoom(evt.target.value, `${room}Chgd`, edge);
   };
-  const handleSubmit = (roomType) => {
-    for (const edge in filters[roomType]) {
-      filters[roomType]
-       ? updateQyParams(`${roomType}_${edge}`, filters[roomType][edge])
-       : deleteQyParam(`${roomType}_${edge}`)
+
+  const handleSubmit = () => {
+    const rooms = ["env", "bedroom", "bathroom", "garage"];
+    for(let roomType of rooms){
+      for (let edge in filters[roomType]) {
+        updateQyParams(`${roomType}_${edge}`, filters[roomType][edge])
+      }
     }
   };
-  const handleClean = (roomType) => {
-    const edge = ['init', 'limit'];
-    for(let i=0; i<=1; i++){
-      deleteQyParam(`${roomType}_${edge[i]}`);
-      chgReducerRoom("", `${room}Chgd`, `${edge[i]}`);
-    }
-  };  
+
+  const handleClean = () => {
+    const edge = ["init", "limit"];
+    const rooms = ["env", "bedroom", "bathroom", "garage"];
+    rooms.forEach((room) => {
+      for (let i = 0; i <= 1; i++) {
+        deleteQyParam(`${room}_${edge[i]}`);
+        chgReducerRoom("", `${room}Chgd`, `${edge[i]}`);
+      }
+    });
+  }; 
 
   const sliderProps = useMemo(
     () => {
@@ -46,8 +52,8 @@ const SliderContainer = ({
           {
             chgReducerRoom:chgReducerRoom,
             handleChange:handleChange,
-            handleClean:handleClean,
             room: room.spanishVarName,
+            reducerVarName : room.reducerVarName,
             roomInitQyParams: searchParams.get(`${room.reducerVarName}_limit`) ,
             roomLimitQyParams:searchParams.get(`${room.reducerVarName}_init`) ,
             roomFilter:filters[room.reducerVarName],
@@ -56,54 +62,24 @@ const SliderContainer = ({
       })
       return props;
     },
-    []
+    [filters]
   );
 
-  const Sliders = () =>{
-    return(
-      <>
-        <Slider props={sliderProps[0]}/>
-        <Slider props={sliderProps[1]}/>
-        <Slider props={sliderProps[2]}/>
-        <Slider props={sliderProps[3]}/>
-      </>
-    )
-  }
+  // const Sliders = () =>{
+  //   const result = [];
+  //   for (let i=0; i<=3; i++) {
+  //     result.push(<Slider key={i} props={sliderProps[i]} />);
+  //   }
+  //   return(result)
+  // }
+  
 
   return (
     <>
-    {
-      sliderProps && <Slider props={sliderProps[0]}/>
-    }
-      {/* <Slider
-      props={sliderProps[0]}
-      /> */}
-      {/* <Slider
-      room={"Dormitorios"}
-      chgReducerRoom = {chgReducerRoom}
-      handleChange = {handleChange}
-      handleClean= {handleClean}
-      roomInitQyParams = { searchParams.get("bedroom_init") }
-      roomLimitQyParams = { searchParams.get("bedroom_limit") }
-      roomFilter = {filters.bedr}
-      />
-      <Slider
-      room={"Baños"} 
-      chgReducerRoom = {chgReducerRoom}
-      handleChange = {handleChange}
-      handleClean= {handleClean}
-      roomInitQyParams = { searchParams.get("bathroom_init") }
-      roomLimitQyParams = { searchParams.get("bathroom_limit") }
-      roomFilter = {filters.bathr}/>
-      <Slider
-      room={"Garage"} 
-      chgReducerRoom = {chgReducerRoom}
-      handleChange = {handleChange}
-      handleClean= {handleClean}
-      roomInitQyParams = { searchParams.get("garage_init") }
-      roomLimitQyParams = { searchParams.get("garage_limit") }
-      roomFilter = {filters.garage}/> */}
-      <ConfirmBtn handleSubmit = {handleSubmit}/>
+      {/* {sliderProps && Sliders()} */}
+      <Slider props={sliderProps[0]} />
+      <span onClick={handleClean}>Limpiar</span>
+      <ConfirmBtn handleSubmit={() => handleSubmit()} />
     </>
   );
 };
