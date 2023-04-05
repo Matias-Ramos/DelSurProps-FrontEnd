@@ -24,7 +24,10 @@ export default function Slider({
   roomFilter,
    }
 }) {
-  const valuetext = (value) => `${value[0]} a ${value[1]} ${room}`; // slider accessibility
+  console.log("roomFilter")
+  console.log(roomFilter);
+  
+  const valuetext = (value) => `${value} ${room}`; // slider accessibility
 
   const handleBlur = () => {
     if (roomFilter.init < 0) {
@@ -36,53 +39,50 @@ export default function Slider({
 
   useEffect(() => {
     roomInitQyParams !== null &&
-      chgReducerRoom(roomInitQyParams, `${reducerVarName}Chgd`, "init");
+      chgReducerRoom(roomInitQyParams, `${reducerVarName}Chgd`);
     roomLimitQyParams !== null &&
-      chgReducerRoom(roomLimitQyParams, `${reducerVarName}Chgd`, "limit");
+      chgReducerRoom(roomLimitQyParams, `${reducerVarName}Chgd`);
   }, [roomInitQyParams, roomLimitQyParams]);
 
-  // disables swap between min and max value and updates the reducer values
-  const handleChange1 = (event, newValue, activeThumb) => {
-    const minDistance = 0;
-    if (!Array.isArray(newValue)) {
-      return;
-    }
-    //left slider-handle was used
-    if (activeThumb === 0) {
+  // disables swap between min and max value 
+  // and updates the reducer values
+  const handleChange1 = (event, newValue, sliderHandle) => {
+    // 0 = left slider-handle
+    if (sliderHandle === 0) {
       event.target.value = [
-        Math.min(newValue[0], parseInt(roomFilter.limit) - minDistance),
+        Math.min(newValue[0], parseInt(roomFilter.limit) ),
         parseInt(roomFilter.limit),
       ];
-      handleChange(event, reducerVarName, null);
     }
-    //right slider-handle was used
+    // 1 = right slider-handle
     else {
       event.target.value = [
         parseInt(roomFilter.init),
-        Math.max(newValue[1], parseInt(roomFilter.init) + minDistance),
+        Math.max(newValue[1], parseInt(roomFilter.init) ),
       ];
-      handleChange(event, reducerVarName, null);
     }
+    handleChange(event, reducerVarName);
   };
 
   const handleChange2 = (event, edge) => {
-    const minDistance = 0;
+    
     //left input was used
     if (edge === "init") {
+      
       const evt = {
         target: {
           value: [
             Math.min(
               parseInt(event.target.value),
-              parseInt(roomFilter.limit) - minDistance
+              parseInt(roomFilter.limit)
             ),
             parseInt(roomFilter.limit),
           ],
         },
       };
-      handleChange(evt, reducerVarName, null);
+      handleChange(evt, reducerVarName);
     }
-    //right input was used
+    // //right input was used
     else {
       const evt = {
         target: {
@@ -90,13 +90,14 @@ export default function Slider({
             parseInt(roomFilter.init),
             Math.max(
               parseInt(event.target.value),
-              parseInt(roomFilter.init) + minDistance
+              parseInt(roomFilter.init)
             ),
           ],
         },
       };
-      handleChange(evt, reducerVarName, null);
+      handleChange(evt, reducerVarName);
     }
+    
   };
 
   return (
@@ -111,7 +112,6 @@ export default function Slider({
             <Input
               value={parseInt(roomFilter.init)}
               size="small"
-              // onChange={(event) => handleChange(event, reducerVarName, "init")}
               onChange={(event) => handleChange2(event, "init")}
               onBlur={handleBlur}
               className="sliderInput"
@@ -130,7 +130,6 @@ export default function Slider({
               value={[parseInt(roomFilter.init), parseInt(roomFilter.limit)]}
               getAriaValueText={valuetext}
               valueLabelDisplay="auto"
-              // onChange={(event) => handleChange(event, reducerVarName, null)}
               onChange={(event, newValue, activeThumb) =>
                 handleChange1(event, newValue, activeThumb)
               }
@@ -146,7 +145,6 @@ export default function Slider({
             <Input
               value={parseInt(roomFilter.limit)}
               size="small"
-              // onChange={(event) => handleChange(event, reducerVarName, "limit")}
               onChange={(event) => handleChange2(event, "limit")}
               onBlur={handleBlur}
               sx={{ input: { cursor: "default" } }}

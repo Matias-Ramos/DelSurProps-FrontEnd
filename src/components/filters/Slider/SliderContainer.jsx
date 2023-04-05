@@ -54,8 +54,8 @@ const SliderContainer = ({
             handleChange:handleChange,
             room: room.spanishVarName,
             reducerVarName : room.reducerVarName,
-            roomInitQyParams: searchParams.get(`${room.reducerVarName}_limit`) ,
-            roomLimitQyParams:searchParams.get(`${room.reducerVarName}_init`) ,
+            roomInitQyParams: searchParams.get(`${room.reducerVarName}_init`) ,
+            roomLimitQyParams: searchParams.get(`${room.reducerVarName}_limit`) ,
             roomFilter:filters[room.reducerVarName],
           }
         )
