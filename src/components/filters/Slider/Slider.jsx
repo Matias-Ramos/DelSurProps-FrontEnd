@@ -24,9 +24,7 @@ export default function Slider({
   roomFilter,
    }
 }) {
-  console.log("roomFilter")
-  console.log(roomFilter);
-  
+ 
   const valuetext = (value) => `${value} ${room}`; // slider accessibility
 
   const handleBlur = () => {
@@ -37,12 +35,22 @@ export default function Slider({
     }
   };
 
+  // verifies qyParam on first render and updates the useReducer if there are such.
   useEffect(() => {
     roomInitQyParams !== null &&
-      chgReducerRoom(roomInitQyParams, `${reducerVarName}Chgd`);
+      chgReducerRoom(
+        parseInt(roomInitQyParams),
+        `${reducerVarName}Chgd`,
+        "init"
+      );
+
     roomLimitQyParams !== null &&
-      chgReducerRoom(roomLimitQyParams, `${reducerVarName}Chgd`);
-  }, [roomInitQyParams, roomLimitQyParams]);
+      chgReducerRoom(
+        parseInt(roomLimitQyParams),
+        `${reducerVarName}Chgd`,
+        "limit"
+      );
+  }, []);
 
   // disables swap between min and max value 
   // and updates the reducer values

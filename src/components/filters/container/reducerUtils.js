@@ -81,13 +81,26 @@ function filterModifier(currentFilters, actionObj) {
     }
 
     case "envChgd": {
-      return {
-        ...currentFilters,
-        env: {
-          init: parseInt(actionObj.newRoomValue[0]),
-          limit: parseInt(actionObj.newRoomValue[1]),
-        },
-      };
+      // from useEffect on initial render
+      if(actionObj.edge){
+        return {
+          ...currentFilters,
+          env: {
+            ...currentFilters.env,
+            ...(actionObj.edge === "init" ? {init: actionObj.newRoomValue}:{limit: actionObj.newRoomValue} ),
+          },
+        };
+      } 
+      // from components
+      else { 
+        return {
+          ...currentFilters,
+          env: {
+            init: parseInt(actionObj.newRoomValue[0]),
+            limit: parseInt(actionObj.newRoomValue[1]),
+          },
+        };
+      }
     }
     case "garageChgd": {
       return {
