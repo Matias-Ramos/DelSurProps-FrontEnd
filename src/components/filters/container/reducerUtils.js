@@ -35,6 +35,26 @@ const filterStructure = {
     }
   }
 }
+const updatedEdgeValues = (actionObj,currentFilters) => {
+  let newEnv = {};
+  // triggered from useEffect on initial render
+  if (actionObj.edge) {
+    newEnv = {
+      ...currentFilters[actionObj.roomName],
+      ...(actionObj.edge === "init"
+        ? { init: actionObj.newRoomValue }
+        : { limit: actionObj.newRoomValue }),
+    };
+  }
+  // triggered from components
+  else {
+    newEnv = {
+      init: parseInt(actionObj.newRoomValue[0]),
+      limit: parseInt(actionObj.newRoomValue[1]),
+    };
+  }
+  return newEnv;
+};
 function filterModifier(currentFilters, actionObj) {
   switch (actionObj.type) {
     case "locationChgd": {
@@ -56,16 +76,18 @@ function filterModifier(currentFilters, actionObj) {
       };
     }
     case "coveredSurfaceChgd": {
-        return {
-          ...currentFilters,
-          surface: {
-            ...currentFilters.surface,
-            covered: {
-              ...currentFilters.surface.covered,
-              ...(actionObj.edge === "init" ? {init: actionObj.newSurface}:{limit: actionObj.newSurface} )
-            },
+      return {
+        ...currentFilters,
+        surface: {
+          ...currentFilters.surface,
+          covered: {
+            ...currentFilters.surface.covered,
+            ...(actionObj.edge === "init"
+              ? { init: actionObj.newSurface }
+              : { limit: actionObj.newSurface }),
           },
-        };
+        },
+      };
     }
     case "totalSurfaceChgd": {
       return {
@@ -74,50 +96,44 @@ function filterModifier(currentFilters, actionObj) {
           ...currentFilters.surface,
           total: {
             ...currentFilters.surface.total,
-            ...(actionObj.edge === "init" ? {init: actionObj.newSurface}:{limit: actionObj.newSurface} )
+            ...(actionObj.edge === "init"
+              ? { init: actionObj.newSurface }
+              : { limit: actionObj.newSurface }),
           },
         },
       };
     }
 
     case "envChgd": {
-      // from useEffect on initial render
-      if(actionObj.edge){
-        return {
-          ...currentFilters,
-          env: {
-            ...currentFilters.env,
-            ...(actionObj.edge === "init" ? {init: actionObj.newRoomValue}:{limit: actionObj.newRoomValue} ),
-          },
-        };
-      } 
-      // from components
-      else { 
-        return {
-          ...currentFilters,
-          env: {
-            init: parseInt(actionObj.newRoomValue[0]),
-            limit: parseInt(actionObj.newRoomValue[1]),
-          },
-        };
-      }
+      return {
+        ...currentFilters,
+        env: {
+          ...updatedEdgeValues(actionObj,currentFilters),
+        },
+      };
     }
     case "garageChgd": {
       return {
         ...currentFilters,
-        garage: actionObj.garage,
+        garage: {
+          ...updatedEdgeValues(actionObj,currentFilters),
+        },
       };
     }
-    case "bathrChgd": {
+    case "bathroomChgd": {
       return {
         ...currentFilters,
-        bathr: actionObj.bathr,
+        bathroom: {
+          ...updatedEdgeValues(actionObj,currentFilters),
+        },
       };
     }
-    case "bedrChgd": {
+    case "bedroomChgd": {
       return {
         ...currentFilters,
-        bedr: actionObj.bedr,
+        bedroom: {
+          ...updatedEdgeValues(actionObj,currentFilters),
+        },
       };
     }
     case "buildStatusChgd": {

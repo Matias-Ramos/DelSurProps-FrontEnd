@@ -1,32 +1,24 @@
-import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import SliderMui from "@mui/material/Slider";
 import MuiInput from "@mui/material/Input";
-import { TextField } from "@mui/material";
-import { useEffect } from "react";
-import ConfirmBtn from "../ConfirmBtn";
 
 const Input = styled(MuiInput)`
   width: 35px;
 `;
 
 export default function Slider({
-  props : { 
-  chgReducerRoom,
-  handleChange,
-  room,
-  reducerVarName,
-  roomInitQyParams,
-  roomLimitQyParams,
-  roomFilter,
-   }
+  props: {
+    handleChange,
+    room,
+    reducerVarName,
+    roomFilter,
+  },
 }) {
- 
-  const valuetext = (value) => `${value} ${room}`; // slider accessibility
 
+  const valuetext = (value) => `${value} ${room}`; // slider accessibility
   const handleBlur = () => {
     if (roomFilter.init < 0) {
       handleChange(1, reducerVarName, "init");
@@ -34,78 +26,35 @@ export default function Slider({
       handleChange(7, reducerVarName, "limit");
     }
   };
-
-  // verifies qyParam on first render and updates the useReducer if there are such.
-  useEffect(() => {
-    roomInitQyParams !== null &&
-      chgReducerRoom(
-        parseInt(roomInitQyParams),
-        `${reducerVarName}Chgd`,
-        "init"
-      );
-
-    roomLimitQyParams !== null &&
-      chgReducerRoom(
-        parseInt(roomLimitQyParams),
-        `${reducerVarName}Chgd`,
-        "limit"
-      );
-  }, []);
-
-  // disables swap between min and max value 
-  // and updates the reducer values
-  const handleChange1 = (event, newValue, sliderHandle) => {
-    // 0 = left slider-handle
-    if (sliderHandle === 0) {
-      event.target.value = [
-        Math.min(newValue[0], parseInt(roomFilter.limit) ),
-        parseInt(roomFilter.limit),
-      ];
-    }
-    // 1 = right slider-handle
-    else {
-      event.target.value = [
-        parseInt(roomFilter.init),
-        Math.max(newValue[1], parseInt(roomFilter.init) ),
-      ];
-    }
-    handleChange(event, reducerVarName);
+  // both handleChgs disable the swap between min and max value, and updates the reducer values.
+  const handleChgSlider = (sliderCurrValues, sliderHandle) => {
+    // sliderHandle===0 ? left one : right one
+    const newValue = [];
+    sliderHandle === 0
+      ? newValue.push(
+          Math.min(sliderCurrValues[0], parseInt(roomFilter.limit)),
+          parseInt(roomFilter.limit)
+        )
+      : newValue.push(
+          parseInt(roomFilter.init),
+          Math.max(sliderCurrValues[1], parseInt(roomFilter.init))
+        );
+    handleChange(newValue, reducerVarName);
   };
-
-  const handleChange2 = (event, edge) => {
-    
-    //left input was used
-    if (edge === "init") {
-      
-      const evt = {
-        target: {
-          value: [
-            Math.min(
-              parseInt(event.target.value),
-              parseInt(roomFilter.limit)
-            ),
-            parseInt(roomFilter.limit),
-          ],
-        },
-      };
-      handleChange(evt, reducerVarName);
-    }
-    // //right input was used
-    else {
-      const evt = {
-        target: {
-          value: [
-            parseInt(roomFilter.init),
-            Math.max(
-              parseInt(event.target.value),
-              parseInt(roomFilter.init)
-            ),
-          ],
-        },
-      };
-      handleChange(evt, reducerVarName);
-    }
-    
+  const handleChgInput = (event, edge) => {
+    const newValue = [];
+    edge === "init"
+      ? // left input was used
+        newValue.push(
+          Math.min(parseInt(event.target.value), parseInt(roomFilter.limit)),
+          parseInt(roomFilter.limit)
+        )
+      : // right input was used
+        newValue.push(
+          parseInt(roomFilter.init),
+          Math.max(parseInt(event.target.value), parseInt(roomFilter.init))
+        );
+    handleChange(newValue, reducerVarName);
   };
 
   return (
@@ -120,13 +69,20 @@ export default function Slider({
             <Input
               value={parseInt(roomFilter.init)}
               size="small"
-              onChange={(event) => handleChange2(event, "init")}
+              onChange={(event) => handleChgInput(event, "init")}
               onBlur={handleBlur}
-              className="sliderInput"
+              sx={{ input: { cursor: "default" } }}
+              id={`${room}_input_left`} // accessibility purposes
               inputProps={{
                 step: 1,
                 min: 1,
                 max: 7,
+                //prevents the use from changing the value through its keyboard
+                onKeyDown: (event) => {
+                  event.code === "ArrowUp" || event.code === "ArrowDown"
+                    ? handleChgInput(event, "init")
+                    : event.preventDefault();
+                },
                 type: "number",
                 "aria-labelledby": "input-slider",
               }}
@@ -138,8 +94,8 @@ export default function Slider({
               value={[parseInt(roomFilter.init), parseInt(roomFilter.limit)]}
               getAriaValueText={valuetext}
               valueLabelDisplay="auto"
-              onChange={(event, newValue, activeThumb) =>
-                handleChange1(event, newValue, activeThumb)
+              onChange={( _event, newValue, activeThumb) =>
+                handleChgSlider( newValue, activeThumb)
               }
               step={1}
               marks
@@ -153,10 +109,10 @@ export default function Slider({
             <Input
               value={parseInt(roomFilter.limit)}
               size="small"
-              onChange={(event) => handleChange2(event, "limit")}
+              onChange={(event) => handleChgInput(event, "limit")}
               onBlur={handleBlur}
               sx={{ input: { cursor: "default" } }}
-              id={room} // accessibility purposes
+              id={`${room}_input_right`} // accessibility purposes
               inputProps={{
                 step: 1,
                 min: 1,
@@ -164,7 +120,7 @@ export default function Slider({
                 //prevents the use from changing the value through its keyboard
                 onKeyDown: (event) => {
                   event.code === "ArrowUp" || event.code === "ArrowDown"
-                    ? handleChange(event, reducerVarName, "limit")
+                    ? handleChgInput(event, "limit")
                     : event.preventDefault();
                 },
                 type: "number",

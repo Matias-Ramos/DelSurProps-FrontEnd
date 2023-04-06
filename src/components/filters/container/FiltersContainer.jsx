@@ -1,8 +1,6 @@
 import LocationFilter from "../location/LocationFilter.jsx";
 import PriceFilter from "../price/PriceFilter.jsx";
 import SliderContainer from "../Slider/SliderContainer.jsx";
-import Slider from "../Slider/Slider.jsx";
-import ConfirmBtn from "../ConfirmBtn.jsx";
 import BuildStatusFilter from "../buildStatus/BuildStatusFilter.jsx"
 import SurfaceFilterContainer from "../surface/SurfaceFilterContainer.jsx";
 import { useContext, useReducer } from "react";
