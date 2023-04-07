@@ -4,28 +4,28 @@ import { useSearchParams } from "react-router-dom";
 const queryCtxt = createContext();
 
 function QyParamsCtxtProvider({ children }) {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchQyParams, setSearchParams] = useSearchParams();
 
   function updateQyParams(name, value) {
-    searchParams.set(name, value);
-    setSearchParams(searchParams);
+    searchQyParams.set(name, value);
+    setSearchParams(searchQyParams);
   }
   
   const deleteQyParams = () => {
     // async else only 1 param is removed at a time due to re-rendering.
     async function returnEmptySearchParams() {
-      searchParams.forEach((_value, key) => {
-        searchParams.delete(key);
+      searchQyParams.forEach((_value, key) => {
+        searchQyParams.delete(key);
       });
-      return searchParams;
+      return searchQyParams;
     }
     setSearchParams(returnEmptySearchParams());
   };
   
 
   const deleteQyParam = (qyParamName) => {
-    searchParams.delete(qyParamName);
-    setSearchParams(searchParams);
+    searchQyParams.delete(qyParamName);
+    setSearchParams(searchQyParams);
   };
 
   return (
@@ -34,7 +34,7 @@ function QyParamsCtxtProvider({ children }) {
         updateQyParams: updateQyParams,
         deleteQyParams: deleteQyParams,
         deleteQyParam: deleteQyParam,
-        searchParams: searchParams,
+        searchQyParams: searchQyParams,
       }}
     >
       {children}

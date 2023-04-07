@@ -2,11 +2,13 @@ import CoveredSurfaceFilter from "./CoveredSurfaceFilter.jsx";
 import TotalSurfaceFilter from "./TotalSurfaceFilter.jsx";
 import { useEffect } from "react";
 const SurfaceFilterContainer = ({
-  updateQyParams,
-  deleteQyParam,
-  dispatch,
-  filters,
-  searchParams,
+  props:{
+    updateQyParams,
+    deleteQyParam,
+    dispatch,
+    filters,
+    searchQyParams,
+  }
 }) => {
   const chgReducerSurface = (newSurface, surfaceType, edge) => {
     dispatch({
@@ -21,8 +23,8 @@ const SurfaceFilterContainer = ({
   useEffect(() => {
     const surfaceTypes = ["total", "covered"];
     for (let type of surfaceTypes) {
-      const roomInitQyParams = searchParams.get(`${type}_surface_init`);
-      const roomLimitQyParams = searchParams.get(`${type}_surface_limit`);
+      const roomInitQyParams = searchQyParams.get(`${type}_surface_init`);
+      const roomLimitQyParams = searchQyParams.get(`${type}_surface_limit`);
 
       roomInitQyParams !== null &&
         chgReducerSurface(parseInt(roomInitQyParams), type, "init");
@@ -33,7 +35,10 @@ const SurfaceFilterContainer = ({
   }, []);
 
   const handleChange = (newValue, surfaceType, edge) => {
-    chgReducerSurface(newValue, surfaceType, edge);
+    const regex = /^[0-9\b]+$/;
+    if (newValue === "" || regex.test(newValue)) {
+      chgReducerSurface(newValue, surfaceType, edge);
+    }
   };
   const handleSubmit = (surfaceTypeParam) => {
     // properties inside filters.surface can eaither be "covered" or "total"

@@ -3,11 +3,13 @@ import ConfirmBtn from "../ConfirmBtn.jsx";
 import { useEffect } from "react";
 
 const LocationFilter = ({
-  updateQyParams,
-  deleteQyParam,
-  dispatch,
-  filters,
-  locationQyParams,
+  props:{
+    updateQyParams,
+    deleteQyParam,
+    dispatch,
+    filters,
+    searchQyParams,
+  }
 }) => {
   const chgReducerLocation = (newLocation) =>
     dispatch({
@@ -24,7 +26,7 @@ const LocationFilter = ({
     chgReducerLocation("");
   };
   useEffect(() => {
-    locationQyParams !== null && chgReducerLocation(locationQyParams);
+    searchQyParams.get("location") !== null && chgReducerLocation(searchQyParams.get("location"));
   }, []);
 
   return (

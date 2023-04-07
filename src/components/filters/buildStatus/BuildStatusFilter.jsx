@@ -1,53 +1,38 @@
-import { useEffect } from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import { useEffect } from "react";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 import Typography from "@mui/material/Typography";
-import ConfirmBtn from '../ConfirmBtn';
+import ConfirmBtn from "../ConfirmBtn";
 
 export default function BuildStatusFilter({
-  updateQyParams,
-  deleteQyParam,
-  dispatch,
-  filters,
-  totalSurfaceQyParams,
-  coveredSurfaceQyParams,
+  props:{
+    updateQyParams,
+    deleteQyParam,
+    dispatch,
+    filters,
+    searchQyParams,
+  }
 }) {
-  const chgReducerSurface = (newSurface, dispatchType) =>
+  const chgReducerBuildingSt = (newStatus) =>
     dispatch({
-      type: dispatchType,
-      newSurface: newSurface,
+      type: "buildingStatusChgd",
+      newStatus: newStatus,
     });
-  const handleChange = (evt, surfaceType) => {
-    surfaceType === "covered" &&
-      chgReducerSurface(evt.target.value, "cvrdSurfaceChgd");
-    surfaceType === "total" &&
-      chgReducerSurface(evt.target.value, "ttlSurfaceChgd");
-  };
-  const handleSubmit = () => {
-    filters.surface.covered
-      ? updateQyParams("covered_surface", filters.surface.covered)
-      : deleteQyParam("covered_surface");
+  const handleChange = (newStatus) => chgReducerBuildingSt(newStatus);
+  const handleSubmit = () =>
+    filters.buildingStatus &&
+    updateQyParams("building_status", filters.buildingStatus);
 
-    filters.surface.total
-      ? updateQyParams("total_surface", filters.surface.total)
-      : deleteQyParam("total_surface");
-  };
   const handleClean = () => {
-    deleteQyParam("total_surface");
-    deleteQyParam("covered_surface");
-    chgReducerSurface("", "total_surface");
-    chgReducerSurface("", "covered_surface");
+    deleteQyParam("building_status");
+    chgReducerBuildingSt("");
   };
-
   useEffect(() => {
-    totalSurfaceQyParams !== null &&
-      chgReducerSurface(totalSurfaceQyParams, "ttlSurfaceChgd");
-    coveredSurfaceQyParams !== null &&
-      chgReducerSurface(coveredSurfaceQyParams, "cvrdSurfaceChgd");
-  }, [totalSurfaceQyParams, coveredSurfaceQyParams]);
+    searchQyParams.get("building_status") !== null && chgReducerBuildingSt(searchQyParams.get("building_status"));
+  }, []);
 
   return (
     <Box sx={{ minWidth: 120 }}>
@@ -59,16 +44,17 @@ export default function BuildStatusFilter({
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={status}
-          label="Age"
-          onChange={handleChange}
+          value={filters.buildingStatus || ""}
+          label="Estado del emprendimiento"
+          onChange={(evt)=>handleChange(evt.target.value)}
         >
           <MenuItem value={"pozo"}>Pozo</MenuItem>
           <MenuItem value={"en-construccion"}>En construcción</MenuItem>
           <MenuItem value={"pre-venta"}>Pre-venta</MenuItem>
         </Select>
       </FormControl>
-      <ConfirmBtn />
+      <ConfirmBtn handleSubmit={handleSubmit} />
+      <span onClick={handleClean}>Limpiar</span>
     </Box>
   );
 }

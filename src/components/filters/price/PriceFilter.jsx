@@ -3,12 +3,13 @@ import ConfirmBtn from "../ConfirmBtn.jsx";
 import { useEffect } from "react";
 
 const PriceFilter = ({
-  updateQyParams,
-  deleteQyParam,
-  dispatch,
-  filters,
-  priceInitQyParams,
-  priceLimitQyParams,
+  props:{
+    updateQyParams,
+    deleteQyParam,
+    dispatch,
+    filters,
+    searchQyParams,
+  }
 }) => {
   const chgReducerPrice = (newPrice, edge) =>
     dispatch({
@@ -37,8 +38,8 @@ const PriceFilter = ({
     }
   };
   useEffect(() => {
-    priceInitQyParams !== null && chgReducerPrice(parseInt(priceInitQyParams), "init");
-    priceLimitQyParams !== null && chgReducerPrice(parseInt(priceLimitQyParams), "limit");
+    searchQyParams.get("price_init") !== null && chgReducerPrice(parseInt(searchQyParams.get("price_init")), "init");
+    searchQyParams.get("price_limit") !== null && chgReducerPrice(parseInt(searchQyParams.get("price_limit")), "limit");
   }, []);
 
   return (

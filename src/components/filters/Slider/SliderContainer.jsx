@@ -3,11 +3,13 @@ import Slider from "./Slider.jsx";
 import { useMemo, useEffect } from "react";
 
 const SliderContainer = ({
-  updateQyParams,
-  deleteQyParam,
-  searchParams,
-  filters,
-  dispatch,
+  props:{
+    updateQyParams,
+    deleteQyParam,
+    searchQyParams,
+    filters,
+    dispatch,
+  }
 }) => {
   const chgReducerRoom = (newRoomValue, dispatchRoom, edge, roomName) => {
     dispatch({
@@ -21,8 +23,8 @@ const SliderContainer = ({
   useEffect(() => {
     const rooms = ["env", "bedroom", "bathroom", "garage"];
     for (let room of rooms) {
-      const roomInitQyParams = searchParams.get(`${room}_init`);
-      const roomLimitQyParams = searchParams.get(`${room}_limit`);
+      const roomInitQyParams = searchQyParams.get(`${room}_init`);
+      const roomLimitQyParams = searchQyParams.get(`${room}_limit`);
 
       roomInitQyParams !== null &&
         chgReducerRoom(parseInt(roomInitQyParams), `${room}Chgd`, "init", room);

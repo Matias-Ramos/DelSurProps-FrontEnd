@@ -3,17 +3,26 @@ import PriceFilter from "../price/PriceFilter.jsx";
 import SliderContainer from "../Slider/SliderContainer.jsx";
 import BuildStatusFilter from "../buildStatus/BuildStatusFilter.jsx"
 import SurfaceFilterContainer from "../surface/SurfaceFilterContainer.jsx";
-import { useContext, useReducer } from "react";
+import { useContext, useReducer, useMemo } from "react";
 import { queryCtxt } from "../../../context/QyParamsCtxt.jsx";
 import { filterModifier, filterStructure } from "./reducerUtils.js";
 import { useLocation } from 'react-router-dom';
 
 const FiltersContainer = () => {
-  const { searchParams, updateQyParams, deleteQyParam } = useContext(queryCtxt);
+  const { searchQyParams, updateQyParams, deleteQyParam } = useContext(queryCtxt);
   const [ filters, dispatch ] = useReducer(filterModifier, filterStructure);
   const URLpath = useLocation().pathname;
-
-
+  const sliderProps = useMemo(() => {
+    return(
+      {
+        filters : filters,
+        dispatch : dispatch,
+        updateQyParams : updateQyParams,
+        deleteQyParam : deleteQyParam,
+        searchQyParams : searchQyParams,
+      }
+    )
+  })
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
       <div
@@ -24,11 +33,7 @@ const FiltersContainer = () => {
         }}
       >
         <LocationFilter
-          updateQyParams={updateQyParams}
-          deleteQyParam={deleteQyParam}
-          dispatch={dispatch}
-          filters={filters}
-          locationQyParams={searchParams.get("location")}
+          props={sliderProps}
         />
       </div>
       <div
@@ -39,13 +44,7 @@ const FiltersContainer = () => {
         }}
       >
         <PriceFilter
-          updateQyParams={updateQyParams}
-          deleteQyParam={deleteQyParam}
-          dispatch={dispatch}
-          filters={filters}
-          priceInitQyParams={searchParams.get("price_init")}
-          priceLimitQyParams={searchParams.get("price_limit")}
-        />
+        props={sliderProps}/>
       </div>
       <div
         style={{
@@ -55,24 +54,22 @@ const FiltersContainer = () => {
         }}
       >
         <SliderContainer
-          updateQyParams={updateQyParams}
-          deleteQyParam={deleteQyParam}
-          searchParams={searchParams}
-          filters={filters}
-          dispatch={dispatch}
+        props={sliderProps}
         />
+
       </div>
 
       {(URLpath === "/venta-inmuebles" || URLpath === "/emprendimientos") && (
         <SurfaceFilterContainer
-          updateQyParams={updateQyParams}
-          deleteQyParam={deleteQyParam}
-          dispatch={dispatch}
-          filters={filters}
-          searchParams={searchParams}
+        props={sliderProps}
+        />
+
+      )}
+      {URLpath === "/emprendimientos" && (
+        <BuildStatusFilter
+        props={sliderProps}
         />
       )}
-      {URLpath === "/emprendimientos" && <BuildStatusFilter />}
     </div>
   );
 };

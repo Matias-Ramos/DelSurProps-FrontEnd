@@ -23,7 +23,7 @@ const filterStructure = {
     init: 1,
     limit: 7,
   },
-  buildStatus: null,
+  buildingStatus: null,
   surface: {
     total: {
       init: null,
@@ -35,27 +35,28 @@ const filterStructure = {
     }
   }
 }
-const updatedEdgeValues = (actionObj,currentFilters) => {
-  let newEnv = {};
-  // triggered by useEffect
-  if (actionObj.edge) {
-    newEnv = {
-      ...currentFilters[actionObj.roomName],
-      ...(actionObj.edge === "init"
-        ? { init: actionObj.newRoomValue }
-        : { limit: actionObj.newRoomValue }),
-    };
-  }
-  // triggered by slider/inputs
-  else {
-    newEnv = {
-      init: parseInt(actionObj.newRoomValue[0]),
-      limit: parseInt(actionObj.newRoomValue[1]),
-    };
-  }
-  return newEnv;
-};
+
 function filterModifier(currentFilters, actionObj) {
+  const updatedEdgeValues = (actionObj,currentFilters) => {
+    let newEnv = {};
+    // triggered by useEffect
+    if (actionObj.edge) {
+      newEnv = {
+        ...currentFilters[actionObj.roomName],
+        ...(actionObj.edge === "init"
+          ? { init: actionObj.newRoomValue }
+          : { limit: actionObj.newRoomValue }),
+      };
+    }
+    // triggered by slider/inputs
+    else {
+      newEnv = {
+        init: parseInt(actionObj.newRoomValue[0]),
+        limit: parseInt(actionObj.newRoomValue[1]),
+      };
+    }
+    return newEnv;
+  };
   switch (actionObj.type) {
     case "locationChgd": {
       return {
@@ -120,10 +121,10 @@ function filterModifier(currentFilters, actionObj) {
         },
       };
     }
-    case "buildStatusChgd": {
+    case "buildingStatusChgd": {
       return {
         ...currentFilters,
-        buildStatus: actionObj.buildStatus,
+        buildingStatus: actionObj.newStatus,
       };
     }
   }
