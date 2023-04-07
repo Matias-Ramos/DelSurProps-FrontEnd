@@ -7,16 +7,7 @@ const TotalSurfaceFilter = ({
   handleSubmit,
   handleClean,
   handleChange,
-  chgReducerSurface,
-  totalSurfaceInitQyParams,
-  totalSurfaceLimitQyParams,
 }) => {
-
-  useEffect(() => {
-    totalSurfaceInitQyParams !== null && chgReducerSurface(totalSurfaceInitQyParams,"totalSurfaceChgd","init")
-    totalSurfaceLimitQyParams !== null && chgReducerSurface(totalSurfaceLimitQyParams,"totalSurfaceChgd","limit")
-  }, [ totalSurfaceInitQyParams, totalSurfaceLimitQyParams ]);
-
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
@@ -26,7 +17,7 @@ const TotalSurfaceFilter = ({
         label="Desde"
         variant="outlined"
         value={surfaceFilterValues.init || ""}
-        onChange={(evt) => handleChange(evt, "total", "init")}
+        onChange={(evt) => handleChange(evt.target.value, "total", "init")}
       />
       <span>m2</span>
       <TextField
@@ -34,7 +25,7 @@ const TotalSurfaceFilter = ({
         label="Hasta"
         variant="outlined"
         value={surfaceFilterValues.limit || ""}
-        onChange={(evt) => handleChange(evt,  "total", "limit")}
+        onChange={(evt) => handleChange(evt.target.value, "total", "limit")}
       />
       <span>m2</span>
       <br />

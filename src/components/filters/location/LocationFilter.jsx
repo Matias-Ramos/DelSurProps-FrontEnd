@@ -2,30 +2,37 @@ import TextField from "@mui/material/TextField";
 import ConfirmBtn from "../ConfirmBtn.jsx";
 import { useEffect } from "react";
 
-const LocationFilter = ({ updateQyParams, deleteQyParam, dispatch, filters, locationQyParams }) => {
+const LocationFilter = ({
+  updateQyParams,
+  deleteQyParam,
+  dispatch,
+  filters,
+  locationQyParams,
+}) => {
   const chgReducerLocation = (newLocation) =>
     dispatch({
       type: "locationChgd",
       location: newLocation,
     });
   const handleChange = (evt) => chgReducerLocation(evt.target.value);
-  const handleSubmit = () => filters.location ? updateQyParams("location", filters.location): deleteQyParam('location');
+  const handleSubmit = () =>
+    filters.location
+      ? updateQyParams("location", filters.location)
+      : deleteQyParam("location");
   const handleClean = () => {
     deleteQyParam("location");
-    chgReducerLocation('');
-  }
+    chgReducerLocation("");
+  };
   useEffect(() => {
     locationQyParams !== null && chgReducerLocation(locationQyParams);
-  }, [locationQyParams])
-  
-  
-  
+  }, []);
+
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <span>Ubicación</span>
       <TextField
         label="barrio, ciudad..."
-        value = {filters.location || ""}
+        value={filters.location || ""}
         variant="outlined"
         onChange={handleChange}
       />

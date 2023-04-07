@@ -37,7 +37,7 @@ const filterStructure = {
 }
 const updatedEdgeValues = (actionObj,currentFilters) => {
   let newEnv = {};
-  // triggered from useEffect on initial render
+  // triggered by useEffect
   if (actionObj.edge) {
     newEnv = {
       ...currentFilters[actionObj.roomName],
@@ -46,7 +46,7 @@ const updatedEdgeValues = (actionObj,currentFilters) => {
         : { limit: actionObj.newRoomValue }),
     };
   }
-  // triggered from components
+  // triggered by slider/inputs
   else {
     newEnv = {
       init: parseInt(actionObj.newRoomValue[0]),
@@ -63,25 +63,24 @@ function filterModifier(currentFilters, actionObj) {
         location: actionObj.location,
       };
     }
-    case "initPriceChgd": {
+    case "priceChgd": {
       return {
         ...currentFilters,
-        price: { ...currentFilters.price, init: actionObj.newPrice },
+        price: {
+          ...currentFilters.price,
+          ...(actionObj.edge === "init"
+            ? { init: actionObj.newPrice }
+            : { limit: actionObj.newPrice }),
+        }
       };
     }
-    case "limitPriceChgd": {
-      return {
-        ...currentFilters,
-        price: { ...currentFilters.price, limit: actionObj.newPrice },
-      };
-    }
-    case "coveredSurfaceChgd": {
+    case "surfaceChgd":{
       return {
         ...currentFilters,
         surface: {
           ...currentFilters.surface,
-          covered: {
-            ...currentFilters.surface.covered,
+          [actionObj.surfaceType]: {
+            ...currentFilters.surface[actionObj.surfaceType],
             ...(actionObj.edge === "init"
               ? { init: actionObj.newSurface }
               : { limit: actionObj.newSurface }),
@@ -89,21 +88,6 @@ function filterModifier(currentFilters, actionObj) {
         },
       };
     }
-    case "totalSurfaceChgd": {
-      return {
-        ...currentFilters,
-        surface: {
-          ...currentFilters.surface,
-          total: {
-            ...currentFilters.surface.total,
-            ...(actionObj.edge === "init"
-              ? { init: actionObj.newSurface }
-              : { limit: actionObj.newSurface }),
-          },
-        },
-      };
-    }
-
     case "envChgd": {
       return {
         ...currentFilters,

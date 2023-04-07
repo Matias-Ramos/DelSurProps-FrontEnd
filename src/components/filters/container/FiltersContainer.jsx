@@ -13,6 +13,7 @@ const FiltersContainer = () => {
   const [ filters, dispatch ] = useReducer(filterModifier, filterStructure);
   const URLpath = useLocation().pathname;
 
+
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
       <div
@@ -68,10 +69,7 @@ const FiltersContainer = () => {
           deleteQyParam={deleteQyParam}
           dispatch={dispatch}
           filters={filters}
-          coveredSurfaceInitQyParams={searchParams.get("covered_surface_init")}
-          coveredSurfaceLimitQyParams={searchParams.get("covered_surface_limit")}
-          totalSurfaceInitQyParams={searchParams.get("total_surface_init")}
-          totalSurfaceLimitQyParams={searchParams.get("total_surface_limit")}
+          searchParams={searchParams}
         />
       )}
       {URLpath === "/emprendimientos" && <BuildStatusFilter />}

@@ -1,31 +1,44 @@
 import CoveredSurfaceFilter from "./CoveredSurfaceFilter.jsx";
 import TotalSurfaceFilter from "./TotalSurfaceFilter.jsx";
-
+import { useEffect } from "react";
 const SurfaceFilterContainer = ({
   updateQyParams,
   deleteQyParam,
   dispatch,
   filters,
-  coveredSurfaceInitQyParams,
-  coveredSurfaceLimitQyParams,
-  totalSurfaceInitQyParams,
-  totalSurfaceLimitQyParams,
+  searchParams,
 }) => {
-
-  const chgReducerSurface = (newSurface, dispatchEvt, edge) => {
+  const chgReducerSurface = (newSurface, surfaceType, edge) => {
     dispatch({
+      type: "surfaceChgd",
       newSurface: newSurface,
-      type: dispatchEvt,
+      surfaceType: surfaceType,
       edge: edge,
     });
   };
-  const handleChange = (evt, surfaceType, edge) => {
-    chgReducerSurface(evt.target.value, `${surfaceType}SurfaceChgd`, edge);
+
+  // verifies qyParam on first render and updates the useReducer if there are such.
+  useEffect(() => {
+    const surfaceTypes = ["total", "covered"];
+    for (let type of surfaceTypes) {
+      const roomInitQyParams = searchParams.get(`${type}_surface_init`);
+      const roomLimitQyParams = searchParams.get(`${type}_surface_limit`);
+
+      roomInitQyParams !== null &&
+        chgReducerSurface(parseInt(roomInitQyParams), type, "init");
+
+      roomLimitQyParams !== null &&
+      chgReducerSurface(parseInt(roomLimitQyParams), type, "limit");
+    }
+  }, []);
+
+  const handleChange = (newValue, surfaceType, edge) => {
+    chgReducerSurface(newValue, surfaceType, edge);
   };
   const handleSubmit = (surfaceTypeParam) => {
-    // It analizes the properties inside filters.surface, which can eaither be "covered" or "total"
+    // properties inside filters.surface can eaither be "covered" or "total"
     for (const surfaceType in filters.surface) {
-      // if param == propertyName
+      // if param === propertyName
       if (surfaceTypeParam === surfaceType) {
         // it will loop over init and limit (edge)
         // and it will apply the value of the reducer on the queryParam
@@ -41,13 +54,12 @@ const SurfaceFilterContainer = ({
     }
   };
   const handleClean = (surfaceType) => {
-    const edge = ['init', 'limit'];
-    for(let i=0; i<=1; i++){
+    const edge = ["init", "limit"];
+    for (let i = 0; i <= 1; i++) {
       deleteQyParam(`${surfaceType}_surface_${edge[i]}`);
-      chgReducerSurface("", `${surfaceType}SurfaceChgd`, `${edge[i]}`);
+      chgReducerSurface("", surfaceType, `${edge[i]}`);
     }
   };
-
 
   return (
     <>
@@ -56,18 +68,12 @@ const SurfaceFilterContainer = ({
         handleSubmit={handleSubmit}
         handleClean={handleClean}
         handleChange={handleChange}
-        chgReducerSurface={chgReducerSurface}
-        coveredSurfaceInitQyParams={coveredSurfaceInitQyParams}
-        coveredSurfaceLimitQyParams={coveredSurfaceLimitQyParams}
       />
       <TotalSurfaceFilter
         surfaceFilterValues={filters.surface.total}
         handleSubmit={handleSubmit}
         handleClean={handleClean}
         handleChange={handleChange}
-        chgReducerSurface={chgReducerSurface}
-        totalSurfaceInitQyParams={totalSurfaceInitQyParams}
-        totalSurfaceLimitQyParams={totalSurfaceLimitQyParams}
       />
     </>
   );
