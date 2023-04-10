@@ -2,8 +2,8 @@ import TextField from "@mui/material/TextField";
 import ConfirmBtn from "../ConfirmBtn.jsx";
 import { useEffect } from "react";
 
-const LocationFilter = ({
-  props:{
+const LocationFilter2 = ({
+  filtersProps:{
     updateQyParams,
     deleteQyParam,
     dispatch,
@@ -11,6 +11,7 @@ const LocationFilter = ({
     searchQyParams,
   }
 }) => {
+
   const chgReducerLocation = (newLocation) =>
     dispatch({
       type: "locationChgd",
@@ -30,7 +31,7 @@ const LocationFilter = ({
   }, []);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div style={{ display: "flex", flexDirection: "column", width: "16rem" }}>
       <span>Ubicación</span>
       <TextField
         placeholder="barrio, ciudad..."
@@ -44,4 +45,4 @@ const LocationFilter = ({
   );
 };
 
-export default LocationFilter;
+export default LocationFilter2;

@@ -3,10 +3,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // Css
 import './App.scss'
 // Components
-import Gallery from "./pages/Gallery.jsx"
+import Content from "./pages/Content.jsx"
 import Welcome from "./pages/Welcome.jsx"
 import RouteError from "./pages/RouteError.jsx"
-
+// Bts
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
 const router = createBrowserRouter([
@@ -17,15 +18,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/alquiler-inmuebles",
-    element: <Gallery />
+    element: <Content />
   },
   {
     path: "/venta-inmuebles",
-    element: <Gallery />
+    element: <Content />
   },
   {
     path: "/emprendimientos",
-    element: <Gallery />
+    element: <Content />
   },
 ])
 

@@ -7,12 +7,12 @@ import { useContext, useReducer, useMemo } from "react";
 import { queryCtxt } from "../../../context/QyParamsCtxt.jsx";
 import { filterModifier, filterStructure } from "./reducerUtils.js";
 import { useLocation } from 'react-router-dom';
-
+import Navbar from "../navbar/Navbar.jsx";
 const FiltersContainer = () => {
   const { searchQyParams, updateQyParams, deleteQyParam } = useContext(queryCtxt);
   const [ filters, dispatch ] = useReducer(filterModifier, filterStructure);
   const URLpath = useLocation().pathname;
-  const sliderProps = useMemo(() => {
+  const filtersProps = useMemo(() => {
     return(
       {
         filters : filters,
@@ -24,6 +24,8 @@ const FiltersContainer = () => {
     )
   })
   return (
+    <>
+    <Navbar filtersProps={filtersProps} />
     <div style={{ display: "flex", flexDirection: "row" }}>
       <div
         style={{
@@ -33,7 +35,7 @@ const FiltersContainer = () => {
         }}
       >
         <LocationFilter
-          props={sliderProps}
+          props={filtersProps}
         />
       </div>
       <div
@@ -44,7 +46,7 @@ const FiltersContainer = () => {
         }}
       >
         <PriceFilter
-        props={sliderProps}/>
+        props={filtersProps}/>
       </div>
       <div
         style={{
@@ -54,23 +56,24 @@ const FiltersContainer = () => {
         }}
       >
         <SliderContainer
-        props={sliderProps}
+        props={filtersProps}
         />
 
       </div>
 
       {(URLpath === "/venta-inmuebles" || URLpath === "/emprendimientos") && (
         <SurfaceFilterContainer
-        props={sliderProps}
+        props={filtersProps}
         />
 
       )}
       {URLpath === "/emprendimientos" && (
         <BuildStatusFilter
-        props={sliderProps}
+        props={filtersProps}
         />
       )}
     </div>
+    </>
   );
 };
 
