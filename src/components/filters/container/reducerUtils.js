@@ -23,7 +23,11 @@ const filterStructure = {
     init: 1,
     limit: 7,
   },
-  buildingStatus: null,
+  buildingStatus: {
+    in_progress: true,
+    pre_sale: true,
+    pozo: true,
+  },
   surface: {
     total: {
       init: null,
@@ -57,6 +61,29 @@ function filterModifier(currentFilters, actionObj) {
     }
     return newEnv;
   };
+  const updatedBuildingStatus = (actionObj) => {
+    // console.log(actionObj);
+    let updatedStatus = {}
+    switch(actionObj.status){
+      case "pozo":{
+        updatedStatus = {pozo:actionObj.isChecked};
+        break;
+      }
+      case "pre_sale":{
+        updatedStatus = {pre_sale:actionObj.isChecked};
+        break;
+      }
+      case "in_progress":{
+        updatedStatus = {in_progress:actionObj.isChecked};
+        break;
+      }
+      default:{
+        console.error('error at reducerUtils.js when updating the buildStatus useReducer.');
+        break;
+      }
+    }
+    return updatedStatus;
+  }
   switch (actionObj.type) {
     case "locationChgd": {
       return {
@@ -124,7 +151,10 @@ function filterModifier(currentFilters, actionObj) {
     case "buildingStatusChgd": {
       return {
         ...currentFilters,
-        buildingStatus: actionObj.newStatus,
+        buildingStatus: {
+          ...currentFilters.buildingStatus,
+          ...updatedBuildingStatus(actionObj)
+        }
       };
     }
   }

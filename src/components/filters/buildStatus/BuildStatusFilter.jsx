@@ -1,60 +1,66 @@
 import { useEffect } from "react";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import Typography from "@mui/material/Typography";
 import ConfirmBtn from "../ConfirmBtn";
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 export default function BuildStatusFilter({
   props:{
     updateQyParams,
-    deleteQyParam,
     dispatch,
     filters,
     searchQyParams,
   }
 }) {
-  const chgReducerBuildingSt = (newStatus) =>
+  const chgReducerBuildingSt = (status, isChecked) =>
     dispatch({
       type: "buildingStatusChgd",
-      newStatus: newStatus,
+      status:status,
+      isChecked: isChecked,
     });
-  const handleChange = (newStatus) => chgReducerBuildingSt(newStatus);
-  const handleSubmit = () =>
-    filters.buildingStatus &&
-    updateQyParams("building_status", filters.buildingStatus);
-
-  const handleClean = () => {
-    deleteQyParam("building_status");
-    chgReducerBuildingSt("");
+  const handleChange = (status, isChecked) => {
+    chgReducerBuildingSt(status, isChecked);
+  }
+  const handleSubmit = () => {
+    const query = Object.keys(filters.buildingStatus)
+      .filter((key) => filters.buildingStatus[key]) // filters boolean true statuses
+      .join("-or-");
+    updateQyParams("building_status", query);
   };
+
+  
   useEffect(() => {
-    searchQyParams.get("building_status") !== null && chgReducerBuildingSt(searchQyParams.get("building_status"));
+    if(searchQyParams.get("building_status") !== null){
+      const preFilteredStatuses = searchQyParams.get("building_status").split('-or-');
+      const allStatuses = Object.keys(filters.buildingStatus);
+      const nonChosenstatuses = allStatuses.filter(function(obj) { return preFilteredStatuses.indexOf(obj) == -1; });
+      for(let status of nonChosenstatuses){
+        chgReducerBuildingSt(status, false);
+      }
+    }
   }, []);
 
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <Typography id="input-slider" gutterBottom>
-        Etapa constructiva
-      </Typography>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Status</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={filters.buildingStatus || ""}
-          label="Estado del emprendimiento"
-          onChange={(evt)=>handleChange(evt.target.value)}
-        >
-          <MenuItem value={"pozo"}>Pozo</MenuItem>
-          <MenuItem value={"en-construccion"}>En construcción</MenuItem>
-          <MenuItem value={"pre-venta"}>Pre-venta</MenuItem>
-        </Select>
-      </FormControl>
+    <>
+      <span>Etapa constructiva:</span>
+      <FormGroup>
+        <FormControlLabel
+          control={<Checkbox checked={filters.buildingStatus.pozo} />}
+          onChange={(evt) => handleChange("pozo", evt.target.checked)}
+          label="En pozo"
+        />
+        <FormControlLabel
+          control={<Checkbox checked={filters.buildingStatus.in_progress} />}
+          onChange={(evt) => handleChange("in_progress", evt.target.checked)}
+          label="En construcción"
+        />
+        <FormControlLabel
+          control={<Checkbox checked={filters.buildingStatus.pre_sale} />}
+          onChange={(evt) => handleChange("pre_sale", evt.target.checked)}
+          label="Pre-venta"
+        />
+      </FormGroup>
       <ConfirmBtn handleSubmit={handleSubmit} />
-      <span onClick={handleClean}>Limpiar</span>
-    </Box>
+    </>
   );
 }
