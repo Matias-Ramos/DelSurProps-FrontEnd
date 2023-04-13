@@ -1,0 +1,11 @@
+/*Notebooks and Desktops*/
+@media only screen and (min-width: 992px) {
+    #surfaceFilterContainer{
+        display:flex;
+        width: 50vw;
+        .surfaceInput{
+            width: 50%;
+            &:first-child{margin-right:1rem;}
+        }
+    }
+}

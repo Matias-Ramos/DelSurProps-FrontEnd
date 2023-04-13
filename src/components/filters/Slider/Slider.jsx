@@ -58,7 +58,7 @@ export default function Slider({
   };
 
   return (
-    <>
+    <div className="sliderContainer">
       <Box sx={{ width: 400 }}>
         <Typography id="input-slider" gutterBottom>
           {room}
@@ -130,6 +130,6 @@ export default function Slider({
           </Grid>
         </Grid>
       </Box>
-    </>
+    </div>
   );
 }

@@ -1,7 +1,6 @@
-import TextField from '@mui/material/TextField';
-import ConfirmBtn from "../ConfirmBtn.jsx"
-import InputAdornment from '@mui/material/InputAdornment';
-
+import TextField from "@mui/material/TextField";
+import ConfirmBtn from "../ConfirmBtn.jsx";
+import InputAdornment from "@mui/material/InputAdornment";
 
 const CoveredSurfaceFilter = ({
   surfaceFilterValues,
@@ -10,7 +9,7 @@ const CoveredSurfaceFilter = ({
   handleChange,
 }) => {
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div className="surfaceInput" style={{ display: "flex", flexDirection: "column" }}>
       <span>Superficie cubierta</span>
       <TextField
         id="outlined-basic"
@@ -32,8 +31,12 @@ const CoveredSurfaceFilter = ({
           endAdornment: <InputAdornment position="end">m2</InputAdornment>,
         }}
       />
-      <ConfirmBtn handleSubmit={() => handleSubmit("covered")} />
-      <span onClick={() => handleClean("covered")}>Limpiar</span>
+      <div className="filterSubmClean">
+        <ConfirmBtn handleSubmit={() => handleSubmit("covered")} />
+        <button className="cleanBtn" onClick={() => handleClean("covered")}>
+          Limpiar
+        </button>
+      </div>
     </div>
   );
 };

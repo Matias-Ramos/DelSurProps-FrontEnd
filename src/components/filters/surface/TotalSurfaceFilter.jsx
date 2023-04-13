@@ -11,7 +11,7 @@ const TotalSurfaceFilter = ({
 }) => {
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div className="surfaceInput" style={{ display: "flex", flexDirection: "column" }}>
       <span>Superficie total</span>
       <TextField
         id="outlined-basic"
@@ -33,8 +33,12 @@ const TotalSurfaceFilter = ({
           endAdornment: <InputAdornment position="end">m2</InputAdornment>,
         }}
       />
-      <ConfirmBtn handleSubmit={()=>handleSubmit("total")} />
-      <span onClick={()=>handleClean("total")}>Limpiar</span>
+      <div className="filterSubmClean">
+        <ConfirmBtn handleSubmit={() => handleSubmit("total")} />
+        <button className="cleanBtn" onClick={() => handleClean("total")}>
+          Limpiar
+        </button>
+      </div>
     </div>
   );
 };

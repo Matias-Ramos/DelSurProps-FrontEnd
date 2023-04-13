@@ -40,7 +40,6 @@ const LocationFilter = ({
       <div className="filterSubmClean">
         <ConfirmBtn handleSubmit={handleSubmit} />
         <button className="cleanBtn" onClick={handleClean}>Limpiar</button>
-        
       </div>
     </div>
   );

@@ -92,8 +92,10 @@ const SliderContainer = ({
   return (
     <>
       {sliderProps && Sliders()}
-      <span onClick={handleClean}>Limpiar</span>
-      <ConfirmBtn handleSubmit={handleSubmit} />
+      <div className="filterSubmClean">
+        <ConfirmBtn handleSubmit={handleSubmit} />
+        <button className="cleanBtn" onClick={handleClean}>Limpiar</button>
+      </div>
     </>
   );
 };

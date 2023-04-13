@@ -1,15 +1,10 @@
 import TextField from "@mui/material/TextField";
 import ConfirmBtn from "../ConfirmBtn.jsx";
 import { useEffect } from "react";
+import InputAdornment from "@mui/material/InputAdornment";
 
 const PriceFilter = ({
-  props:{
-    updateQyParams,
-    deleteQyParam,
-    dispatch,
-    filters,
-    searchQyParams,
-  }
+  props: { updateQyParams, deleteQyParam, dispatch, filters, searchQyParams },
 }) => {
   const chgReducerPrice = (newPrice, edge) =>
     dispatch({
@@ -25,42 +20,61 @@ const PriceFilter = ({
   };
   const handleSubmit = () => {
     for (const edge in filters.price) {
-      filters.price[edge] 
-       ? updateQyParams(`price_${edge}`, filters.price[edge])
-       : deleteQyParam(`price_${edge}`)
+      filters.price[edge]
+        ? updateQyParams(`price_${edge}`, filters.price[edge])
+        : deleteQyParam(`price_${edge}`);
     }
   };
   const handleClean = () => {
-    const edges = ["init", "limit"]
-    for(let i=0; i<=1; i++){
+    const edges = ["init", "limit"];
+    for (let i = 0; i <= 1; i++) {
       deleteQyParam(`price_${edges[i]}`);
       chgReducerPrice("", edges[i]);
     }
   };
   useEffect(() => {
-    searchQyParams.get("price_init") !== null && chgReducerPrice(parseInt(searchQyParams.get("price_init")), "init");
-    searchQyParams.get("price_limit") !== null && chgReducerPrice(parseInt(searchQyParams.get("price_limit")), "limit");
+    searchQyParams.get("price_init") !== null &&
+      chgReducerPrice(parseInt(searchQyParams.get("price_init")), "init");
+    searchQyParams.get("price_limit") !== null &&
+      chgReducerPrice(parseInt(searchQyParams.get("price_limit")), "limit");
   }, []);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div id="priceFilterOuter">
       <span>Precio</span>
-      <TextField
-        id="outlined-basic"
-        label="Desde"
-        variant="outlined"
-        value={filters.price.init || ""}
-        onChange={(evt) => handleChange(evt.target.value, "init")}
-      />      
-      <TextField
-        id="outlined-basic"
-        label="Hasta"
-        variant="outlined"
-        value={filters.price.limit || ""}
-        onChange={(evt) => handleChange(evt.target.value, "limit")}
-      />
-      <ConfirmBtn handleSubmit={handleSubmit} />
-      <span onClick={handleClean}>Limpiar</span>
+      <div id="priceFilterInner">
+        <TextField
+          style={{"marginRight":"1rem"}}
+          id="outlined-basic"
+          label="Desde"
+          variant="outlined"
+          value={filters.price.init || ""}
+          onChange={(evt) => handleChange(evt.target.value, "init")}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">$</InputAdornment>
+            ),
+          }}
+        />
+        <TextField
+          id="outlined-basic"
+          label="Hasta"
+          variant="outlined"
+          value={filters.price.limit || ""}
+          onChange={(evt) => handleChange(evt.target.value, "limit")}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">$</InputAdornment>
+            ),
+          }}
+        />
+      </div>
+      <div className="filterSubmClean">
+        <ConfirmBtn handleSubmit={handleSubmit} />
+        <button className="cleanBtn" onClick={handleClean}>
+          Limpiar
+        </button>
+      </div>
     </div>
   );
 };

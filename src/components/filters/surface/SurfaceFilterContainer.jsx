@@ -67,7 +67,7 @@ const SurfaceFilterContainer = ({
   };
 
   return (
-    <>
+    <div id="surfaceFilterContainer">
       <CoveredSurfaceFilter
         surfaceFilterValues={filters.surface.covered}
         handleSubmit={handleSubmit}
@@ -80,7 +80,7 @@ const SurfaceFilterContainer = ({
         handleClean={handleClean}
         handleChange={handleChange}
       />
-    </>
+    </div>
   );
 };
 
