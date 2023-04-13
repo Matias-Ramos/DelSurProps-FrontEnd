@@ -1,10 +1,15 @@
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 const ConfirmBtn = ({handleSubmit}) => {
   return (
-    <div>
-        <Button style={{"marginTop":"1rem"}} variant="contained" onClick={handleSubmit}>Aplicar filtro</Button>
-    </div>
-  )
-}
+    <>
+      <Button
+        variant="contained"
+        onClick={handleSubmit}
+      >
+        Aplicar filtro
+      </Button>
+    </>
+  );
+};
 
-export default ConfirmBtn
+export default ConfirmBtn;

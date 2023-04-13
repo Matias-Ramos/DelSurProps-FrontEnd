@@ -1,6 +1,7 @@
 import TextField from '@mui/material/TextField';
 import ConfirmBtn from "../ConfirmBtn.jsx"
-import { useEffect } from 'react';
+import InputAdornment from '@mui/material/InputAdornment';
+
 
 const TotalSurfaceFilter = ({
   surfaceFilterValues,
@@ -18,18 +19,20 @@ const TotalSurfaceFilter = ({
         variant="outlined"
         value={surfaceFilterValues.init || ""}
         onChange={(evt) => handleChange(evt.target.value, "total", "init")}
+        InputProps={{
+          endAdornment: <InputAdornment position="end">m2</InputAdornment>,
+        }}
       />
-      <span>m2</span>
       <TextField
         id="outlined-basic"
         label="Hasta"
         variant="outlined"
         value={surfaceFilterValues.limit || ""}
         onChange={(evt) => handleChange(evt.target.value, "total", "limit")}
+        InputProps={{
+          endAdornment: <InputAdornment position="end">m2</InputAdornment>,
+        }}
       />
-      <span>m2</span>
-      <br />
-
       <ConfirmBtn handleSubmit={()=>handleSubmit("total")} />
       <span onClick={()=>handleClean("total")}>Limpiar</span>
     </div>

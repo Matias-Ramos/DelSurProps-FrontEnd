@@ -94,42 +94,6 @@ const FiltersContainer = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      {/* <div style={{ display: "flex", flexDirection: "row" }}>
-        <div
-          style={{
-            border: "1px solid blue",
-            padding: "2rem",
-            display: "inline-block",
-          }}
-        >
-          <LocationFilter props={filtersProps} />
-        </div>
-        <div
-          style={{
-            border: "1px solid green",
-            padding: "2rem",
-            display: "inline-block",
-          }}
-        >
-          <PriceFilter props={filtersProps} />
-        </div>
-        <div
-          style={{
-            border: "1px solid black",
-            padding: "2rem",
-            display: "inline-block",
-          }}
-        >
-          <SliderContainer props={filtersProps} />
-        </div>
-
-        {(URLpath === "/venta-inmuebles" || URLpath === "/emprendimientos") && (
-          <SurfaceFilterContainer props={filtersProps} />
-        )}
-        {URLpath === "/emprendimientos" && (
-          <BuildStatusFilter props={filtersProps} />
-        )}
-      </div> */}
     </>
   );
 };

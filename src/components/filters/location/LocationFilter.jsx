@@ -1,7 +1,6 @@
 import TextField from "@mui/material/TextField";
 import ConfirmBtn from "../ConfirmBtn.jsx";
 import { useEffect } from "react";
-
 const LocationFilter = ({
   props:{
     updateQyParams,
@@ -30,16 +29,19 @@ const LocationFilter = ({
   }, []);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div id="locationFilter">
       <span>Ubicación</span>
       <TextField
-        placeholder="barrio, ciudad..."
+        placeholder="Barrio, ciudad..."
         value={filters.location || ""}
         variant="outlined"
         onChange={handleChange}
       />
-      <ConfirmBtn handleSubmit={handleSubmit} />
-      <span onClick={handleClean}>Limpiar</span>
+      <div className="filterSubmClean">
+        <ConfirmBtn handleSubmit={handleSubmit} />
+        <button className="cleanBtn" onClick={handleClean}>Limpiar</button>
+        
+      </div>
     </div>
   );
 };

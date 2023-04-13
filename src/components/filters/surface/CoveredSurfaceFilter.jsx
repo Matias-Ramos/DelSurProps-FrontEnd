@@ -1,5 +1,7 @@
 import TextField from '@mui/material/TextField';
 import ConfirmBtn from "../ConfirmBtn.jsx"
+import InputAdornment from '@mui/material/InputAdornment';
+
 
 const CoveredSurfaceFilter = ({
   surfaceFilterValues,
@@ -15,19 +17,23 @@ const CoveredSurfaceFilter = ({
         label="Desde"
         variant="outlined"
         value={surfaceFilterValues.init || ""}
-        onChange={(evt) => handleChange(evt.target.value, "covered","init")}
+        onChange={(evt) => handleChange(evt.target.value, "covered", "init")}
+        InputProps={{
+          endAdornment: <InputAdornment position="end">m2</InputAdornment>,
+        }}
       />
-      <span>m2</span>
       <TextField
         id="outlined-basic"
         label="Hasta"
         variant="outlined"
         value={surfaceFilterValues.limit || ""}
         onChange={(evt) => handleChange(evt.target.value, "covered", "limit")}
+        InputProps={{
+          endAdornment: <InputAdornment position="end">m2</InputAdornment>,
+        }}
       />
-      <span>m2</span>
-      <ConfirmBtn handleSubmit={()=>handleSubmit("covered")} />
-      <span onClick={()=>handleClean("covered")}>Limpiar</span>
+      <ConfirmBtn handleSubmit={() => handleSubmit("covered")} />
+      <span onClick={() => handleClean("covered")}>Limpiar</span>
     </div>
   );
 };

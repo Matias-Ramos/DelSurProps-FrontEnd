@@ -16,7 +16,7 @@ const Card = ({building}) => {
         </Col>
       </Row>
       <Row>
-        <Col className="cardLinks">
+        <Col>
           <CardLinks linkZP={building.zonaprop} linkAP={building.argenprop} linkML={building.meli} />
         </Col>
       </Row>

@@ -1,10 +1,20 @@
-const CardLinks = ({linkZP, linkAP, linkML}) => {
+import ML from "../../../assets/mercado-libre.svg";
+import argenProp from "../../../assets/argen-prop.png";
+import zonaProp from "../../../assets/zona-prop.svg";
+
+const CardLinks = ({ linkZP, linkAP, linkML }) => {
   return (
-    <>
-      <div>ZonaProp: {linkZP}</div>
-      <div>Argenprop: {linkAP}</div>
-      <div>ML: {linkML}</div>
-    </>
+    <div className="cardLinksContainer">
+      <img src={ML} alt="logo de MercadoLibre" />
+      <div>
+        <img src={argenProp} alt="logo de Argen Prop" />
+        <span className="argenPropSpan">ArgenProp</span>
+      </div>
+      <div>
+        <img src={zonaProp} alt="logo de Zona Prop" />
+        <span>ZonaProp</span>
+      </div>
+    </div>
   );
 };
 
