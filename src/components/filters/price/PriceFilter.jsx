@@ -13,9 +13,12 @@ const PriceFilter = ({
       edge: edge,
     });
   const handleChange = (newValue, edge) => {
-    const regex = /^[0-9\b]+$/;
+    const regex = /^[0-9\.]+$/;
     if (newValue === "" || regex.test(newValue)) {
-      chgReducerPrice(newValue, edge);
+      const cleanNumber = parseInt(
+        newValue.replace(".", "").replace(".", "").replace(".", "")
+      );
+      chgReducerPrice(cleanNumber, edge);
     }
   };
   const handleSubmit = () => {
@@ -39,35 +42,46 @@ const PriceFilter = ({
       chgReducerPrice(parseInt(searchQyParams.get("price_limit")), "limit");
   }, []);
 
-
+  function improvePriceReadability(value) {
+    value = value
+      .toLocaleString()
+      .replace(",", ".")
+      .replace(",", ".")
+      .replace(",", ".");
+    return value;
+  }
 
   return (
     <div id="priceFilterOuter">
       <span>Precio</span>
       <div id="priceFilterInner">
         <TextField
-          style={{"marginRight":"1rem"}}
+          style={{ marginRight: "1rem" }}
           id="outlined-basic"
           label="Desde"
           variant="outlined"
-          value={filters.price.init || ""}
+          value={
+            filters.price.init
+              ? improvePriceReadability(filters.price.init)
+              : ""
+          }
           onChange={(evt) => handleChange(evt.target.value, "init")}
           InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">$</InputAdornment>
-            ),
+            startAdornment: <InputAdornment position="start">$</InputAdornment>,
           }}
         />
         <TextField
           id="outlined-basic"
           label="Hasta"
           variant="outlined"
-          value={filters.price.limit || ""}
+          value={
+            filters.price.limit
+              ? improvePriceReadability(filters.price.limit)
+              : ""
+          }
           onChange={(evt) => handleChange(evt.target.value, "limit")}
           InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">$</InputAdornment>
-            ),
+            startAdornment: <InputAdornment position="start">$</InputAdornment>,
           }}
         />
       </div>

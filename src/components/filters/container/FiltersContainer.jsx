@@ -82,7 +82,7 @@ const FiltersContainer = () => {
               {URLpath === "/emprendimientos" && (
                 <NavDropdown
                   id="nav-dropdown-dark-example"
-                  title="Estado"
+                  title="Etapa"
                   menuVariant="dark"
                 >
                   <NavDropdown.ItemText>

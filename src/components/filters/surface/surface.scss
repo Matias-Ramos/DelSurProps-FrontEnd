@@ -1,10 +1,11 @@
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 992px) {
     #surfaceFilterContainer{
-        width: 50vw;
+        width: 40vw;
         .surfaceInput{
             display:inline-block;
-            width: 50%;
+            width: 47%;
+            &:nth-child(1){margin-right:10px}
             .surfaceTopTextField{
                 margin:0.7rem 0px;
             }

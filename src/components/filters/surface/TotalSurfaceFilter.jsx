@@ -1,12 +1,7 @@
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
 
-
-const TotalSurfaceFilter = ({
-  surfaceFilterValues,
-  handleChange,
-}) => {
-
+const TotalSurfaceFilter = ({ surfaceFilterValues, handleChange }) => {
   return (
     <div className="surfaceInput">
       <span>Superficie total</span>
