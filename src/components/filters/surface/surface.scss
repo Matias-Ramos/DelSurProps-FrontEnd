@@ -1,11 +1,17 @@
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 992px) {
     #surfaceFilterContainer{
-        display:flex;
         width: 50vw;
         .surfaceInput{
+            display:inline-block;
             width: 50%;
-            &:first-child{margin-right:1rem;}
+            .surfaceTopTextField{
+                margin:0.7rem 0px;
+            }
+        }
+        .filterSubmClean{
+            padding-top:0.5rem;
+            border-top:1px solid #7d8597;
         }
     }
 }

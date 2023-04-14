@@ -39,6 +39,8 @@ const PriceFilter = ({
       chgReducerPrice(parseInt(searchQyParams.get("price_limit")), "limit");
   }, []);
 
+
+
   return (
     <div id="priceFilterOuter">
       <span>Precio</span>

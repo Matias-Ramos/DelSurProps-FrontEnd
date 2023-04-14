@@ -1,19 +1,17 @@
 import TextField from '@mui/material/TextField';
-import ConfirmBtn from "../ConfirmBtn.jsx"
 import InputAdornment from '@mui/material/InputAdornment';
 
 
 const TotalSurfaceFilter = ({
   surfaceFilterValues,
-  handleSubmit,
-  handleClean,
   handleChange,
 }) => {
 
   return (
-    <div className="surfaceInput" style={{ display: "flex", flexDirection: "column" }}>
+    <div className="surfaceInput">
       <span>Superficie total</span>
       <TextField
+        className="surfaceTopTextField"
         id="outlined-basic"
         label="Desde"
         variant="outlined"
@@ -33,12 +31,6 @@ const TotalSurfaceFilter = ({
           endAdornment: <InputAdornment position="end">m2</InputAdornment>,
         }}
       />
-      <div className="filterSubmClean">
-        <ConfirmBtn handleSubmit={() => handleSubmit("total")} />
-        <button className="cleanBtn" onClick={() => handleClean("total")}>
-          Limpiar
-        </button>
-      </div>
     </div>
   );
 };

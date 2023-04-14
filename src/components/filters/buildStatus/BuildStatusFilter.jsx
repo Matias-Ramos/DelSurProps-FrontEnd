@@ -40,7 +40,7 @@ export default function BuildStatusFilter({
   }, []);
 
   return (
-    <>
+    <div id="buildStatusContainer">
       <span>Etapa constructiva:</span>
       <FormGroup>
         <FormControlLabel
@@ -60,6 +60,6 @@ export default function BuildStatusFilter({
         />
       </FormGroup>
       <ConfirmBtn handleSubmit={handleSubmit} filters={filters.buildingStatus}/>
-    </>
+    </div>
   );
 }
