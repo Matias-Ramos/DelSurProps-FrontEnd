@@ -1,43 +1,97 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
 
-.card {
-  margin: 3rem 0px
+#cardsContainer{
+  padding-top:3rem;
+  padding-bottom:3rem;
+  background-color: whitesmoke;
 }
+.Card {
+  margin: 3rem 0px;
+  background-color: rgba(0, 0, 0, 0); //all card transparent by default
+  &:first-child{
+    margin-top:0; // top margin (from the filters) is taken care of by the container
+  }
+  &:last-child{
+    margin-bottom:0; // bottom margin (from the footer) is taken care of by the container
+  }
 
-.cardPicture {
-  overflow: hidden;
-}
+  .cardPicture {
+    border-top-left-radius:4px;
+    overflow: hidden;
+  }
+  
+  .cardTxt {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #fff;
+    border-right:1px solid #e5e5e5;
+    border-top:1px solid #e5e5e5;
+    border-top-right-radius:4px;
+    
+    //caracteristics (bedrooms, bathrooms,...)
+    ul {
+      padding: 0;
+      margin: 0;
 
-.cardTxt {
-  //características (amb, baños,...)
-  ul {
-    padding: 0;
-    margin: 0;
+      li {
+        display: inline-block;
+        width: 50%;
+      }
+    }
+  }
 
-    li {
-      display: inline-block;
-      width: 50%;
+  .cardLinksContainer {
+    background: rgba( 156, 224, 251, 0.2 );
+
+    .linkDiv {
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      border: 2px outset rgba(255, 255, 255, 0.18);
+      transition:0.2s;
+
+      &:hover {
+        background: rgba( 179, 216, 255, 0.45 );
+      }
+
+      a {
+        text-decoration: none;
+
+        span {
+          font-family: 'Titillium Web', sans-serif;
+        }
+      }
+
+      &:nth-child(2) a {
+        color: green;
+      }
+
+      &:last-child a {
+        color: black;
+      }
     }
   }
 }
 
-.cardLinksContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  img {
-      max-width: 200px;
-      max-height: 75px;
-    }
-    div{
-      //img+text
-      display:flex;
-      align-items: center;
-      span{
-        font-family: 'Titillium Web', sans-serif;
+
+
+
+/*Notebooks and Desktops*/
+@media only screen and (min-width: 992px) {
+  .cardColLink {
+    padding: 0 !important;
+
+    .cardLinksContainer {
+      display: flex;
+      flex-direction: row;
+
+      .linkDiv {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
       }
-      .argenPropSpan{
-        color:green;
-      }
     }
+  }
 }

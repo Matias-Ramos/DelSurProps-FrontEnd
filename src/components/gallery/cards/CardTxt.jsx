@@ -8,8 +8,10 @@ const CardTxt = ({building:{
 }}) => {
   return (
     <>
+    <div>
     <h2>{ubicacion}</h2>
     <span>${precio}</span>
+    </div>
     <ul>
         <li>{ambientes} Ambientes</li>
         <li>{dormitorios} Dormitorios</li>

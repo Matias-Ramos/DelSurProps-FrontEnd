@@ -6,7 +6,7 @@ import { Container, Row, Col } from "react-bootstrap";
 const Card = ({building}) => {
 
   return (
-    <Container className="card">
+    <Container className="Card">
       <Row>
         <Col xs={12} sm={12} md={8} lg={7} xl={7} xxl={7} className="cardPicture p-0">
           <CardImg imgUrl={building.img} />
@@ -16,7 +16,7 @@ const Card = ({building}) => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col className="cardColLink">
           <CardLinks linkZP={building.zonaprop} linkAP={building.argenprop} linkML={building.meli} />
         </Col>
       </Row>
