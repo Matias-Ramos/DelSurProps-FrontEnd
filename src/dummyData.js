@@ -1,10 +1,10 @@
 export const cards = [
     {
         id:1,
-        ubicacion: "Garay 111",
+        ubicacion: "Av. Garay 111",
         precio: 1000000,
         img: "https://picsum.photos/700/300",
-        ambientes: 3,
+        ambientes: 2,
         baños: 1,
         dormitorios: 2,
         garage: 0,

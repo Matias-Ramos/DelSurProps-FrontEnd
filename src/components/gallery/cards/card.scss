@@ -1,13 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Source+Sans+Pro:wght@300&family=Taviraj:wght@200&display=swap');
+
+.characteristicsIcon{
+  max-width: 25px;
+  margin-right: 5px;
+}
 
 #cardsContainer{
-  padding-top:3rem;
-  padding-bottom:3rem;
-  background-color: whitesmoke;
+  margin-top:2rem;
+  padding: 3rem 2rem;
+  background:radial-gradient(circle at 50% 53%, rgba(251, 249, 246, 1) 0%, rgba(252, 249, 247, 1) 0%, rgba(243, 242, 241, 1) 100%);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .Card {
   margin: 3rem 0px;
   background-color: rgba(0, 0, 0, 0); //all card transparent by default
+  h2{
+    font-family: 'Taviraj', serif;
+  }
+  .cardPrice{
+    font-family: 'Heebo', sans-serif;
+  }
+  ul li{
+    font-family: 'Source Sans Pro', sans-serif;
+  }
   &:first-child{
     margin-top:0; // top margin (from the filters) is taken care of by the container
   }
@@ -23,12 +39,12 @@
   .cardTxt {
     display:flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     background-color: #fff;
     border-right:1px solid #e5e5e5;
     border-top:1px solid #e5e5e5;
     border-top-right-radius:4px;
-    
+
     //caracteristics (bedrooms, bathrooms,...)
     ul {
       padding: 0;
@@ -42,7 +58,7 @@
   }
 
   .cardLinksContainer {
-    background: rgba( 156, 224, 251, 0.2 );
+    background: #e6eaef;
 
     .linkDiv {
       backdrop-filter: blur(2px);
@@ -59,6 +75,7 @@
 
         span {
           font-family: 'Titillium Web', sans-serif;
+          margin-left:3px;
         }
       }
 

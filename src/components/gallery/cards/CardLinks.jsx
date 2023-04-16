@@ -1,6 +1,6 @@
-import ML from "../../../assets/mercado-libre.svg";
-import argenProp from "../../../assets/argen-prop.png";
-import zonaProp from "../../../assets/zona-prop.svg";
+import ML from "../../../assets/shop-logos/mercado-libre.svg";
+import argenProp from "../../../assets/shop-logos/argen-prop.png";
+import zonaProp from "../../../assets/shop-logos/zona-prop.svg";
 
 const CardLinks = ({ linkZP, linkAP, linkML }) => {
   return (
