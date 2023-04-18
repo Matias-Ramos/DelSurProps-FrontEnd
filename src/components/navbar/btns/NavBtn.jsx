@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 const NavBtn = ({
   btnSharedProps: { URLpath, handleClick, handleHover },
   thisPath,
+  contained,
+  outlined,
   colorName,
   colorStatus,
   btnTxt,
 }) => {
   const getVariant = (thisPath) =>
-    thisPath === URLpath ? "contained" : "outlined";
+    thisPath === URLpath ? contained : outlined;
   return (
     <Link to={thisPath}>
       <Button

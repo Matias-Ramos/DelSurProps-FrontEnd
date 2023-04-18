@@ -6,6 +6,9 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import NavBtn from "./NavBtn.jsx";
 // Reducer
 import { colorModifier, defaultDotStatuses } from "./reducerUtils.js";
+// Mui Styling
+import { createTheme, ThemeProvider } from '@mui/material';
+import customTheme from './btnsTheme.js'
 
 const NavBtnsContainer = () => {
   const URLpath = useLocation().pathname;
@@ -49,30 +52,40 @@ const NavBtnsContainer = () => {
     };
   });
 
+  const theme = createTheme(customTheme)
+
   return (
-    <ButtonGroup aria-label="outlined primary button group">
-      <NavBtn
-        btnSharedProps={btnSharedProps}
-        thisPath={"/alquiler-inmuebles"}
-        colorName={"orange"}
-        colorStatus={colorStatuses.orangeStatus}
-        btnTxt={"Alquilar"}
-      />
-      <NavBtn
-        btnSharedProps={btnSharedProps}
-        thisPath={"/venta-inmuebles"}
-        colorName={"blue"}
-        colorStatus={colorStatuses.blueStatus}
-        btnTxt={"Comprar"}
-      />
-      <NavBtn
-        btnSharedProps={btnSharedProps}
-        thisPath={"/emprendimientos"}
-        colorName={"turquoise"}
-        colorStatus={colorStatuses.turquoiseStatus}
-        btnTxt={"Emprendimientos"}
-      />
-    </ButtonGroup>
+    <ThemeProvider theme={theme}>
+      <ButtonGroup aria-label="Grupo de botones para definir el contenido de la página">
+        <NavBtn
+          btnSharedProps={btnSharedProps}
+          thisPath={"/alquiler-inmuebles"}
+          contained="contained"
+          outlined="outlined"
+          colorName={"orange"}
+          colorStatus={colorStatuses.orangeStatus}
+          btnTxt={"Alquilar"}
+        />
+        <NavBtn
+          btnSharedProps={btnSharedProps}
+          thisPath={"/venta-inmuebles"}
+          contained="containedSecondary"
+          outlined="outlinedSecondary"
+          colorName={"blue"}
+          colorStatus={colorStatuses.blueStatus}
+          btnTxt={"Comprar"}
+        />
+        <NavBtn
+          btnSharedProps={btnSharedProps}
+          thisPath={"/emprendimientos"}
+          contained="containedTertiary"
+          outlined="outlinedTertiary"
+          colorName={"turquoise"}
+          colorStatus={colorStatuses.turquoiseStatus}
+          btnTxt={"Emprendimientos"}
+        />
+      </ButtonGroup>
+    </ThemeProvider>
   );
 };
 
