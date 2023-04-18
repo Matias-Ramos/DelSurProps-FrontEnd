@@ -1,0 +1,27 @@
+.MuiButtonGroup-root{
+    button{
+        border: 1px solid #6c757d;
+        color: black;
+    }
+    a:first-child{
+        button{
+            border-radius: 20px 0px 0px 20px;
+        }
+    }
+    a:nth-child(2){
+        button{
+            border-radius: 0px;
+            border-left: 0px;
+            border-right: 0px;
+        }
+    }
+    a:last-child{
+        button{
+            border-radius: 0px 20px 20px 0px;
+        }
+    }
+    .circleIcon{
+        max-width: 8px;
+        margin-right:5px;
+    }
+}

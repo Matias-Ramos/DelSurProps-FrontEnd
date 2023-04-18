@@ -1,10 +1,10 @@
-import NavBtns from "../btns/NavBtns";
+import NavBtnsContainer from "../btns/NavBtnsContainer.jsx";
 
 const MainNavbarContainer = () => {
   return (
     <>
+      <NavBtnsContainer />
       <span>Logo</span>
-      <NavBtns />
     </>
   );
 };
