@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -8,7 +7,6 @@ export default function BuildStatusFilter({
     updateQyParams,
     dispatch,
     filters,
-    searchQyParams,
   }
 }) {
   const chgReducerBuildingSt = (status, isChecked) =>
@@ -27,17 +25,6 @@ export default function BuildStatusFilter({
     updateQyParams("building_status", query);
   };
 
-  
-  useEffect(() => {
-    if(searchQyParams.get("building_status") !== null){
-      const preFilteredStatuses = searchQyParams.get("building_status").split('-or-');
-      const allStatuses = Object.keys(filters.buildingStatus);
-      const nonChosenstatuses = allStatuses.filter(function(obj) { return preFilteredStatuses.indexOf(obj) == -1; });
-      for(let status of nonChosenstatuses){
-        chgReducerBuildingSt(status, false);
-      }
-    }
-  }, []);
 
   return (
     <div id="buildStatusContainer">

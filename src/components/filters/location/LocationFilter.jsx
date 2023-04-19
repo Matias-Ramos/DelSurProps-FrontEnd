@@ -1,13 +1,11 @@
 import TextField from "@mui/material/TextField";
 import ConfirmBtn from "../ConfirmBtn.jsx";
-import { useEffect } from "react";
 const LocationFilter = ({
   props:{
     updateQyParams,
     deleteQyParam,
     dispatch,
     filters,
-    searchQyParams,
   }
 }) => {
   const chgReducerLocation = (newLocation) =>
@@ -24,9 +22,7 @@ const LocationFilter = ({
     deleteQyParam("location");
     chgReducerLocation("");
   };
-  useEffect(() => {
-    searchQyParams.get("location") !== null && chgReducerLocation(searchQyParams.get("location"));
-  }, []);
+
 
   return (
     <div id="locationFilter">

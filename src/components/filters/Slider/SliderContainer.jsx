@@ -1,12 +1,11 @@
 import ConfirmBtn from "../ConfirmBtn.jsx";
 import Slider from "./Slider.jsx";
-import { useMemo, useEffect } from "react";
+import { useMemo } from "react";
 
 const SliderContainer = ({
   props:{
     updateQyParams,
     deleteQyParam,
-    searchQyParams,
     filters,
     dispatch,
   }
@@ -19,25 +18,6 @@ const SliderContainer = ({
       roomName: roomName,
     });
   };
-  // verifies qyParam on first render and updates the useReducer if there are such.
-  useEffect(() => {
-    const rooms = ["env", "bedroom", "bathroom", "garage"];
-    for (let room of rooms) {
-      const roomInitQyParams = searchQyParams.get(`${room}_init`);
-      const roomLimitQyParams = searchQyParams.get(`${room}_limit`);
-
-      roomInitQyParams !== null &&
-        chgReducerRoom(parseInt(roomInitQyParams), `${room}Chgd`, "init", room);
-
-      roomLimitQyParams !== null &&
-        chgReducerRoom(
-          parseInt(roomLimitQyParams),
-          `${room}Chgd`,
-          "limit",
-          room
-        );
-    }
-  }, []);
   const handleChange = (newValue, room, edge) => {
     chgReducerRoom(newValue, `${room}Chgd`, edge, room);
   };

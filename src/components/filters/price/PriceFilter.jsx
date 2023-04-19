@@ -1,10 +1,9 @@
 import TextField from "@mui/material/TextField";
 import ConfirmBtn from "../ConfirmBtn.jsx";
-import { useEffect } from "react";
 import InputAdornment from "@mui/material/InputAdornment";
 
 const PriceFilter = ({
-  props: { updateQyParams, deleteQyParam, dispatch, filters, searchQyParams },
+  props: { updateQyParams, deleteQyParam, dispatch, filters },
 }) => {
   const chgReducerPrice = (newPrice, edge) =>
     dispatch({
@@ -35,12 +34,7 @@ const PriceFilter = ({
       chgReducerPrice("", edges[i]);
     }
   };
-  useEffect(() => {
-    searchQyParams.get("price_init") !== null &&
-      chgReducerPrice(parseInt(searchQyParams.get("price_init")), "init");
-    searchQyParams.get("price_limit") !== null &&
-      chgReducerPrice(parseInt(searchQyParams.get("price_limit")), "limit");
-  }, []);
+
 
   function improvePriceReadability(value) {
     value = value

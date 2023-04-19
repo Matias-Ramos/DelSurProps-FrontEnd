@@ -1,9 +1,8 @@
 import CoveredSurfaceFilter from "./CoveredSurfaceFilter.jsx";
 import TotalSurfaceFilter from "./TotalSurfaceFilter.jsx";
-import { useEffect } from "react";
 import ConfirmBtn from "../ConfirmBtn.jsx";
 const SurfaceFilterContainer = ({
-  props: { updateQyParams, deleteQyParam, dispatch, filters, searchQyParams },
+  props: { updateQyParams, deleteQyParam, dispatch, filters },
 }) => {
   const chgReducerSurface = (newSurface, surfaceType, edge) => {
     dispatch({
@@ -13,21 +12,6 @@ const SurfaceFilterContainer = ({
       edge: edge,
     });
   };
-
-  // verifies qyParam on first render and updates the useReducer if there are such.
-  useEffect(() => {
-    const surfaceTypes = ["total", "covered"];
-    for (let type of surfaceTypes) {
-      const roomInitQyParams = searchQyParams.get(`${type}_surface_init`);
-      const roomLimitQyParams = searchQyParams.get(`${type}_surface_limit`);
-
-      roomInitQyParams !== null &&
-        chgReducerSurface(parseInt(roomInitQyParams), type, "init");
-
-      roomLimitQyParams !== null &&
-        chgReducerSurface(parseInt(roomLimitQyParams), type, "limit");
-    }
-  }, []);
 
   const handleChange = (newValue, surfaceType, edge) => {
     const regex = /^[0-9\b]+$/;

@@ -5,7 +5,7 @@ import SliderContainer from "../Slider/SliderContainer.jsx";
 import BuildStatusFilter from "../buildStatus/BuildStatusFilter.jsx";
 import SurfaceFilterContainer from "../surface/SurfaceFilterContainer.jsx";
 // Hooks
-import { useContext, useReducer, useMemo } from "react";
+import { useContext, useReducer, useMemo, useEffect } from "react";
 import { queryCtxt } from "../../../context/QyParamsCtxt.jsx";
 import { filterModifier, filterStructure } from "./reducerUtils.js";
 import { useLocation } from "react-router-dom";
@@ -25,9 +25,86 @@ const FiltersContainer = () => {
       dispatch: dispatch,
       updateQyParams: updateQyParams,
       deleteQyParam: deleteQyParam,
-      searchQyParams: searchQyParams,
     };
   });
+
+  // verifies qyParam on first render and updates the useReducer if there are such, before rendering the filters.
+  useEffect(() => {
+    
+    searchQyParams.get("location") !== null && dispatch({
+      type: "locationChgd",
+      location: searchQyParams.get("location"),
+    });
+
+    /********************* */
+    const chgReducerPrice = (newPrice, edge) =>
+    dispatch({
+      type: `priceChgd`,
+      newPrice: newPrice,
+      edge: edge,
+    });
+    searchQyParams.get("price_init") !== null && chgReducerPrice(parseInt(searchQyParams.get("price_init")), "init");
+    searchQyParams.get("price_limit") !== null && chgReducerPrice(parseInt(searchQyParams.get("price_limit")), "limit");
+
+    /********************* */
+
+    const chgReducerRoom = (newRoomValue, dispatchRoom, edge, roomName) => {
+      dispatch({
+        type: dispatchRoom,
+        newRoomValue: newRoomValue,
+        edge: edge,
+        roomName: roomName,
+      });
+    };    
+    const rooms = ["env", "bedroom", "bathroom", "garage"];
+    for (let room of rooms) {
+      const roomInitQyParams = searchQyParams.get(`${room}_init`);
+      const roomLimitQyParams = searchQyParams.get(`${room}_limit`);
+
+      roomInitQyParams !== null &&
+        chgReducerRoom(parseInt(roomInitQyParams), `${room}Chgd`, "init", room);
+      roomLimitQyParams !== null &&
+        chgReducerRoom(parseInt(roomLimitQyParams), `${room}Chgd`, "limit", room);
+    }
+
+    /********************* */
+
+    const chgReducerSurface = (newSurface, surfaceType, edge) => {
+      dispatch({
+        type: "surfaceChgd",
+        newSurface: newSurface,
+        surfaceType: surfaceType,
+        edge: edge,
+      });
+    };
+    const surfaceTypes = ["total", "covered"];
+    for (let type of surfaceTypes) {
+      const roomInitQyParams = searchQyParams.get(`${type}_surface_init`);
+      const roomLimitQyParams = searchQyParams.get(`${type}_surface_limit`);
+
+      roomInitQyParams !== null &&
+        chgReducerSurface(parseInt(roomInitQyParams), type, "init");
+
+      roomLimitQyParams !== null &&
+        chgReducerSurface(parseInt(roomLimitQyParams), type, "limit");
+    }
+
+    /********************* */
+
+    if(searchQyParams.get("building_status") !== null){
+      const preFilteredStatuses = searchQyParams.get("building_status").split('-or-');
+      const allStatuses = Object.keys(filters.buildingStatus);
+      const nonChosenstatuses = allStatuses.filter(function(obj) { return preFilteredStatuses.indexOf(obj) == -1; });
+      for(let status of nonChosenstatuses){
+        dispatch({
+          type: "buildingStatusChgd",
+          status:status,
+          isChecked: false,
+        })
+      }
+    }
+  }, []);
+
   return (
     <>
       <Navbar variant="dark" bg="dark" expand="lg" sticky="top">
