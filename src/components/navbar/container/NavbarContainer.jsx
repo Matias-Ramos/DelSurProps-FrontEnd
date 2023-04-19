@@ -4,7 +4,8 @@ const MainNavbarContainer = () => {
   return (
     <>
       <NavBtnsContainer />
-      <span>Logo</span>
+      <span style={{zIndex:2, backgroundColor:"white"}}>DelSurProps</span>
+      <div id="hr"></div>
     </>
   );
 };

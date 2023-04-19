@@ -1,12 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@800&display=swap');
+
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 992px) {
     header{
+        position:relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 3rem;
+        background-color: #fdfdff;
+        #hr{
+            position:absolute;
+            width: 100%;
+            border:1px solid #6c757d;
+            border-top: none;
+            z-index:1;
+        }
+        span{
+            font-family: 'Libre Franklin', sans-serif;
+            margin-right:1.5rem;
+        }
         .MuiButtonGroup-root{
             margin-left:0.5rem;
+            z-index:2;
         }
     }
 }

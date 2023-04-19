@@ -1,15 +1,52 @@
+const colors = {
+  borderColor: {
+    defect: "#ccc5b9",
+    hover: "#8a817c",
+  },
+  backgroundColor: {
+    orange: {
+      contained: {
+        defect: "#f9e5c7",
+        hover: "#ffd29d",
+      },
+      outlined: {
+        defect: "#f8f9fa",
+        hover: "#f9e5c7",
+      },
+    },
+    blue: {
+      contained: {
+        defect: "#bfdbf7",
+        hover: "#74c0fc",
+      },
+      outlined: {
+        defect: "#f8f9fa",
+        hover: "#e1e5f2",
+      },
+    },
+    turquoise: {
+      contained: {
+        defect: "#d0edeb",
+        hover: "#90e0df",
+      },
+      outlined: {
+        defect: "#f8f9fa",
+        hover: "#eaf7f6",
+      },
+    },
+  },
+};
 const customTheme = {
   components: {
     MuiButton: {
       styleOverrides: {
-
         /******************************* */
         /******************************* */
 
         root: {
-          borderColor: "#ccc5b9", // default border color
+          borderColor: colors.borderColor.defect,
           "&:hover": {
-            borderColor: "#8a817c", // border color on hover
+            borderColor: colors.borderColor.hover,
           },
         },
 
@@ -17,14 +54,15 @@ const customTheme = {
         /******************************* */
 
         containedOrange: {
-          backgroundColor: "#f9e5c7", // background color for contained Alquilar button
+          backgroundColor: colors.backgroundColor.orange.contained.defect, 
           "&:hover": {
-            backgroundColor: "#ffd29d", // background color on hover for contained Alquilar button
+            backgroundColor: colors.backgroundColor.orange.contained.hover,
           },
         },
         outlinedOrange: {
+          backgroundColor: colors.backgroundColor.orange.outlined.defect,
           "&:hover": {
-            backgroundColor: "#f9e5c7", // background color on hover for outlined Alquilar button
+            backgroundColor: colors.backgroundColor.orange.outlined.hover, 
           },
         },
 
@@ -32,29 +70,31 @@ const customTheme = {
         /******************************* */
 
         containedBlue: {
-          backgroundColor: "#bfdbf7", // background color for contained Comprar button
+          backgroundColor: colors.backgroundColor.blue.contained.defect, 
           "&:hover": {
-            backgroundColor: "#74c0fc", // background color on hover for contained Comprar button
+            backgroundColor: colors.backgroundColor.blue.contained.hover,
           },
         },
         outlinedBlue: {
+          backgroundColor: colors.backgroundColor.blue.outlined.defect,
           "&:hover": {
-            backgroundColor: "#e1e5f2", // background color on hover for outlined Comprar button
+            backgroundColor: colors.backgroundColor.blue.outlined.hover, 
           },
         },
 
         /******************************* */
         /******************************* */
-        
+
         containedTurquoise: {
-          backgroundColor: "#d0edeb", // background color for contained Emprendimientos button
+          backgroundColor: colors.backgroundColor.turquoise.contained.defect,
           "&:hover": {
-            backgroundColor: "#90e0df", // background color on hover for contained Emprendimientos button
+            backgroundColor: colors.backgroundColor.turquoise.contained.hover,
           },
         },
         outlinedTurquoise: {
+          backgroundColor: colors.backgroundColor.turquoise.outlined.defect,
           "&:hover": {
-            backgroundColor: "#eaf7f6", // background color on hover for outlined Emprendimientos button
+            backgroundColor: colors.backgroundColor.turquoise.outlined.hover,
           },
         },
       },
