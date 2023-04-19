@@ -16,16 +16,13 @@ const customTheme = {
         /******************************* */
         /******************************* */
 
-        contained: {
-        //   color: "#000",
+        containedOrange: {
           backgroundColor: "#f9e5c7", // background color for contained Alquilar button
           "&:hover": {
             backgroundColor: "#ffd29d", // background color on hover for contained Alquilar button
           },
         },
-        outlined: {
-        //   color: "#000",
-        //   backgroundColor: "transparent",
+        outlinedOrange: {
           "&:hover": {
             backgroundColor: "#f9e5c7", // background color on hover for outlined Alquilar button
           },
@@ -34,16 +31,13 @@ const customTheme = {
         /******************************* */
         /******************************* */
 
-        containedSecondary: {
-        //   color: "#000",
+        containedBlue: {
           backgroundColor: "#bfdbf7", // background color for contained Comprar button
           "&:hover": {
             backgroundColor: "#74c0fc", // background color on hover for contained Comprar button
           },
         },
-        outlinedSecondary: {
-        //   color: "#000",
-        //   backgroundColor: "transparent",
+        outlinedBlue: {
           "&:hover": {
             backgroundColor: "#e1e5f2", // background color on hover for outlined Comprar button
           },
@@ -51,17 +45,14 @@ const customTheme = {
 
         /******************************* */
         /******************************* */
-
-        containedTertiary: {
-        //   color: "#000",
+        
+        containedTurquoise: {
           backgroundColor: "#d0edeb", // background color for contained Emprendimientos button
           "&:hover": {
             backgroundColor: "#90e0df", // background color on hover for contained Emprendimientos button
           },
         },
-        outlinedTertiary: {
-        //   color: "#000",
-        //   backgroundColor: "transparent",
+        outlinedTurquoise: {
           "&:hover": {
             backgroundColor: "#eaf7f6", // background color on hover for outlined Emprendimientos button
           },

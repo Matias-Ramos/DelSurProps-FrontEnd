@@ -60,8 +60,8 @@ const NavBtnsContainer = () => {
         <NavBtn
           btnSharedProps={btnSharedProps}
           thisPath={"/alquiler-inmuebles"}
-          contained="contained"
-          outlined="outlined"
+          contained="containedOrange"
+          outlined="outlinedOrange"
           colorName={"orange"}
           colorStatus={colorStatuses.orangeStatus}
           btnTxt={"Alquilar"}
@@ -69,8 +69,8 @@ const NavBtnsContainer = () => {
         <NavBtn
           btnSharedProps={btnSharedProps}
           thisPath={"/venta-inmuebles"}
-          contained="containedSecondary"
-          outlined="outlinedSecondary"
+          contained="containedBlue"
+          outlined="outlinedBlue"
           colorName={"blue"}
           colorStatus={colorStatuses.blueStatus}
           btnTxt={"Comprar"}
@@ -78,8 +78,8 @@ const NavBtnsContainer = () => {
         <NavBtn
           btnSharedProps={btnSharedProps}
           thisPath={"/emprendimientos"}
-          contained="containedTertiary"
-          outlined="outlinedTertiary"
+          contained="containedTurquoise"
+          outlined="outlinedTurquoise"
           colorName={"turquoise"}
           colorStatus={colorStatuses.turquoiseStatus}
           btnTxt={"Emprendimientos"}
