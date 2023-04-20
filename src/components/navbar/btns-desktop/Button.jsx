@@ -1,8 +1,8 @@
 // Components
-import Button from "@mui/material/Button";
+import MuiBtn from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
-const NavBtn = ({
+const Button = ({
   btnSharedProps: { URLpath, handleClick, handleHover },
   thisPath,
   contained,
@@ -15,7 +15,7 @@ const NavBtn = ({
     thisPath === URLpath ? contained : outlined;
   return (
     <Link to={thisPath}>
-      <Button
+      <MuiBtn
         variant={getVariant(thisPath)}
         onClick={() => handleClick(colorName)}
         onMouseEnter={() => handleHover(true, colorName)}
@@ -23,9 +23,9 @@ const NavBtn = ({
       >
         <img src={colorStatus} className="circleIcon" alt="Ícono decorativo" />
         {btnTxt}
-      </Button>
+      </MuiBtn>
     </Link>
   );
 };
 
-export default NavBtn;
+export default Button;

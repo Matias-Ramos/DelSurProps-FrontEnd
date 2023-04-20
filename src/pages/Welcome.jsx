@@ -1,13 +1,15 @@
-import NavBtnsContainer from "../components/navbar/btns/NavBtnsContainer.jsx"
-import { Link } from "react-router-dom"
+import NavBtns from '../components/navbar/btns-desktop/NavBtns.jsx';
+import Select from '../components/navbar/select-mobile/Select.jsx'
+import {useRef} from 'react';
 const Welcome = () => {
+  const windowWidth = useRef(window.innerWidth);
   return (
     <>
-    <span>Bienvenid@</span>
-    <span>¿Qué estás buscando?</span>
-    <NavBtnsContainer />
+      <span>Bienvenid@</span>
+      <span>¿Qué estás buscando?</span>
+      {windowWidth.current>=768?<NavBtns />:<Select />}
     </>
-  )
-}
+  );
+};
 
-export default Welcome
+export default Welcome;

@@ -1,19 +1,18 @@
 // Hooks
-import { useLocation } from "react-router-dom";
 import { useReducer, useEffect, useMemo } from "react";
 // Components
 import ButtonGroup from "@mui/material/ButtonGroup";
-import NavBtn from "./NavBtn.jsx";
+import Button from "./Button.jsx";
 // Reducer
 import { colorModifier, defaultDotStatuses } from "./reducerUtils.js";
 // Mui Styling
 import { createTheme, ThemeProvider } from '@mui/material';
 import customTheme from './btnsTheme.js'
 
-const NavBtnsContainer = () => {
-  const URLpath = useLocation().pathname;
+const NavBtns = ({URLpath}) => {
   const [colorStatuses, dispatch] = useReducer(colorModifier,defaultDotStatuses);
-
+  const theme = createTheme(customTheme)
+  
   function handleClick(color) {
     dispatch({
       type: `${color}Chgd`,
@@ -27,7 +26,15 @@ const NavBtnsContainer = () => {
       focused: focused,
     });
   }
-
+  const btnSharedProps = useMemo(() => {
+    return {
+      URLpath: URLpath,
+      handleClick: handleClick,
+      handleHover: handleHover,
+    };
+  });
+  
+  // chgs dot color based on URL path
   useEffect(() => {
     switch (URLpath) {
       case "/alquiler-inmuebles":
@@ -44,29 +51,11 @@ const NavBtnsContainer = () => {
     }
   }, [URLpath]);
 
-  const btnSharedProps = useMemo(() => {
-    return {
-      URLpath: URLpath,
-      handleClick: handleClick,
-      handleHover: handleHover,
-    };
-  });
-
-  const theme = createTheme(customTheme)
 
   return (
     <ThemeProvider theme={theme}>
       <ButtonGroup aria-label="Grupo de botones para definir el contenido de la página">
-        <NavBtn
-          btnSharedProps={btnSharedProps}
-          thisPath={"/alquiler-inmuebles"}
-          contained="containedOrange"
-          outlined="outlinedOrange"
-          colorName={"orange"}
-          colorStatus={colorStatuses.orangeStatus}
-          btnTxt={"Alquilar"}
-        />
-        <NavBtn
+        <Button
           btnSharedProps={btnSharedProps}
           thisPath={"/venta-inmuebles"}
           contained="containedBlue"
@@ -75,7 +64,16 @@ const NavBtnsContainer = () => {
           colorStatus={colorStatuses.blueStatus}
           btnTxt={"Comprar"}
         />
-        <NavBtn
+        <Button
+          btnSharedProps={btnSharedProps}
+          thisPath={"/alquiler-inmuebles"}
+          contained="containedOrange"
+          outlined="outlinedOrange"
+          colorName={"orange"}
+          colorStatus={colorStatuses.orangeStatus}
+          btnTxt={"Alquilar"}
+        />
+        <Button
           btnSharedProps={btnSharedProps}
           thisPath={"/emprendimientos"}
           contained="containedTurquoise"
@@ -89,4 +87,4 @@ const NavBtnsContainer = () => {
   );
 };
 
-export default NavBtnsContainer;
+export default NavBtns;
