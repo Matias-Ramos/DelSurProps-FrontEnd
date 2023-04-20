@@ -4,10 +4,11 @@ import PriceFilter from "../price/PriceFilter.jsx";
 import SliderContainer from "../Slider/SliderContainer.jsx";
 import BuildStatusFilter from "../buildStatus/BuildStatusFilter.jsx";
 import SurfaceFilterContainer from "../surface/SurfaceFilterContainer.jsx";
+import CleanBtn from "../../buttons/CleanBtn.jsx";
 // Hooks
 import { useContext, useReducer, useMemo, useEffect } from "react";
 import { queryCtxt } from "../../../context/QyParamsCtxt.jsx";
-import { filterModifier, filterStructure } from "./reducerUtils.js";
+import { filterModifier, defaultFilterValues } from "./reducerUtils.js";
 import { useLocation } from "react-router-dom";
 // Bts
 import Container from "react-bootstrap/Container";
@@ -17,7 +18,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 const FiltersContainer = () => {
   const { searchQyParams, updateQyParams, deleteQyParam } = useContext(queryCtxt);
-  const [filters, dispatch] = useReducer(filterModifier, filterStructure);
+  const [filters, dispatch] = useReducer(filterModifier, defaultFilterValues);
   const URLpath = useLocation().pathname;
   const filtersProps = useMemo(() => {
     return {
@@ -107,7 +108,7 @@ const FiltersContainer = () => {
 
   return (
     <>
-      <Navbar variant="dark" bg="dark" expand="lg" sticky="top">
+      <Navbar variant="dark" bg="dark" expand="lg" sticky="top" >
         <Container fluid>
           <Navbar.Brand>Filtros: </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-dark-example" />
@@ -144,7 +145,8 @@ const FiltersContainer = () => {
                 </NavDropdown.ItemText>
               </NavDropdown>
               {/* Surface */}
-              {(URLpath === "/venta-inmuebles" || URLpath === "/emprendimientos") && (
+              {(URLpath === "/venta-inmuebles" ||
+                URLpath === "/emprendimientos") && (
                 <NavDropdown
                   id="nav-dropdown-dark-example"
                   title="Superficie"
@@ -168,6 +170,10 @@ const FiltersContainer = () => {
                 </NavDropdown>
               )}
             </Nav>
+            <Navbar.Text>
+              <CleanBtn dispatch={dispatch}/>
+            </Navbar.Text>
+            
           </Navbar.Collapse>
         </Container>
       </Navbar>

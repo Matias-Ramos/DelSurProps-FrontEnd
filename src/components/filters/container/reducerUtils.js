@@ -1,7 +1,7 @@
 /*******************/
 // env = "ambientes"
 
-const filterStructure = {
+const defaultFilterValues = {
   location: null,
   price: {
     init: null,
@@ -157,6 +157,9 @@ function filterModifier(currentFilters, actionObj) {
         }
       };
     }
+    case "filtersResetted":{
+      return {...defaultFilterValues}
+    }
   }
 }
-export {filterModifier, filterStructure}
+export {filterModifier, defaultFilterValues}

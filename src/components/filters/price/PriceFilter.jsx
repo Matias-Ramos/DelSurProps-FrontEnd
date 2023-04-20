@@ -1,5 +1,5 @@
 import TextField from "@mui/material/TextField";
-import ConfirmBtn from "../ConfirmBtn.jsx";
+import ConfirmBtn from "../../buttons/ConfirmBtn.jsx";
 import InputAdornment from "@mui/material/InputAdornment";
 
 const PriceFilter = ({

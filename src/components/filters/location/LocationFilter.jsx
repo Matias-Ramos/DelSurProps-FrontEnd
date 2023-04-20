@@ -1,5 +1,5 @@
 import TextField from "@mui/material/TextField";
-import ConfirmBtn from "../ConfirmBtn.jsx";
+import ConfirmBtn from "../../buttons/ConfirmBtn.jsx";
 const LocationFilter = ({
   props:{
     updateQyParams,
@@ -25,7 +25,7 @@ const LocationFilter = ({
 
 
   return (
-    <div id="locationFilter">
+    <div id="locationFilter" >
       <span>Ubicación</span>
       <TextField
         placeholder="Barrio, ciudad..."

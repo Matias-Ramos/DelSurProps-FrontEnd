@@ -1,6 +1,6 @@
 import CoveredSurfaceFilter from "./CoveredSurfaceFilter.jsx";
 import TotalSurfaceFilter from "./TotalSurfaceFilter.jsx";
-import ConfirmBtn from "../ConfirmBtn.jsx";
+import ConfirmBtn from "../../buttons/ConfirmBtn.jsx";
 const SurfaceFilterContainer = ({
   props: { updateQyParams, deleteQyParam, dispatch, filters },
 }) => {

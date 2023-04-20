@@ -1,0 +1,18 @@
+#cleanAllFiltersBtn{
+    padding:0.1rem 0.4rem;
+    margin-left: 0.7rem;
+    color: #979797;
+    border-radius: 0px;
+    border-left:1px solid #999999;;
+    text-transform: none;
+    &:hover{
+        text-decoration: underline;
+        color: #cacaca;
+        background-color: transparent;
+    }
+    img{
+        margin-left:0.2rem;
+        height: 20px;
+        margin-right: 4px;
+    }
+}

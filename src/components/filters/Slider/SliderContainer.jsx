@@ -1,4 +1,4 @@
-import ConfirmBtn from "../ConfirmBtn.jsx";
+import ConfirmBtn from "../../buttons/ConfirmBtn.jsx";
 import Slider from "./Slider.jsx";
 import { useMemo } from "react";
 
