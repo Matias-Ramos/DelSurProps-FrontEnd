@@ -45,7 +45,7 @@ export default function SelectLabels({ URLpath }) {
         value={category}
         onChange={handleChange}
         displayEmpty
-        defaultValue="Comprar"
+        sx={{borderRadius:20}}
         inputProps={{
           "aria-label":
             "Grupo de botones para definir si mostrar propiedades en venta, en alquiler o emprendimientos",
