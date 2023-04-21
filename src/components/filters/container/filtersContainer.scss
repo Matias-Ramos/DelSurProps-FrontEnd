@@ -1,3 +1,13 @@
+.cleanBtn {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    margin-left: 1rem;
+}
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 992px) {
     .dropdown-item-text {
@@ -13,16 +23,6 @@
                 margin-left: 1rem;
             }
 
-            .cleanBtn {
-                background: none;
-                color: inherit;
-                border: none;
-                padding: 0;
-                font: inherit;
-                cursor: pointer;
-                outline: inherit;
-                margin-left: 1rem;
-            }
         }
     }
 }

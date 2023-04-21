@@ -47,7 +47,6 @@ const PriceFilter = ({
 
   return (
     <div id="priceFilterOuter">
-      <span>Precio</span>
       <div id="priceFilterInner">
         <TextField
           style={{ marginRight: "1rem" }}

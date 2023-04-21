@@ -26,7 +26,6 @@ const LocationFilter = ({
 
   return (
     <div id="locationFilter" >
-      <span>Ubicación</span>
       <TextField
         placeholder="Barrio, ciudad..."
         value={filters.location || ""}

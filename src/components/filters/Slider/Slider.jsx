@@ -59,7 +59,7 @@ export default function Slider({
 
   return (
     <div className="sliderContainer">
-      <Box sx={{ width: 400 }}>
+      <Box sx={{ width: "100%" }}>
         <Typography id="input-slider" gutterBottom>
           {room}
         </Typography>
@@ -94,8 +94,8 @@ export default function Slider({
               value={[parseInt(roomFilter.init), parseInt(roomFilter.limit)]}
               getAriaValueText={valuetext}
               valueLabelDisplay="auto"
-              onChange={( _event, newValue, activeThumb) =>
-                handleChgSlider( newValue, activeThumb)
+              onChange={(_event, newValue, activeThumb) =>
+                handleChgSlider(newValue, activeThumb)
               }
               step={1}
               marks

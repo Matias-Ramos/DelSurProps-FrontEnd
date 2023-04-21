@@ -1,18 +1,32 @@
+
+#surfaceFilterContainer{
+    .surfaceInput{
+        display:flex;
+        flex-direction: column;
+        span{
+            display:block;
+            width: 100%;
+            margin-bottom: 0.6rem;
+        }
+        &:nth-child(2){
+            margin-top:1rem;
+        }
+    }
+    .filterSubmClean{
+        padding-top:0.5rem;
+        border-top:1px solid #7d8597;
+    }
+}
+
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 992px) {
     #surfaceFilterContainer{
         width: 40vw;
-        .surfaceInput{
-            display:inline-block;
-            width: 47%;
-            &:nth-child(1){margin-right:10px}
-            .surfaceTopTextField{
-                margin:0.7rem 0px;
-            }
-        }
-        .filterSubmClean{
-            padding-top:0.5rem;
-            border-top:1px solid #7d8597;
-        }
+    }
+}
+/*Mobile*/
+@media only screen and (max-width: 992px) {
+    .filterSubmClean{
+        margin-top: 1rem;
     }
 }
