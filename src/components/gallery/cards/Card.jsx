@@ -1,6 +1,6 @@
 import CardImg from "./CardImg.jsx";
 import CardTxt from "./CardTxt.jsx";
-import CardLinks from "./CardLinks.jsx";
+import CardLinksContainer from "./CardLinksContainer.jsx";
 import { Container, Row, Col } from "react-bootstrap";
 
 const Card = ({building}) => {
@@ -16,8 +16,8 @@ const Card = ({building}) => {
         </Col>
       </Row>
       <Row>
-        <Col className="cardColLink">
-          <CardLinks linkZP={building.zonaprop} linkAP={building.argenprop} linkML={building.meli} />
+        <Col className="cardColLink p-0">
+          <CardLinksContainer linkZP={building.zonaprop} linkAP={building.argenprop} linkML={building.meli} />
         </Col>
       </Row>
     </Container>

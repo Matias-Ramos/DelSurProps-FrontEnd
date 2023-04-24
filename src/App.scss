@@ -3,10 +3,10 @@
 @use './components/filters/container/filtersContainer.scss';
 @use './components/filters/location/locationFilter.scss';
 @use './components/filters/price/priceFilter.scss';
-@use './components/filters/Slider/slider.scss';
+@use './components/filters/rooms/slider.scss';
 @use './components/filters/surface/surface.scss';
 @use './components/filters/buildStatus/buildStatus.scss';
 @use './components/navbar/container/navbar.scss';
 @use './components/navbar/btns-desktop/navBtns.scss';
-@use './components/buttons/cleanBtn.scss';
+@use './components/filters/buttons/cleanBtn.scss';
 @use './pages/content.scss';

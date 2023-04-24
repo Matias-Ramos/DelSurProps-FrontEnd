@@ -1,5 +1,5 @@
 import TextField from "@mui/material/TextField";
-import ConfirmBtn from "../../buttons/ConfirmBtn.jsx";
+import ConfirmBtn from "../../filters/buttons/ConfirmBtn.jsx";
 const LocationFilter = ({
   props:{
     updateQyParams,
@@ -8,6 +8,10 @@ const LocationFilter = ({
     filters,
   }
 }) => {
+
+  /****************************** */
+  // Functions 
+
   const chgReducerLocation = (newLocation) =>
     dispatch({
       type: "locationChgd",
@@ -23,7 +27,9 @@ const LocationFilter = ({
     chgReducerLocation("");
   };
 
-
+  /****************************** */
+  // Rendering 
+  
   return (
     <div id="locationFilter" >
       <TextField
@@ -31,6 +37,7 @@ const LocationFilter = ({
         value={filters.location || ""}
         variant="outlined"
         onChange={handleChange}
+        sx={{ input: { color: '#cccccc','&::placeholder':{color:'#bbbbbb'} }  }}
       />
       <div className="filterSubmClean">
         <ConfirmBtn handleSubmit={handleSubmit} />

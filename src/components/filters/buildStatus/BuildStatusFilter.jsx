@@ -1,7 +1,6 @@
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 import ConfirmBtn from "./ConfirmBtn.jsx"; // not using default ConfitmBtn.jsx as the other components
+
 export default function BuildStatusFilter({
   props:{
     updateQyParams,
@@ -9,6 +8,10 @@ export default function BuildStatusFilter({
     filters,
   }
 }) {
+
+  /****************************** */
+  // Functions 
+
   const chgReducerBuildingSt = (status, isChecked) =>
     dispatch({
       type: "buildingStatusChgd",
@@ -25,6 +28,8 @@ export default function BuildStatusFilter({
     updateQyParams("building_status", query);
   };
 
+  /****************************** */
+  // Rendering 
 
   return (
     <div id="buildStatusContainer">

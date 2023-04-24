@@ -4,7 +4,14 @@ import bedIcon from "../../../assets/icons/bed-icon.svg";
 import garageIcon from "../../../assets/icons/garage-icon.svg";
 
 const CardTxt = ({
-  building: { ubicacion, precio, ambientes, baños, dormitorios, garage },
+  building: {
+    ubicacion: location,
+    precio: price,
+    ambientes: env,
+    baños: bathrooms,
+    bedrooms: bedrooms,
+    garage,
+  },
 }) => {
   function improvePriceReadability(value) {
     value = value
@@ -17,8 +24,8 @@ const CardTxt = ({
   return (
     <>
       <div>
-        <h2>{ubicacion}</h2>
-        <span className="cardPrice">${improvePriceReadability(precio)}</span>
+        <h2>{location}</h2>
+        <span className="cardPrice">${improvePriceReadability(price)}</span>
       </div>
       <hr />
       <ul>
@@ -28,12 +35,12 @@ const CardTxt = ({
             alt="ícono puerta (representando ambientes)"
             className="characteristicsIcon"
           />
-          {parseInt(ambientes) > 1 ? `${ambientes} Ambientes` : "Monoambiente"}
+          {parseInt(env) > 1 ? `${env} Ambientes` : "Monoambiente"}
         </li>
         <li>
           <img src={bedIcon} alt="ícono cama" className="characteristicsIcon" />
-          {dormitorios} 
-          {parseInt(dormitorios)>1 ? " Dormitorios":" Dormitorio"}
+          {bedrooms}
+          {parseInt(bedrooms) > 1 ? " Dormitorios" : " Dormitorio"}
         </li>
         <li>
           <img
@@ -41,8 +48,8 @@ const CardTxt = ({
             alt="ícono ducha"
             className="characteristicsIcon"
           />
-          {baños}
-          {parseInt(baños)>1 ? " Baños":" Baño"}
+          {bathrooms}
+          {parseInt(bathrooms) > 1 ? " Baños" : " Baño"}
         </li>
         <li>
           <img

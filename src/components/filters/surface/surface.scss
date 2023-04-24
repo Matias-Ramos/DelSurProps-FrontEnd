@@ -3,18 +3,20 @@
     .surfaceInput{
         display:flex;
         flex-direction: column;
+        padding:1rem 0px 2rem 0px;
         span{
             display:block;
             width: 100%;
-            margin-bottom: 0.6rem;
+            margin-bottom: 1.1rem;
         }
         &:nth-child(2){
-            margin-top:1rem;
+            border-top:solid 1px #495057;
         }
     }
     .filterSubmClean{
-        padding-top:0.5rem;
-        border-top:1px solid #7d8597;
+        margin:0;
+        padding-top:1rem;
+        border-top:1px solid #495057;
     }
 }
 

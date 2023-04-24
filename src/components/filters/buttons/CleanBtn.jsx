@@ -1,10 +1,11 @@
+// Hooks
+import { useContext } from "react";
+import { queryCtxt } from "../../../context/QyParamsCtxt.jsx";
 // Component
 import Button from "@mui/material/Button";
 // Icon
-import Broom from "../../assets/icons/broom-solid.svg";
-// Hooks
-import { useContext } from "react";
-import { queryCtxt } from "../../context/QyParamsCtxt.jsx";
+import Broom from "../../../assets/icons/broom-solid.svg";
+
 const CleanBtn = ({ dispatch }) => {
   const { deleteQyParams } = useContext(queryCtxt);
   const clearFilters = () => {

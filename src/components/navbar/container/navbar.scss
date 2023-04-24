@@ -1,49 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@800&display=swap');
 
-header{
-    position:relative;
+header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 3rem;
     background-color: #fdfdff;
-    #brand{
+
+    #brand {
         font-family: 'Libre Franklin', sans-serif;
-        z-index:2;
+        z-index: 2;
         background-color: white;
-        margin-right:1.5rem;
+        margin-right: 1.5rem;
     }
-    #hr{
-        position:absolute;
+
+    #hr {
+        position: absolute;
         width: 100%;
-        border:1px solid #6c757d;
+        border: 1px solid #6c757d;
         border-top: none;
-        z-index:1;
-        top:50%;
+        z-index: 1;
+        top: 50%;
     }
 }
 
-.circleIcon{
+.circleIcon {
     // do not move inside header else Welcome lacks of it.
     max-width: 8px;
-    margin-right:5px;
+    margin-right: 5px;
 }
+
 /*Netbooks, Notebooks and Desktops*/
-.MuiButtonGroup-root{
-    margin-left:0.5rem;
-    z-index:2;
+.MuiButtonGroup-root {
+    margin-left: 0.5rem;
+    z-index: 2;
 }
 
 /*Mobile*/
 @media only screen and (max-width: 768px) {
-    header{
-        padding:0.3rem 0rem;
+    header {
+        padding: 0.3rem 0rem;
         height: 100%;
     }
 }
+
 /*Tablets*/
 @media only screen and (min-width: 576px) and (max-width: 768px) {
-    header{
+    header {
         justify-content: space-around;
     }
 }

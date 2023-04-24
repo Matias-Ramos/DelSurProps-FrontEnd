@@ -1,9 +1,3 @@
-const CardImg = ({imgUrl}) => {
-  return (
-    <>
-    <img src={imgUrl} alt="Lorem Ipsum img" />
-    </>
-  )
-}
+const CardImg = ({ imgUrl }) => <img src={imgUrl} alt="Lorem Ipsum img" />;
 
-export default CardImg
+export default CardImg;

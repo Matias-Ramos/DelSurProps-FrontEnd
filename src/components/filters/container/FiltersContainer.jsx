@@ -1,23 +1,32 @@
-// Components
-import LocationFilter from "../location/LocationFilter.jsx";
-import PriceFilter from "../price/PriceFilter.jsx";
-import SliderContainer from "../Slider/SliderContainer.jsx";
-import BuildStatusFilter from "../buildStatus/BuildStatusFilter.jsx";
-import SurfaceFilterContainer from "../surface/SurfaceFilterContainer.jsx";
-import CleanBtn from "../../buttons/CleanBtn.jsx";
-// Hooks
-import { useContext, useReducer, useMemo, useEffect } from "react";
-import { queryCtxt } from "../../../context/QyParamsCtxt.jsx";
-import { filterModifier, defaultFilterValues } from "./reducerUtils.js";
-import { useLocation } from "react-router-dom";
-// Bts
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import {
+    // Components
+    LocationFilter,
+    PriceContainer,
+    SlidersContainer,
+    BuildStatusFilter,
+    SurfaceFilterContainer,
+    CleanBtn,
+    // Hooks
+    useContext,
+    useReducer,
+    useMemo,
+    useEffect,
+    useLocation,
+    // --ctxt
+    queryCtxt,
+    // -- reducer
+    filterModifier,
+    defaultFilterValues,
+    // Bts
+    Container,
+    Nav,
+    Navbar,
+    NavDropdown,
+} from './imports.js'
 
 const FiltersContainer = () => {
-  const { searchQyParams, updateQyParams, deleteQyParam } = useContext(queryCtxt);
+  const { searchQyParams, updateQyParams, deleteQyParam } =
+    useContext(queryCtxt);
   const [filters, dispatch] = useReducer(filterModifier, defaultFilterValues);
   const URLpath = useLocation().pathname;
   const filtersProps = useMemo(() => {
@@ -29,23 +38,26 @@ const FiltersContainer = () => {
     };
   });
 
-  // verifies qyParam on first render and updates the useReducer if there are such, before rendering the filters.
+  /* verifies qyParam on first render and if there are such,
+   updates the useReducer values (before even rendering the filters).*/
   useEffect(() => {
-    
-    searchQyParams.get("location") !== null && dispatch({
-      type: "locationChgd",
-      location: searchQyParams.get("location"),
-    });
+    searchQyParams.get("location") !== null &&
+      dispatch({
+        type: "locationChgd",
+        location: searchQyParams.get("location"),
+      });
 
     /********************* */
     const chgReducerPrice = (newPrice, edge) =>
-    dispatch({
-      type: `priceChgd`,
-      newPrice: newPrice,
-      edge: edge,
-    });
-    searchQyParams.get("price_init") !== null && chgReducerPrice(parseInt(searchQyParams.get("price_init")), "init");
-    searchQyParams.get("price_limit") !== null && chgReducerPrice(parseInt(searchQyParams.get("price_limit")), "limit");
+      dispatch({
+        type: `priceChgd`,
+        newPrice: newPrice,
+        edge: edge,
+      });
+    searchQyParams.get("price_init") !== null &&
+      chgReducerPrice(parseInt(searchQyParams.get("price_init")), "init");
+    searchQyParams.get("price_limit") !== null &&
+      chgReducerPrice(parseInt(searchQyParams.get("price_limit")), "limit");
 
     /********************* */
 
@@ -56,7 +68,7 @@ const FiltersContainer = () => {
         edge: edge,
         roomName: roomName,
       });
-    };    
+    };
     const rooms = ["env", "bedroom", "bathroom", "garage"];
     for (let room of rooms) {
       const roomInitQyParams = searchQyParams.get(`${room}_init`);
@@ -65,7 +77,12 @@ const FiltersContainer = () => {
       roomInitQyParams !== null &&
         chgReducerRoom(parseInt(roomInitQyParams), `${room}Chgd`, "init", room);
       roomLimitQyParams !== null &&
-        chgReducerRoom(parseInt(roomLimitQyParams), `${room}Chgd`, "limit", room);
+        chgReducerRoom(
+          parseInt(roomLimitQyParams),
+          `${room}Chgd`,
+          "limit",
+          room
+        );
     }
 
     /********************* */
@@ -92,31 +109,35 @@ const FiltersContainer = () => {
 
     /********************* */
 
-    if(searchQyParams.get("building_status") !== null){
-      const preFilteredStatuses = searchQyParams.get("building_status").split('-or-');
+    if (searchQyParams.get("building_status") !== null) {
+      const preFilteredStatuses = searchQyParams
+        .get("building_status")
+        .split("-or-");
       const allStatuses = Object.keys(filters.buildingStatus);
-      const nonChosenstatuses = allStatuses.filter(function(obj) { return preFilteredStatuses.indexOf(obj) == -1; });
-      for(let status of nonChosenstatuses){
+      const nonChosenstatuses = allStatuses.filter(function (obj) {
+        return preFilteredStatuses.indexOf(obj) == -1;
+      });
+      for (let status of nonChosenstatuses) {
         dispatch({
           type: "buildingStatusChgd",
-          status:status,
+          status: status,
           isChecked: false,
-        })
+        });
       }
     }
   }, []);
 
   return (
     <>
-      <Navbar variant="dark" bg="dark" expand="lg" sticky="top" >
+      <Navbar variant="dark" bg="dark" expand="lg" sticky="top">
         <Container fluid>
           <Navbar.Brand>Filtros: </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbar-dark-example" />
-          <Navbar.Collapse id="navbar-dark-example">
+          <Navbar.Toggle aria-controls="navigation-bar" />
+          <Navbar.Collapse id="navigation-bar">
             <Nav>
+              {/* ******** */}
               {/* Location */}
               <NavDropdown
-                id="nav-dropdown-dark-example"
                 title="Ubicación"
                 menuVariant="dark"
               >
@@ -124,31 +145,34 @@ const FiltersContainer = () => {
                   <LocationFilter props={filtersProps} />
                 </NavDropdown.ItemText>
               </NavDropdown>
+
+              {/* ***** */}
               {/* Price */}
               <NavDropdown
-                id="nav-dropdown-dark-example"
                 title="Precio"
                 menuVariant="dark"
               >
                 <NavDropdown.ItemText>
-                  <PriceFilter props={filtersProps} />
+                  <PriceContainer props={filtersProps} />
                 </NavDropdown.ItemText>
               </NavDropdown>
-              {/* Slider */}
+
+              {/* ******* */}
+              {/* Sliders */}
               <NavDropdown
-                id="nav-dropdown-dark-example"
                 title="Habitaciones"
                 menuVariant="dark"
               >
-                <NavDropdown.ItemText>
-                  <SliderContainer props={filtersProps} />
+                <NavDropdown.ItemText id="sliderNavDropdown-ItemText">
+                  <SlidersContainer props={filtersProps} />
                 </NavDropdown.ItemText>
               </NavDropdown>
+
+              {/* ******* */}
               {/* Surface */}
               {(URLpath === "/venta-inmuebles" ||
                 URLpath === "/emprendimientos") && (
                 <NavDropdown
-                  id="nav-dropdown-dark-example"
                   title="Superficie"
                   menuVariant="dark"
                 >
@@ -157,10 +181,11 @@ const FiltersContainer = () => {
                   </NavDropdown.ItemText>
                 </NavDropdown>
               )}
+
+              {/* *********** */}
               {/* BuildStatus */}
               {URLpath === "/emprendimientos" && (
                 <NavDropdown
-                  id="nav-dropdown-dark-example"
                   title="Etapa"
                   menuVariant="dark"
                 >
@@ -171,9 +196,8 @@ const FiltersContainer = () => {
               )}
             </Nav>
             <Navbar.Text>
-              <CleanBtn dispatch={dispatch}/>
+              <CleanBtn dispatch={dispatch} />
             </Navbar.Text>
-            
           </Navbar.Collapse>
         </Container>
       </Navbar>

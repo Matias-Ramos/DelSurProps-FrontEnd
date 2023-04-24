@@ -1,9 +1,12 @@
-import CoveredSurfaceFilter from "./CoveredSurfaceFilter.jsx";
-import TotalSurfaceFilter from "./TotalSurfaceFilter.jsx";
-import ConfirmBtn from "../../buttons/ConfirmBtn.jsx";
+import ConfirmBtn from "../../filters/buttons/ConfirmBtn.jsx";
+import SurfaceFilter from "./SurfaceFilter.jsx";
+
 const SurfaceFilterContainer = ({
   props: { updateQyParams, deleteQyParam, dispatch, filters },
-}) => {
+}) => { 
+  /****************************** */
+  // Functions 
+
   const chgReducerSurface = (newSurface, surfaceType, edge) => {
     dispatch({
       type: "surfaceChgd",
@@ -12,7 +15,6 @@ const SurfaceFilterContainer = ({
       edge: edge,
     });
   };
-
   const handleChange = (newValue, surfaceType, edge) => {
     const regex = /^[0-9\b]+$/;
     if (newValue === "" || regex.test(newValue)) {
@@ -20,7 +22,7 @@ const SurfaceFilterContainer = ({
     }
   };
   const handleSubmit = () => {
-    // properties inside filters.surface can eaither be "covered" or "total"
+    // properties inside filters.surface can either be "covered" or "total"
     for (const surfaceType in filters.surface) {
       for (const edge in filters.surface[surfaceType]) {
         filters.surface[surfaceType][edge]
@@ -33,8 +35,8 @@ const SurfaceFilterContainer = ({
     }
   };
   const handleClean = () => {
-    const edges = ["init", "limit"];
     const types = ["total", "covered"];
+    const edges = ["init", "limit"];
     for (const type of types) {
       for (const edge of edges) {
         deleteQyParam(`${type}_surface_${edge}`);
@@ -43,18 +45,21 @@ const SurfaceFilterContainer = ({
     }
   };
 
+  /****************************** */
+  // Rendering 
+  
   return (
     <div id="surfaceFilterContainer">
-      <CoveredSurfaceFilter
+      <SurfaceFilter
+        surfaceTypeEsp={"cubierta"}
+        surfaceType={"covered"}
         surfaceFilterValues={filters.surface.covered}
-        handleSubmit={handleSubmit}
-        handleClean={handleClean}
         handleChange={handleChange}
       />
-      <TotalSurfaceFilter
+      <SurfaceFilter
+        surfaceTypeEsp={"total"}
+        surfaceType={"total"}
         surfaceFilterValues={filters.surface.total}
-        handleSubmit={handleSubmit}
-        handleClean={handleClean}
         handleChange={handleChange}
       />
       <div className="filterSubmClean">

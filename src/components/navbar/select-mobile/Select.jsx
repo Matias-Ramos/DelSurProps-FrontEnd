@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 export default function SelectLabels({ URLpath }) {
   const [category, setCategory] = useState("");
   const navigate = useNavigate();
-
   const handleChange = (event) => {
     setCategory(event.target.value);
   };

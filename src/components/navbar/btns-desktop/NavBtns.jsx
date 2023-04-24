@@ -10,9 +10,11 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import customTheme from './btnsTheme.js'
 
 const NavBtns = ({URLpath}) => {
+
+  /****************************** */
+  // Functions 
   const [colorStatuses, dispatch] = useReducer(colorModifier,defaultDotStatuses);
   const theme = createTheme(customTheme)
-  
   function handleClick(color) {
     dispatch({
       type: `${color}Chgd`,
@@ -34,6 +36,8 @@ const NavBtns = ({URLpath}) => {
     };
   });
   
+  /****************************** */
+  
   // chgs dot color based on URL path
   useEffect(() => {
     switch (URLpath) {
@@ -51,6 +55,8 @@ const NavBtns = ({URLpath}) => {
     }
   }, [URLpath]);
 
+  /****************************** */
+  // Rendering
 
   return (
     <ThemeProvider theme={theme}>

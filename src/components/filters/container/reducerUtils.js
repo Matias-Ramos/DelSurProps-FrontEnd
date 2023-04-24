@@ -62,7 +62,6 @@ function filterModifier(currentFilters, actionObj) {
     return newEnv;
   };
   const updatedBuildingStatus = (actionObj) => {
-    // console.log(actionObj);
     let updatedStatus = {}
     switch(actionObj.status){
       case "pozo":{

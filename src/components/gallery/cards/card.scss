@@ -3,50 +3,56 @@
 
 $card-border-radius: 8px;
 
-.characteristicsIcon{
+.characteristicsIcon {
   max-width: 25px;
   margin-right: 5px;
 }
 
-#cardsContainer{
-  margin-top:2rem;
+#cardsContainer {
+  margin-top: 2rem;
   padding: 3rem 2rem;
-  background:radial-gradient(circle at 50% 53%, rgba(251, 249, 246, 1) 0%, rgba(252, 249, 247, 1) 0%, rgba(243, 242, 241, 1) 100%);
+  background: radial-gradient(circle at 50% 53%, rgba(251, 249, 246, 1) 0%, rgba(252, 249, 247, 1) 0%, rgba(243, 242, 241, 1) 100%);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-radius:15px;
+  border-radius: 15px;
 }
+
 .Card {
   margin: 3rem 0px;
   background-color: rgba(0, 0, 0, 0); //all card transparent by default
-  h2{
+
+  h2 {
     font-family: 'Taviraj', serif;
   }
-  .cardPrice{
+
+  .cardPrice {
     font-family: 'Heebo', sans-serif;
   }
-  ul li{
+
+  ul li {
     font-family: 'Source Sans Pro', sans-serif;
   }
-  &:first-child{
-    margin-top:0; // top margin (from the filters) is taken care of by the container
+
+  &:first-child {
+    margin-top: 0; // top margin (from the filters) is taken care of by the container
   }
-  &:last-child{
-    margin-bottom:0; // bottom margin (from the footer) is taken care of by the container
+
+  &:last-child {
+    margin-bottom: 0; // bottom margin (from the footer) is taken care of by the container
   }
 
   .cardPicture {
-    border-top-left-radius:$card-border-radius;
+    border-top-left-radius: $card-border-radius;
     overflow: hidden;
   }
-  
+
   .cardTxt {
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: #fff;
-    border-right:1px solid #e5e5e5;
-    border-top:1px solid #e5e5e5;
-    border-top-right-radius:$card-border-radius;
+    border-right: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    border-top-right-radius: $card-border-radius;
 
     //caracteristics (bedrooms, bathrooms,...)
     ul {
@@ -59,59 +65,58 @@ $card-border-radius: 8px;
       }
     }
   }
-  .cardColLink{
+
+  .cardColLink {
     border-bottom-left-radius: $card-border-radius;
-    border-bottom-right-radius:$card-border-radius;
-      .cardLinksContainer {
-        background: #e6eaef;
-        border-bottom-left-radius: $card-border-radius;
-        border-bottom-right-radius:$card-border-radius;
-    
-        .linkDiv {
-          backdrop-filter: blur(2px);
-          -webkit-backdrop-filter: blur(2px);
-          border: 2px outset rgba(255, 255, 255, 0.18);
-          transition:0.2s;
-    
-          &:hover {
-            background: rgba( 179, 216, 255, 0.45 );
+    border-bottom-right-radius: $card-border-radius;
+
+    .cardLinksContainer {
+      background: #e6eaef;
+      border-bottom-left-radius: $card-border-radius;
+      border-bottom-right-radius: $card-border-radius;
+
+      .linkDiv {
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        border: 2px outset rgba(255, 255, 255, 0.18);
+        transition: 0.2s;
+
+        &:hover {
+          background: rgba(179, 216, 255, 0.45);
+        }
+
+        a {
+          text-decoration: none;
+
+          span {
+            font-family: 'Titillium Web', sans-serif;
+            margin-left: 3px;
           }
-    
+        }
+
+        &:first-child {
+          border-bottom-left-radius: $card-border-radius;
+        }
+
+        &:nth-child(2) a {
+          color: green;
+        }
+
+        &:last-child {
+          border-bottom-right-radius: $card-border-radius;
+
           a {
-            text-decoration: none;
-    
-            span {
-              font-family: 'Titillium Web', sans-serif;
-              margin-left:3px;
-            }
-          }
-    
-          &:first-child{
-            border-bottom-left-radius: $card-border-radius;
-          }
-          &:nth-child(2) a {
-            color: green;
-          }
-          
-          &:last-child {
-            border-bottom-right-radius:$card-border-radius;
-            a{
-              color: black;
-            }
+            color: black;
           }
         }
       }
     }
+  }
 }
-
-
-
 
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 992px) {
   .cardColLink {
-    padding: 0 !important;
-
     .cardLinksContainer {
       display: flex;
       flex-direction: row;
