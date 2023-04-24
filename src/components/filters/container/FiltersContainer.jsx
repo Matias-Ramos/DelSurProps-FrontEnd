@@ -134,7 +134,7 @@ const FiltersContainer = () => {
           <Navbar.Brand>Filtros: </Navbar.Brand>
           <Navbar.Toggle aria-controls="navigation-bar" />
           <Navbar.Collapse id="navigation-bar">
-            <Nav>
+            <Nav navbarScroll >
               {/* ******** */}
               {/* Location */}
               <NavDropdown
