@@ -9,7 +9,7 @@ const CardTxt = ({
     precio: price,
     ambientes: env,
     baños: bathrooms,
-    bedrooms: bedrooms,
+    dormitorios: bedrooms,
     garage,
   },
 }) => {
@@ -57,7 +57,8 @@ const CardTxt = ({
             alt="ícono garage"
             className="characteristicsIcon"
           />
-          {garage} Garage
+          {garage} 
+          {parseInt(garage) > 1 || parseInt(garage) === 0 ? " Garages" : " Garage"}
         </li>
       </ul>
     </>

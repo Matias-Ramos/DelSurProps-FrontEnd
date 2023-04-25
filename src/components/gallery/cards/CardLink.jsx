@@ -1,16 +1,22 @@
-const CardLink = ({link, eCommerceName, img}) => {
+const CardLink = ({ link, eCommerceName, logo, typography }) => {
   return (
-    <div className="linkDiv">
-      <a
-        href={link}
-        className="centerContent"
-        aria-label={`Link que redirecciona a la publicacion de esta propiedad pero en ${eCommerceName}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img src={img} alt="logo de MercadoLibre" />
-        {eCommerceName!=="Mercado Libre" && <span>{eCommerceName}</span>}
-      </a>
+    <div className="linkOuter">
+      <div className="linkInner">
+        <a
+          href={link}
+          className="centerContent"
+          aria-label={`Link que redirecciona a la publicacion de esta propiedad pero en ${eCommerceName}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={logo} alt={`logo de ${eCommerceName}`} />
+          <img
+            src={typography}
+            alt={`"${eCommerceName}"`}
+            className="typography"
+          />
+        </a>
+      </div>
     </div>
   );
 };
