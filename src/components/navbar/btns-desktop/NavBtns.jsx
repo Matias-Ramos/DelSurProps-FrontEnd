@@ -1,5 +1,5 @@
 // Hooks
-import { useReducer, useEffect, useMemo } from "react";
+import { useReducer, useEffect, useMemo, useRef } from "react";
 // Components
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "./Button.jsx";
@@ -15,6 +15,7 @@ const NavBtns = ({URLpath}) => {
   // Functions 
   const [colorStatuses, dispatch] = useReducer(colorModifier,defaultDotStatuses);
   const theme = createTheme(customTheme)
+  const windowWidth = useRef(window.innerWidth);
   function handleClick(color) {
     dispatch({
       type: `${color}Chgd`,
@@ -60,7 +61,10 @@ const NavBtns = ({URLpath}) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <ButtonGroup aria-label="Grupo de botones para definir el contenido de la página">
+      <ButtonGroup
+        aria-label="Grupo de botones para definir el contenido de la página"
+        orientation={windowWidth.current >= 370 ? "horizontal" : "vertical"}
+      >
         <Button
           btnSharedProps={btnSharedProps}
           thisPath={"/venta-inmuebles"}

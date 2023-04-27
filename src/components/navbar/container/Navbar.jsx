@@ -9,7 +9,7 @@ const Navbar = () => {
   const windowWidth = useRef(window.innerWidth);
   const URLpath = useLocation().pathname;
   return (
-    <>
+    <div id="topBar">
       {windowWidth.current >= 768 ? (
         <NavBtns URLpath={URLpath} />
       ) : (
@@ -17,7 +17,7 @@ const Navbar = () => {
       )}
       <span id="brand">DelSurProps</span>
       <div id="hr"></div>
-    </>
+    </div>
   );
 };
 

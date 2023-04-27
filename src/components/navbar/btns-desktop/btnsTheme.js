@@ -64,6 +64,7 @@ const customTheme = {
           "&:hover": {
             backgroundColor: colors.backgroundColor.orange.outlined.hover, 
           },
+          textTransform:'none',
         },
 
         /******************************* */
@@ -80,6 +81,7 @@ const customTheme = {
           "&:hover": {
             backgroundColor: colors.backgroundColor.blue.outlined.hover, 
           },
+          textTransform:'none',
         },
 
         /******************************* */
@@ -96,6 +98,7 @@ const customTheme = {
           "&:hover": {
             backgroundColor: colors.backgroundColor.turquoise.outlined.hover,
           },
+          textTransform:'none',
         },
       },
     },

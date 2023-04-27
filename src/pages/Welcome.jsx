@@ -1,14 +1,14 @@
-import NavBtns from '../components/navbar/btns-desktop/NavBtns.jsx';
-import Select from '../components/navbar/select-mobile/Select.jsx'
-import {useRef} from 'react';
+import NavBtns from "../components/navbar/btns-desktop/NavBtns.jsx";
 const Welcome = () => {
-  const windowWidth = useRef(window.innerWidth);
   return (
-    <>
-      <span>Bienvenid@</span>
-      <span>¿Qué estás buscando?</span>
-      {windowWidth.current>=768?<NavBtns />:<Select />}
-    </>
+    <div id="welcome">
+      <span id="brand">DelSurProps</span>
+      <div id="welcomeTxt">
+        <span>Bienvenid@</span>
+        <span id="preg">¿Qué estás buscando?</span>
+        <NavBtns />
+      </div>
+    </div>
   );
 };
 

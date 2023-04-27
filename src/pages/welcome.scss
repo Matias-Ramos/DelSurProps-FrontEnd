@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@1,700&family=Tajawal:wght@300&display=swap');
+
+#welcome {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+
+    #brand {
+        font-family: 'Libre Franklin', sans-serif;
+        position: absolute;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    #welcomeTxt {
+        font-size: 2rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-top: auto;
+        margin-bottom: auto;
+
+        span:first-child {
+            font-family: 'Noto Serif', serif;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        #preg,
+        button {
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .MuiButtonGroup-root {
+            justify-content: center;
+
+            a:first-child {
+                //buy
+                button{
+                    box-shadow: -1px -1px 20px -7px rgba(191, 219, 247, 0.79) inset;
+                }
+            }
+
+            a:nth-child(2) {
+                //rent
+                button{
+                    box-shadow: -1px -1px 20px -7px rgba(249, 229, 199, 0.79) inset;
+                }
+
+            }
+
+            a:last-child {
+                //entrepreneurship
+                button{
+                    box-shadow: -1px -1px 20px -7px rgba(208, 237, 235, 0.79) inset;
+                }
+            }
+        }
+    }
+}
+/*Mobile (not small phones)*/
+@media only screen and (min-width: 370px) and (max-width: 768px){ 
+    #welcome .MuiButtonGroup-root {
+        a:nth-child(2) {
+            //rent
+            margin: 0px 0.5rem;
+        }
+    }
+}
+/*Mobile*/
+@media only screen and (max-width: 768px) {
+    .MuiButtonGroup-root {
+        a button{
+            border-radius: 20px;
+        }
+    }
+}
