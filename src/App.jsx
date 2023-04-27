@@ -3,8 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // Css
 import "./App.scss";
 // Components
-import Content from "./pages/Content.jsx";
-import Welcome from "./pages/Welcome.jsx";
+import Main from "./pages/main/Main.jsx";
+import Welcome from "./pages/welcome/Welcome.jsx";
 import RouteError from "./pages/RouteError.jsx";
 // Bts
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -18,15 +18,15 @@ const App = () => {
     },
     {
       path: "/alquiler-inmuebles",
-      element: <Content />,
+      element: <Main />,
     },
     {
       path: "/venta-inmuebles",
-      element: <Content />,
+      element: <Main />,
     },
     {
       path: "/emprendimientos",
-      element: <Content />,
+      element: <Main />,
     },
   ]);
   return <RouterProvider router={router} />;

@@ -8,6 +8,7 @@
     position: relative;
 
     #brand {
+        z-index:2;
         font-family: 'Libre Franklin', sans-serif;
         position: absolute;
         margin-left: 10px;
@@ -15,6 +16,7 @@
     }
 
     #welcomeTxt {
+        z-index:2;
         font-size: 2rem;
         display: flex;
         flex-direction: column;

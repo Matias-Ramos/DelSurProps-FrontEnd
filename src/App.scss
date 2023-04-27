@@ -9,5 +9,6 @@
 @use './components/navbar/container/navbar.scss';
 @use './components/navbar/btns-desktop/navBtns.scss';
 @use './components/filters/buttons/cleanBtn.scss';
-@use './pages/content.scss';
-@use './pages/welcome.scss';
+@use './pages/main/main.scss';
+@use './pages/welcome/welcome.scss';
+@use './pages/welcome/blobs/blobs.scss';

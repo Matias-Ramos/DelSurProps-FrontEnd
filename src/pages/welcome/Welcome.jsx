@@ -1,7 +1,9 @@
-import NavBtns from "../components/navbar/btns-desktop/NavBtns.jsx";
+import NavBtns from "../../components/navbar/btns-desktop/NavBtns.jsx";
+import BlobContainer from "./blobs/BlobContainer.jsx";
 const Welcome = () => {
   return (
     <div id="welcome">
+      <BlobContainer/>
       <span id="brand">DelSurProps</span>
       <div id="welcomeTxt">
         <span>Bienvenid@</span>

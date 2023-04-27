@@ -1,0 +1,26 @@
+#blobContainer {
+    width: 85vw;
+    height: 85vh;
+    display: block;
+    position: absolute;
+    z-index: 1;
+  }
+  #blobSvg1 {
+    position: absolute;
+    top: 0px;
+    height: 120px;
+    right: 30%;
+  }
+  #blobSvg2 {
+    position: absolute;
+    bottom: -30px;
+    left:-70px;
+    max-height: 230px;
+  }
+  #blobSvg3 {
+    position: absolute;
+    top: -250px;
+    right: -140px;
+    height: 600px;
+    width:500px;
+  }
