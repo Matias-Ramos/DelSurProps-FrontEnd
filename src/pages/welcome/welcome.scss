@@ -6,7 +6,8 @@
     flex-direction: column;
     height: 100vh;
     position: relative;
-
+    background-color: #eb5e28;
+    color:white;
     #brand {
         z-index:2;
         font-family: 'Libre Franklin', sans-serif;
@@ -29,6 +30,10 @@
             margin-bottom: 1.5rem;
             font-size: 2.5rem;
         }
+        
+        #preg{
+            margin-bottom:0.3rem;
+        }
 
         #preg,
         button {
@@ -37,6 +42,7 @@
 
         .MuiButtonGroup-root {
             justify-content: center;
+            a button{font-size:1.2rem;}
 
             a:first-child {
                 //buy

@@ -63,7 +63,7 @@ const NavBtns = ({URLpath}) => {
     <ThemeProvider theme={theme}>
       <ButtonGroup
         aria-label="Grupo de botones para definir el contenido de la página"
-        orientation={windowWidth.current >= 370 ? "horizontal" : "vertical"}
+        orientation={windowWidth.current >= 440 ? "horizontal" : "vertical"}
       >
         <Button
           btnSharedProps={btnSharedProps}

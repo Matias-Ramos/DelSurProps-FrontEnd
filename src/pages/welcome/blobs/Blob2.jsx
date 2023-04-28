@@ -7,7 +7,7 @@ const Blob2 = () => (
       width="75%"
       id="blobSvg2"
       filter="blur(0px)"
-      style={{ opacity: "0.8" }}
+      style={{ opacity: "0.2" }}
     >
       <defs>
         <linearGradient id="gradient2" x1="0%" y1="0%" x2="0%" y2="100%">
