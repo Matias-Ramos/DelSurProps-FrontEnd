@@ -8,11 +8,11 @@ import CardLink from "./CardLink.jsx";
 import { Container, Row, Col } from "react-bootstrap";
 
 const CardLinksContainer = ({ linkZP, linkAP, linkML }) => {
-  const cardsPadding="px-4 px-sm-4 mx-sm-1 px-md-2 mx-md-0 px-lg-1 mx-lg-1 px-xl-2 mx-xl-0 p-xxl-2 mx-xxl-1";
+  const cardsPadding="px-4 px-sm-4 mx-sm-1 px-md-3 mx-md-0 px-lg-2 mx-lg-1 px-xl-3 mx-xl-0 p-xxl-2 mx-xxl-1";
   return(
   <Container className="cardLinksContainer">
     <Row>
-      <Col xs={4} sm={3} md={4} lg={3} xl={2} xxl={2} className={cardsPadding}>
+      <Col xs={4} sm={3} md={4} lg={3} xl={3} xxl={2} className={cardsPadding}>
         <CardLink
           link={linkML}
           eCommerceName={"Mercado Libre"}
@@ -20,7 +20,7 @@ const CardLinksContainer = ({ linkZP, linkAP, linkML }) => {
           typography={MLtypo}
         />
       </Col>
-      <Col xs={4} sm={3} md={4} lg={3} xl={2} xxl={2} className={cardsPadding}>
+      <Col xs={4} sm={3} md={4} lg={3} xl={3} xxl={2} className={cardsPadding}>
         <CardLink
           link={linkAP}
           eCommerceName={"ArgenProp"}
@@ -28,7 +28,7 @@ const CardLinksContainer = ({ linkZP, linkAP, linkML }) => {
           typography={APtypo}
         />
       </Col>
-      <Col xs={4} sm={3} md={4} lg={3} xl={2} xxl={2} className={cardsPadding}>
+      <Col xs={4} sm={3} md={4} lg={3} xl={3} xxl={2} className={cardsPadding}>
         <CardLink
           link={linkZP}
           eCommerceName={"ZonaProp"}

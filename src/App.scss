@@ -1,5 +1,6 @@
 @use './resets.scss';
 @use './components/gallery/cards/card.scss';
+@use './components/gallery/container/gallery.scss';
 @use './components/filters/container/filtersContainer.scss';
 @use './components/filters/location/locationFilter.scss';
 @use './components/filters/price/priceFilter.scss';
@@ -12,3 +13,4 @@
 @use './pages/main/main.scss';
 @use './pages/welcome/welcome.scss';
 @use './pages/welcome/blobs/blobs.scss';
+@use './components/footer/attributions.scss';

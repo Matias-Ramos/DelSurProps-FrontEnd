@@ -3,9 +3,14 @@ import { cards } from "../../../dummyData.js"
 const GalleryContainer = () => {
 
   return (
-    <div id="cardsContainer">
-      {cards.map( building => <Card key={building.id} building={...building} /> )}
-    </div>
+      <div id="cardsContainer">
+        {cards.map( building => 
+        <div key={building.id} className="cardOuterBackground">
+          <Card  building={...building} />
+          <div className="cardSeparator"></div>
+          </div>  
+        )}
+      </div>
   )
 }
 

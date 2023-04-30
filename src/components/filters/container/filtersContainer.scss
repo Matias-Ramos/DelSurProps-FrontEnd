@@ -11,6 +11,9 @@
 
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 992px) {
+    .navbar{
+        z-index: 2;
+    }
     .dropdown-item-text {
         padding: 0.5rem 1rem;
 

@@ -6,7 +6,7 @@
     flex-direction: column;
     height: 100vh;
     position: relative;
-    background-color: #eb5e28;
+    background: linear-gradient(90deg, hsla(17, 83%, 54%, 1) 0%, hsla(31, 94%, 61%, 1) 100%);
     color:white;
     #brand {
         z-index:2;
@@ -82,6 +82,18 @@
     .MuiButtonGroup-root {
         a button{
             border-radius: 20px;
+        }
+    }
+}
+/*Notebook and desktop*/
+@media only screen and (min-width: 768px) {
+    #welcomeTxt{
+        padding:1rem;
+        background: rgba( 255, 255, 255, 0.25 );
+        backdrop-filter: blur( 4px );
+        border:1px solid rgba( 255, 255, 255, 0.18 );
+        #preg, span:nth-child(1){
+            text-shadow:0px 1px 1px black;
         }
     }
 }

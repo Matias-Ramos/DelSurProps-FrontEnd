@@ -1,29 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo&family=Source+Sans+Pro:wght@300&family=Taviraj:wght@200&display=swap');
 
-#cardsContainer {
-  margin: 2rem auto 0px auto;
-
   .Card {
-    margin: 3rem 0px;
     background-color: rgba(0, 0, 0, 0); //all card transparent by default
-
+  
     &:first-child {
       margin-top: 0; // top margin (from the filters) is taken care of by the container
     }
-
+  
     &:last-child {
       margin-bottom: 0; // bottom margin (from the footer) is taken care of by the container
     }
-
-
+  
+  
     .cardPicture {
       overflow: hidden;
-
+  
       img {
         width: 100%;
       }
     }
-
+  
     .cardTxt {
       display: flex;
       flex-direction: column;
@@ -41,22 +37,22 @@
         max-width: 25px;
         margin-right: 5px;
       }
-
+  
       //caracteristics (bedrooms, bathrooms,...)
       ul {
         margin: 0;
-
+  
         li {
           display: inline-block;
           font-family: 'Source Sans Pro', sans-serif;
         }
       }
-
+  
       .cardLinksContainer {
         .linkOuter {
-          background-color: #FCFCFD;
+          background-color: #f8f9fa;
           appearance: none;
-          border-radius: 4px;
+          border-radius: 20px;
           border-width: 0;
           border-top: 1px solid #e9ecef;
           box-shadow: rgba(45, 35, 66, 0.2) 0 2px 2px, rgba(45, 35, 66, 0.15) 0 7px 10px -3px, #D6D6E7 0 -3px 0 inset;
@@ -72,25 +68,25 @@
           white-space: nowrap;
           will-change: box-shadow, transform;
         }
-
+  
         .linkOuter:focus {
           box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
         }
-
+  
         .linkOuter:hover {
           box-shadow: rgba(45, 35, 66, 0.3) 0 4px 8px, rgba(45, 35, 66, 0.2) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
           transform: translateY(-2px);
         }
-
+  
         .linkOuter:active {
           box-shadow: #D6D6E7 0 3px 7px inset;
           transform: translateY(2px);
         }
-
+  
         .linkInner {
           height: 100%;
           padding: 0.3rem;
-
+  
           a {
             align-items: center;
             //separates logo from typography
@@ -99,12 +95,12 @@
             //logo up, typo down.
             display: flex;
             flex-direction: column;
-
+  
             img {
               max-height: 35px;
               max-width: 60px;
             }
-
+  
             .typography {
               margin-top: auto;
               margin-bottom: auto;
@@ -114,52 +110,45 @@
       }
     }
   }
-}
-
 
 /*Mobile*/
 @media only screen and (max-width: 767px) {
-  #cardsContainer {
-    width: 90%;
-    padding: 0px;
+  .Card {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 6px 6px 0 0;
+    
 
-    .Card {
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    .cardPicture {
       border-radius: 6px 6px 0 0;
+    }
 
-      .cardPicture {
-        border-radius: 6px 6px 0 0;
+    .cardTxt {
+      text-align: center;
+      padding: 0;
+
+      h2 {
+        margin-top: 0.5rem;
       }
 
-      .cardTxt {
-        text-align: center;
-        padding: 0;
+      hr {
+        margin: 0.5rem 0px;
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-        h2 {
-          margin-top: 0.5rem;
+      ul {
+        padding: 0.5rem 1rem;
+
+        li {
+          text-align: left;
+          width: 50%;
         }
+      }
 
-        hr {
-          margin: 0.5rem 0px;
-          width: 85%;
-          margin-left: auto;
-          margin-right: auto;
-        }
-
-        ul {
-          padding: 0.5rem 1rem;
-
-          li {
-            text-align: left;
-            width: 50%;
-          }
-        }
-
-        .cardLinksContainer {
-          .row {
-            justify-content: space-evenly;
-          }
-
+      .cardLinksContainer {
+        .row {
+          justify-content: space-evenly;
           .linkOuter {
             margin: 0.5rem 0px 1rem 0px;
           }
@@ -171,58 +160,74 @@
 
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 768px) {
-  #cardsContainer {
-    padding: 3rem 2rem;
-    width: 90%;
-    border-radius: 5px;
-    background: radial-gradient(circle at 50% 53%, rgba(251, 249, 246, 1) 0%, rgba(252, 249, 247, 1) 0%, rgba(243, 242, 241, 1) 100%);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
+  .cardOuterBackground{
+    padding: 3rem 0px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    &:nth-child(odd){
+      background-color:#f3f0ed;
+    }
+    &:nth-child(even){
+      background-color:#fcf9f7;
+    }
     .Card {
       max-width: 100%;
-      &:hover{
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-      }
+      
       .cardPicture {
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
         display: flex;
         align-items: center;
         background-color: #edede9;
+        background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23aaaaaa' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+        img{
+          border-top-left-radius: 4px;
+          border-bottom-left-radius: 4px;
+        }
       }
-
+  
       .cardTxt {
         border: 1px solid #e5e5e5;
         border-left: none;
-        
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23aaaaaa' fill-opacity='0.17' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+        box-shadow: rgba(50, 50, 93, 0.25) 2px 2px 5px -1px, rgba(0, 0, 0, 0.3) 2px 1px 3px -1px;
         h2 {
           margin-top: 1.5rem;
         }
-
+  
         ul {
           padding: 0;
-
+  
           li {
             width: 50%;
           }
         }
       }
-
+  
       .cardLinksContainer {
         margin-bottom: 0.7rem;
-
-        .cardLinkCol {
-          padding: 0px 1.4rem;
+        .row{
+          justify-content: flex-start!important;
+          .cardLinkCol {
+            padding: 0px 1.4rem;
+          }
         }
       }
     }
+  }
+  .cardSeparator{
+    border-top: 1px solid lightgrey;
+    position: absolute;
+    width: 75%;
+    bottom: 0;
   }
 }
 
 /*Tablet*/
 @media only screen and (min-width: 576px) and (max-width: 767px) {
-  #cardsContainer .Card .cardTxt ul {
-    // takes characteristics to the center of the card
-    padding: 0.5rem 7rem;
-  }
+  .Card .cardTxt ul {
+      // takes characteristics to the center of the card
+      padding: 0.5rem 7rem;
+    }
 }
