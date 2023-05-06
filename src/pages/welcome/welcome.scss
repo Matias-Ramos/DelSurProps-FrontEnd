@@ -7,69 +7,80 @@
     height: 100vh;
     position: relative;
     background: linear-gradient(90deg, hsla(17, 83%, 54%, 1) 0%, hsla(31, 94%, 61%, 1) 100%);
-    color:white;
+    color: white;
+
     #brand {
-        z-index:2;
+        z-index: 2;
         font-family: 'Libre Franklin', sans-serif;
         position: absolute;
         margin-left: 10px;
         margin-top: 10px;
     }
 
-    #welcomeTxt {
-        z-index:2;
+    #welcomeTxtOuter {
+        z-index: 2;
         font-size: 2rem;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
         margin-top: auto;
         margin-bottom: auto;
 
-        span:first-child {
-            font-family: 'Noto Serif', serif;
-            margin-bottom: 1.5rem;
-            font-size: 2.5rem;
-        }
-        
-        #preg{
-            margin-bottom:0.3rem;
-        }
+        #welcomeTxtInner {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
 
-        #preg,
-        button {
-            font-family: 'Tajawal', sans-serif;
-        }
-
-        .MuiButtonGroup-root {
-            justify-content: center;
-            a button{font-size:1.2rem;}
-
-            a:first-child {
-                //buy
-                button{
-                    box-shadow: -1px -1px 20px -7px rgba(191, 219, 247, 0.79) inset;
-                }
+            span:first-child {
+                font-family: 'Noto Serif', serif;
+                margin-bottom: 1.5rem;
+                font-size: 2.5rem;
             }
 
-            a:nth-child(2) {
-                //rent
-                button{
-                    box-shadow: -1px -1px 20px -7px rgba(249, 229, 199, 0.79) inset;
-                }
-
+            #preg {
+                margin-bottom: 0.3rem;
             }
 
-            a:last-child {
-                //entrepreneurship
-                button{
-                    box-shadow: -1px -1px 20px -7px rgba(208, 237, 235, 0.79) inset;
+            #preg,
+            button {
+                font-family: 'Tajawal', sans-serif;
+            }
+
+            .MuiButtonGroup-root {
+                justify-content: center;
+
+                a button {
+                    font-size: 1.2rem;
+                }
+
+                a:first-child {
+
+                    //buy
+                    button {
+                        box-shadow: -1px -1px 20px -7px rgba(191, 219, 247, 0.79) inset;
+                    }
+                }
+
+                a:nth-child(2) {
+
+                    //rent
+                    button {
+                        box-shadow: -1px -1px 20px -7px rgba(249, 229, 199, 0.79) inset;
+                    }
+
+                }
+
+                a:last-child {
+
+                    //entrepreneurship
+                    button {
+                        box-shadow: -1px -1px 20px -7px rgba(208, 237, 235, 0.79) inset;
+                    }
                 }
             }
         }
     }
 }
+
 /*Mobile (not small phones)*/
-@media only screen and (min-width: 370px) and (max-width: 768px){ 
+@media only screen and (min-width: 370px) and (max-width: 768px) {
     #welcome .MuiButtonGroup-root {
         a:nth-child(2) {
             //rent
@@ -77,23 +88,27 @@
         }
     }
 }
+
 /*Mobile*/
 @media only screen and (max-width: 768px) {
     .MuiButtonGroup-root {
-        a button{
+        a button {
             border-radius: 20px;
         }
     }
 }
+
 /*Notebook and desktop*/
 @media only screen and (min-width: 768px) {
-    #welcomeTxt{
-        padding:1rem;
-        background: rgba( 255, 255, 255, 0.25 );
-        backdrop-filter: blur( 4px );
-        border:1px solid rgba( 255, 255, 255, 0.18 );
-        #preg, span:nth-child(1){
-            text-shadow:0px 1px 1px black;
+    #welcomeTxtOuter {
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+
+        #preg,
+        span:nth-child(1) {
+            text-shadow: 0px 1px 1px black;
         }
     }
 }

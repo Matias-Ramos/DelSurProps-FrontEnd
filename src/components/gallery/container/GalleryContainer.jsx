@@ -6,7 +6,7 @@ const GalleryContainer = () => {
       <div id="cardsContainer">
         {cards.map( building => 
         <div key={building.id} className="cardOuterBackground">
-          <Card  building={...building} />
+          <Card  building={building} />
           <div className="cardSeparator"></div>
           </div>  
         )}

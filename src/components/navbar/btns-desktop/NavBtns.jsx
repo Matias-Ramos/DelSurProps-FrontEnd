@@ -9,7 +9,9 @@ import { colorModifier, defaultDotStatuses } from "./reducerUtils.js";
 import { createTheme, ThemeProvider } from '@mui/material';
 import customTheme from './btnsTheme.js'
 
-const NavBtns = ({URLpath}) => {
+
+const NavBtns = (props) => {
+  const {URLpath} = props || {};
 
   /****************************** */
   // Functions 
