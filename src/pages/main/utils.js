@@ -17,3 +17,15 @@ export const getBackground = (URLpath) => {
       break;
   }
 };
+
+export const mainVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity:1,
+    transition:{
+      duration: 0.8
+    }
+  },
+};

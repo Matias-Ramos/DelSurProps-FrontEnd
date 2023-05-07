@@ -9,7 +9,7 @@ const welcomeVariant = {
     transition: {
       staggerChildren: 0.2,
       type: "tween",
-      duration: 0.5,
+      duration: 1.5,
     },
   },
 };
