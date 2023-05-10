@@ -1,7 +1,7 @@
 // Components
 import MuiBtn from "@mui/material/Button";
 import { Link } from "react-router-dom";
-
+import { useLocation } from "react-router-dom";
 const Button = ({
   btnSharedProps: { URLpath, handleClick, handleHover },
   thisPath,
@@ -11,10 +11,13 @@ const Button = ({
   colorStatus,
   btnTxt,
 }) => {
+  const location = useLocation().pathname; //used by Main.jsx
+
   const getVariant = (thisPath) =>
     thisPath === URLpath ? contained : outlined;
   return (
-    <Link to={thisPath}>
+    <Link to={{pathname: thisPath}} state={{ prevPath: location}}>
+      
       <MuiBtn
         variant={getVariant(thisPath)}
         onClick={() => handleClick(colorName)}

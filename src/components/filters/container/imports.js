@@ -10,8 +10,12 @@ import { useContext, useReducer, useMemo, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { queryCtxt } from "../../../context/QyParamsCtxt.jsx";
 import { filterModifier, defaultFilterValues } from "./reducerUtils.js";
+import useMediaQuery from '@mui/material/useMediaQuery';
 // Bts
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+// Animation
+import { motion } from "framer-motion";
+import getFiltersVariant from "./variants.js";
 
 export {
   // Components
@@ -27,6 +31,7 @@ export {
   useMemo,
   useEffect,
   useLocation,
+  useMediaQuery,
   // --ctxt
   queryCtxt,
   // -- reducer
@@ -37,4 +42,7 @@ export {
   Nav,
   Navbar,
   NavDropdown,
+  // Animation
+  motion,
+  getFiltersVariant,
 };

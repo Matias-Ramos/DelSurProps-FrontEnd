@@ -5,30 +5,29 @@ import GalleryContainer from "../../components/gallery/container/GalleryContaine
 import { QyParamsCtxtProvider } from "../../context/QyParamsCtxt.jsx";
 import Attributions from "../../components/footer/Attributions.jsx";
 // Hooks
-import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-// Utils
-import { getBackground, mainVariant } from "./utils.js";
+import { useLocation } from "react-router-dom";
 // Animation
-import { motion, useCycle } from "framer-motion";
+import { motion } from "framer-motion";
+import { mainVariant } from "./utils.js";
+// Utils
+import { getBackground } from "./utils.js";
 
 const Main = () => {
-  const URLpath = useLocation().pathname;
-  const [animation, cycleAnimation] = useCycle("visible", {});
-  const navigate = useNavigate();
-
-
-  // useEffect(() => cycleAnimation(), []);
-  useEffect(() => `navigate ${navigate.location.state?.previousPath}`, [navigate]);
+  const location = useLocation();
+  const { pathname: URLpath } = location;
   
   return (
-    <motion.div variants={mainVariant} initial="hidden" animate={animation}>
+    <motion.div
+      variants={mainVariant}
+      initial={location.state?.prevPath === "/" ? "hidden" : false}
+      animate={location.state?.prevPath === "/" ? "visible" : false}
+    >
       <QyParamsCtxtProvider>
         <header>
           <Navbar />
         </header>
         <main style={{ backgroundImage: `url(${getBackground(URLpath)})` }}>
-          <FiltersContainer />
+          <FiltersContainer previousURL={location.state?.prevPath} />
           <GalleryContainer />
         </main>
       </QyParamsCtxtProvider>

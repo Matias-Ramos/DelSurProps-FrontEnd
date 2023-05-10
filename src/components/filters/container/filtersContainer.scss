@@ -8,11 +8,16 @@
     outline: inherit;
     margin-left: 1rem;
 }
-
+#filtersMotionDiv{
+    display: flex;
+}
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 992px) {
     .navbar{
         z-index: 2;
+        #filtersMotionDiv{
+            flex-direction: row;
+        }
     }
     .dropdown-item-text {
         padding: 0.5rem 1rem;
@@ -28,5 +33,11 @@
             }
 
         }
+    }
+}
+/*Mobile*/
+@media only screen and (max-width: 992px) {
+    #filtersMotionDiv{
+        flex-direction: column;
     }
 }
