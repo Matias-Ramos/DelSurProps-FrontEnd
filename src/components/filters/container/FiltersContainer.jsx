@@ -23,6 +23,7 @@ import {
   Nav,
   Navbar,
   NavDropdown,
+  Dropdown,
   // Animation
   motion,
   getFiltersVariant,
@@ -156,6 +157,12 @@ const FiltersContainer = ({ previousURL }) => {
             <Nav navbarScroll>
               {/* ******** */}
               {/* Location */}
+              {/* <Dropdown
+                filtersVariant={filtersVariant}
+                title="Ubicación"
+                filterComponent={()=><LocationFilter />}
+                filtersProps={filtersProps}
+              /> */}
               <motion.div variants={filtersVariant} style={alignCenter}>
                 <NavDropdown title="Ubicación" menuVariant="dark">
                   <NavDropdown.ItemText>

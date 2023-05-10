@@ -5,6 +5,7 @@ import SlidersContainer from "../rooms/SlidersContainer.jsx";
 import BuildStatusFilter from "../buildStatus/BuildStatusFilter.jsx";
 import SurfaceFilterContainer from "../surface/SurfaceFilterContainer.jsx";
 import CleanBtn from "../../filters/buttons/CleanBtn.jsx";
+import Dropdown from "./Dropdown.jsx";
 // Hooks
 import { useContext, useReducer, useMemo, useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -25,6 +26,7 @@ export {
   BuildStatusFilter,
   SurfaceFilterContainer,
   CleanBtn,
+  Dropdown,
   // Hooks
   useContext,
   useReducer,
