@@ -10,7 +10,7 @@ import { useContext, useReducer, useMemo, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { queryCtxt } from "../../../context/QyParamsCtxt.jsx";
 import { filterModifier, defaultFilterValues } from "./reducerUtils.js";
-import useMediaQuery from '@mui/material/useMediaQuery';
+import useMediaQuery from "@mui/material/useMediaQuery";
 // Bts
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 // Animation

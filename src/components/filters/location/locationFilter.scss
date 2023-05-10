@@ -1,21 +1,21 @@
 /*Mobile*/
 @media only screen and (max-width: 992px) {
-    #locationFilter {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+  #locationFilter {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 
-        .filterSubmClean {
-            margin-top: 0.7rem;
-        }
+    .filterSubmClean {
+      margin-top: 0.7rem;
     }
+  }
 }
 
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 992px) {
-    #locationFilter {
-        display: flex;
-        flex-direction: column;
-        width: 30vw;
-    }
+  #locationFilter {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+  }
 }

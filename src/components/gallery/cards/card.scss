@@ -1,122 +1,123 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Source+Sans+Pro:wght@300&family=Taviraj:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Heebo&family=Source+Sans+Pro:wght@300&family=Taviraj:wght@200&display=swap");
 
-  .Card {
-    background-color: rgba(0, 0, 0, 0); //all card transparent by default
-  
-    &:first-child {
-      margin-top: 0; // top margin (from the filters) is taken care of by the container
+.Card {
+  background-color: rgba(0, 0, 0, 0); //all card transparent by default
+
+  &:first-child {
+    margin-top: 0; // top margin (from the filters) is taken care of by the container
+  }
+
+  &:last-child {
+    margin-bottom: 0; // bottom margin (from the footer) is taken care of by the container
+  }
+
+  .cardPicture {
+    overflow: hidden;
+
+    img {
+      width: 100%;
     }
-  
-    &:last-child {
-      margin-bottom: 0; // bottom margin (from the footer) is taken care of by the container
+  }
+
+  .cardTxt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    h2 {
+      font-family: "Taviraj", serif;
     }
-  
-  
-    .cardPicture {
-      overflow: hidden;
-  
-      img {
-        width: 100%;
+
+    .cardPrice {
+      font-family: "Heebo", sans-serif;
+    }
+
+    .characteristicsIcon {
+      max-width: 25px;
+      margin-right: 5px;
+    }
+
+    //caracteristics (bedrooms, bathrooms,...)
+    ul {
+      margin: 0;
+
+      li {
+        display: inline-block;
+        font-family: "Source Sans Pro", sans-serif;
       }
     }
-  
-    .cardTxt {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background-color: #fff;
-      h2 {
-        font-family: 'Taviraj', serif;
+
+    .cardLinksContainer {
+      .linkOuter {
+        background-color: #f8f9fa;
+        appearance: none;
+        border-radius: 20px;
+        border-width: 0;
+        border-top: 1px solid #e9ecef;
+        box-shadow: rgba(45, 35, 66, 0.2) 0 2px 2px,
+          rgba(45, 35, 66, 0.15) 0 7px 10px -3px, #d6d6e7 0 -3px 0 inset;
+        box-sizing: border-box;
+        cursor: pointer;
+        height: 70px;
+        line-height: 1;
+        position: relative;
+        transition: box-shadow 0.15s, transform 0.15s;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        white-space: nowrap;
+        will-change: box-shadow, transform;
       }
-  
-      .cardPrice {
-        font-family: 'Heebo', sans-serif;
+
+      .linkOuter:focus {
+        box-shadow: #d6d6e7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+          rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
       }
-  
-      .characteristicsIcon {
-        max-width: 25px;
-        margin-right: 5px;
+
+      .linkOuter:hover {
+        box-shadow: rgba(45, 35, 66, 0.3) 0 4px 8px,
+          rgba(45, 35, 66, 0.2) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+        transform: translateY(-2px);
       }
-  
-      //caracteristics (bedrooms, bathrooms,...)
-      ul {
-        margin: 0;
-  
-        li {
-          display: inline-block;
-          font-family: 'Source Sans Pro', sans-serif;
-        }
+
+      .linkOuter:active {
+        box-shadow: #d6d6e7 0 3px 7px inset;
+        transform: translateY(2px);
       }
-  
-      .cardLinksContainer {
-        .linkOuter {
-          background-color: #f8f9fa;
-          appearance: none;
-          border-radius: 20px;
-          border-width: 0;
-          border-top: 1px solid #e9ecef;
-          box-shadow: rgba(45, 35, 66, 0.2) 0 2px 2px, rgba(45, 35, 66, 0.15) 0 7px 10px -3px, #D6D6E7 0 -3px 0 inset;
-          box-sizing: border-box;
-          cursor: pointer;
-          height: 70px;
-          line-height: 1;
-          position: relative;
-          transition: box-shadow .15s, transform .15s;
-          user-select: none;
-          -webkit-user-select: none;
-          touch-action: manipulation;
-          white-space: nowrap;
-          will-change: box-shadow, transform;
-        }
-  
-        .linkOuter:focus {
-          box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-        }
-  
-        .linkOuter:hover {
-          box-shadow: rgba(45, 35, 66, 0.3) 0 4px 8px, rgba(45, 35, 66, 0.2) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-          transform: translateY(-2px);
-        }
-  
-        .linkOuter:active {
-          box-shadow: #D6D6E7 0 3px 7px inset;
-          transform: translateY(2px);
-        }
-  
-        .linkInner {
+
+      .linkInner {
+        height: 100%;
+        padding: 0.3rem;
+
+        a {
+          align-items: center;
+          //separates logo from typography
           height: 100%;
-          padding: 0.3rem;
-  
-          a {
-            align-items: center;
-            //separates logo from typography
-            height: 100%;
-            justify-content: space-evenly;
-            //logo up, typo down.
-            display: flex;
-            flex-direction: column;
-  
-            img {
-              max-height: 35px;
-              max-width: 60px;
-            }
-  
-            .typography {
-              margin-top: auto;
-              margin-bottom: auto;
-            }
+          justify-content: space-evenly;
+          //logo up, typo down.
+          display: flex;
+          flex-direction: column;
+
+          img {
+            max-height: 35px;
+            max-width: 60px;
+          }
+
+          .typography {
+            margin-top: auto;
+            margin-bottom: auto;
           }
         }
       }
     }
   }
+}
 
 /*Mobile*/
 @media only screen and (max-width: 767px) {
   .Card {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 6px 6px 0 0;
-    
 
     .cardPicture {
       border-radius: 6px 6px 0 0;
@@ -160,55 +161,59 @@
 
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 768px) {
-  .cardOuterBackground{
-    padding: 3rem 0px;
+  .cardOuterBackground {
+    padding: 2rem;
+    margin-bottom: 4rem;
     position: relative;
     display: flex;
     justify-content: center;
-    &:nth-child(odd){
-      background-color:#f3f0ed;
-    }
-    &:nth-child(even){
-      background-color:#fcf9f7;
-    }
+    background: rgba(50, 50, 50, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+
     .Card {
-      max-width: 100%;
-      
+      margin: 0;
+      box-shadow: rgb(50, 50, 50) 0px 16px 14px -10px;
       .cardPicture {
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.8);
         display: flex;
         align-items: center;
         background-color: #edede9;
         background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23aaaaaa' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-        img{
+        img {
           border-top-left-radius: 4px;
           border-bottom-left-radius: 4px;
         }
       }
-  
+
       .cardTxt {
         border: 1px solid #e5e5e5;
         border-left: none;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23aaaaaa' fill-opacity='0.17' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
-        box-shadow: rgba(50, 50, 93, 0.25) 2px 2px 5px -1px, rgba(0, 0, 0, 0.3) 2px 1px 3px -1px;
+        box-shadow: rgba(50, 50, 93, 0.25) 2px 2px 5px -1px,
+          rgba(0, 0, 0, 0.3) 2px 1px 3px -1px;
+
         h2 {
           margin-top: 1.5rem;
         }
-  
+
         ul {
           padding: 0;
-  
+
           li {
             width: 50%;
           }
         }
       }
-  
+
       .cardLinksContainer {
         margin-bottom: 0.7rem;
-        .row{
-          justify-content: flex-start!important;
+        .row {
+          justify-content: flex-start !important;
           .cardLinkCol {
             padding: 0px 1.4rem;
           }
@@ -216,18 +221,12 @@
       }
     }
   }
-  .cardSeparator{
-    border-top: 1px solid lightgrey;
-    position: absolute;
-    width: 75%;
-    bottom: 0;
-  }
 }
 
 /*Tablet*/
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .Card .cardTxt ul {
-      // takes characteristics to the center of the card
-      padding: 0.5rem 7rem;
-    }
+    // takes characteristics to the center of the card
+    padding: 0.5rem 7rem;
+  }
 }

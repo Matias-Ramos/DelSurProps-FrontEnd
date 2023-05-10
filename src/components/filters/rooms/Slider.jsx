@@ -14,11 +14,13 @@ export default function Slider({
   props: { handleChange, room, reducerVarName, roomFilter, btsBreakpoints },
 }) {
   /****************************** */
-  // Functions & variables 
+  // Functions & variables
 
   const theme = createTheme(btsBreakpoints); // setting mui w/ same breakpoints as bts
   const windowWidth = useRef(window.innerWidth);
-  const Input = styled(MuiInput)`width: 30px;`;
+  const Input = styled(MuiInput)`
+    width: 30px;
+  `;
   const valuetext = (value) => `${value} ${room}`; // slider accessibility
   const handleBlur = () => {
     if (roomFilter.init < 0) {
@@ -60,7 +62,7 @@ export default function Slider({
   };
 
   /****************************** */
-  // Rendering 
+  // Rendering
 
   return (
     <div className="sliderContainer">
@@ -71,7 +73,7 @@ export default function Slider({
             gutterBottom
             sx={{
               textAlign: "center",
-              marginBottom: "2rem"
+              marginBottom: "2rem",
             }}
           >
             {room}
@@ -80,7 +82,7 @@ export default function Slider({
             <Grid item sx={{ display: { xs: "none", md: "block" } }}>
               <span className="minMaxSpan">Min:{"  "}</span>
               <Input
-                sx={{color:"#cccccc"}}
+                sx={{ color: "#cccccc" }}
                 value={parseInt(roomFilter.init)}
                 size="small"
                 onChange={(event) => handleChgInput(event, "init")}
@@ -120,7 +122,7 @@ export default function Slider({
             <Grid item sx={{ display: { xs: "none", md: "block" } }}>
               <span className="minMaxSpan">Max:{"  "}</span>
               <Input
-                sx={{color:"#cccccc"}}
+                sx={{ color: "#cccccc" }}
                 value={parseInt(roomFilter.limit)}
                 size="small"
                 onChange={(event) => handleChgInput(event, "limit")}

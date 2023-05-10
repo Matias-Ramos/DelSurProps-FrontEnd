@@ -1,16 +1,10 @@
 import TextField from "@mui/material/TextField";
 import ConfirmBtn from "../../filters/buttons/ConfirmBtn.jsx";
 const LocationFilter = ({
-  props:{
-    updateQyParams,
-    deleteQyParam,
-    dispatch,
-    filters,
-  }
+  props: { updateQyParams, deleteQyParam, dispatch, filters },
 }) => {
-
   /****************************** */
-  // Functions 
+  // Functions
 
   const chgReducerLocation = (newLocation) =>
     dispatch({
@@ -28,20 +22,24 @@ const LocationFilter = ({
   };
 
   /****************************** */
-  // Rendering 
-  
+  // Rendering
+
   return (
-    <div id="locationFilter" >
+    <div id="locationFilter">
       <TextField
         placeholder="Barrio, ciudad..."
         value={filters.location || ""}
         variant="outlined"
         onChange={handleChange}
-        sx={{ input: { color: '#cccccc','&::placeholder':{color:'#bbbbbb'} }  }}
+        sx={{
+          input: { color: "#cccccc", "&::placeholder": { color: "#bbbbbb" } },
+        }}
       />
       <div className="filterSubmClean">
         <ConfirmBtn handleSubmit={handleSubmit} />
-        <button className="cleanBtn" onClick={handleClean}>Limpiar</button>
+        <button className="cleanBtn" onClick={handleClean}>
+          Limpiar
+        </button>
       </div>
     </div>
   );

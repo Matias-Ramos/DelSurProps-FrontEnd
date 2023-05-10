@@ -1,4 +1,4 @@
-import { useRouteError } from "react-router-dom"
+import { useRouteError } from "react-router-dom";
 const RouteError = () => {
   const error = useRouteError();
   return (
@@ -7,7 +7,7 @@ const RouteError = () => {
       <p>{error.statusText && error.statusText}</p>
       <p>{error.message && error.message}</p>
     </div>
-  )
-}
+  );
+};
 
-export default RouteError
+export default RouteError;

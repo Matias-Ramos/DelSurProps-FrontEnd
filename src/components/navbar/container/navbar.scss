@@ -1,50 +1,49 @@
-
 #topBar {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 3rem;
-    background-color: #fdfdff;
-    #brand {
-        font-family: 'Libre Franklin', sans-serif;
-        z-index: 2;
-        background-color: white;
-        margin-right: 1.5rem;
-    }
-  
-    #hr {
-        position: absolute;
-        width: 100%;
-        border: 1px solid #6c757d;
-        border-top: none;
-        z-index: 1;
-        top: 50%;
-    }
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  background-color: #fdfdff;
+  #brand {
+    font-family: "Libre Franklin", sans-serif;
+    z-index: 2;
+    background-color: white;
+    margin-right: 1.5rem;
+  }
+
+  #hr {
+    position: absolute;
+    width: 100%;
+    border: 1px solid #6c757d;
+    border-top: none;
+    z-index: 1;
+    top: 50%;
+  }
 }
 .circleIcon {
-    // do not move inside #topBar else Welcome lacks of it.
-    max-width: 8px;
-    margin-right: 5px;
+  // do not move inside #topBar else Welcome lacks of it.
+  max-width: 8px;
+  margin-right: 5px;
 }
 
 /*Netbooks, Notebooks and Desktops*/
 .MuiButtonGroup-root {
-    margin-left: 0.5rem;
-    z-index: 2;
+  margin-left: 0.5rem;
+  z-index: 2;
 }
 
 /*Mobile*/
 @media only screen and (max-width: 768px) {
-    header {
-        padding: 0.6rem 0rem;
-        height: 100%;
-    }
+  header {
+    padding: 0.6rem 0rem;
+    height: 100%;
+  }
 }
 
 /*Tablets*/
 @media only screen and (min-width: 576px) and (max-width: 768px) {
-    header {
-        justify-content: space-around;
-    }
+  header {
+    justify-content: space-around;
+  }
 }

@@ -10,7 +10,7 @@ function QyParamsCtxtProvider({ children }) {
     searchQyParams.set(name, value);
     setSearchParams(searchQyParams);
   }
-  
+
   const deleteQyParams = () => {
     // async else only 1 param is removed at a time due to re-rendering.
     async function returnEmptySearchParams() {
@@ -21,7 +21,6 @@ function QyParamsCtxtProvider({ children }) {
     }
     setSearchParams(returnEmptySearchParams());
   };
-  
 
   const deleteQyParam = (qyParamName) => {
     searchQyParams.delete(qyParamName);

@@ -15,7 +15,7 @@ import { getBackground } from "./utils.js";
 const Main = () => {
   const location = useLocation();
   const { pathname: URLpath } = location;
-  
+
   return (
     <motion.div
       variants={mainVariant}

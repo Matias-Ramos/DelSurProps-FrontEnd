@@ -1,43 +1,42 @@
 .cleanBtn {
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
-    margin-left: 1rem;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  margin-left: 1rem;
 }
-#filtersMotionDiv{
-    display: flex;
+#filtersMotionDiv {
+  display: flex;
 }
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 992px) {
-    .navbar{
-        z-index: 2;
-        #filtersMotionDiv{
-            flex-direction: row;
-        }
+  .navbar {
+    z-index: 2;
+    #filtersMotionDiv {
+      flex-direction: row;
     }
-    .dropdown-item-text {
-        padding: 0.5rem 1rem;
+  }
+  .dropdown-item-text {
+    padding: 0.5rem 1rem;
 
-        .filterSubmClean {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            margin-top: 1rem;
+    .filterSubmClean {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: 1rem;
 
-            span {
-                margin-left: 1rem;
-            }
-
-        }
+      span {
+        margin-left: 1rem;
+      }
     }
+  }
 }
 /*Mobile*/
 @media only screen and (max-width: 992px) {
-    #filtersMotionDiv{
-        flex-direction: column;
-    }
+  #filtersMotionDiv {
+    flex-direction: column;
+  }
 }

@@ -57,8 +57,10 @@ const CardTxt = ({
             alt="ícono garage"
             className="characteristicsIcon"
           />
-          {garage} 
-          {parseInt(garage) > 1 || parseInt(garage) === 0 ? " Garages" : " Garage"}
+          {garage}
+          {parseInt(garage) > 1 || parseInt(garage) === 0
+            ? " Garages"
+            : " Garage"}
         </li>
       </ul>
     </>

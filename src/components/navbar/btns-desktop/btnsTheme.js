@@ -54,7 +54,7 @@ const customTheme = {
         /******************************* */
 
         containedOrange: {
-          backgroundColor: colors.backgroundColor.orange.contained.defect, 
+          backgroundColor: colors.backgroundColor.orange.contained.defect,
           "&:hover": {
             backgroundColor: colors.backgroundColor.orange.contained.hover,
           },
@@ -62,16 +62,16 @@ const customTheme = {
         outlinedOrange: {
           backgroundColor: colors.backgroundColor.orange.outlined.defect,
           "&:hover": {
-            backgroundColor: colors.backgroundColor.orange.outlined.hover, 
+            backgroundColor: colors.backgroundColor.orange.outlined.hover,
           },
-          textTransform:'none',
+          textTransform: "none",
         },
 
         /******************************* */
         /******************************* */
 
         containedBlue: {
-          backgroundColor: colors.backgroundColor.blue.contained.defect, 
+          backgroundColor: colors.backgroundColor.blue.contained.defect,
           "&:hover": {
             backgroundColor: colors.backgroundColor.blue.contained.hover,
           },
@@ -79,9 +79,9 @@ const customTheme = {
         outlinedBlue: {
           backgroundColor: colors.backgroundColor.blue.outlined.defect,
           "&:hover": {
-            backgroundColor: colors.backgroundColor.blue.outlined.hover, 
+            backgroundColor: colors.backgroundColor.blue.outlined.hover,
           },
-          textTransform:'none',
+          textTransform: "none",
         },
 
         /******************************* */
@@ -98,7 +98,7 @@ const customTheme = {
           "&:hover": {
             backgroundColor: colors.backgroundColor.turquoise.outlined.hover,
           },
-          textTransform:'none',
+          textTransform: "none",
         },
       },
     },

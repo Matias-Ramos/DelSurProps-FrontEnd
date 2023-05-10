@@ -3,9 +3,9 @@ import SurfaceFilter from "./SurfaceFilter.jsx";
 
 const SurfaceFilterContainer = ({
   props: { updateQyParams, deleteQyParam, dispatch, filters },
-}) => { 
+}) => {
   /****************************** */
-  // Functions 
+  // Functions
 
   const chgReducerSurface = (newSurface, surfaceType, edge) => {
     dispatch({
@@ -46,8 +46,8 @@ const SurfaceFilterContainer = ({
   };
 
   /****************************** */
-  // Rendering 
-  
+  // Rendering
+
   return (
     <div id="surfaceFilterContainer">
       <SurfaceFilter

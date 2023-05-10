@@ -1,26 +1,21 @@
-import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
+import { FormGroup, FormControlLabel, Checkbox } from "@mui/material";
 import ConfirmBtn from "./ConfirmBtn.jsx"; // not using default ConfitmBtn.jsx as the other components
 
 export default function BuildStatusFilter({
-  props:{
-    updateQyParams,
-    dispatch,
-    filters,
-  }
+  props: { updateQyParams, dispatch, filters },
 }) {
-
   /****************************** */
-  // Functions 
+  // Functions
 
   const chgReducerBuildingSt = (status, isChecked) =>
     dispatch({
       type: "buildingStatusChgd",
-      status:status,
+      status: status,
       isChecked: isChecked,
     });
   const handleChange = (status, isChecked) => {
     chgReducerBuildingSt(status, isChecked);
-  }
+  };
   const handleSubmit = () => {
     const query = Object.keys(filters.buildingStatus)
       .filter((key) => filters.buildingStatus[key]) // filters boolean true statuses
@@ -29,7 +24,7 @@ export default function BuildStatusFilter({
   };
 
   /****************************** */
-  // Rendering 
+  // Rendering
 
   return (
     <div id="buildStatusContainer">
@@ -51,7 +46,10 @@ export default function BuildStatusFilter({
           label="Pre-venta"
         />
       </FormGroup>
-      <ConfirmBtn handleSubmit={handleSubmit} filters={filters.buildingStatus}/>
+      <ConfirmBtn
+        handleSubmit={handleSubmit}
+        filters={filters.buildingStatus}
+      />
     </div>
   );
 }

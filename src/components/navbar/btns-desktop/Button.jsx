@@ -16,8 +16,7 @@ const Button = ({
   const getVariant = (thisPath) =>
     thisPath === URLpath ? contained : outlined;
   return (
-    <Link to={{pathname: thisPath}} state={{ prevPath: location}}>
-      
+    <Link to={{ pathname: thisPath }} state={{ prevPath: location }}>
       <MuiBtn
         variant={getVariant(thisPath)}
         onClick={() => handleClick(colorName)}

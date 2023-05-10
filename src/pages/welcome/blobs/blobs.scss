@@ -1,27 +1,27 @@
 #blobContainer {
-    width: 100vw;
-    height: 100vh;
-    display: block;
-    position: absolute;
-    z-index: 1;
-    overflow: hidden;
-  }
-  #blobSvg1 {
-    position: absolute;
-    top: 0px;
-    height: 120px;
-    right: 30%;
-  }
-  #blobSvg2 {
-    position: absolute;
-    bottom: -30px;
-    left:-70px;
-    max-height: 230px;
-  }
-  #blobSvg3 {
-    position: absolute;
-    top: -250px;
-    right: -10px;
-    height: 600px;
-    width:500px;
-  }
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  position: absolute;
+  z-index: 1;
+  overflow: hidden;
+}
+#blobSvg1 {
+  position: absolute;
+  top: 0px;
+  height: 120px;
+  right: 30%;
+}
+#blobSvg2 {
+  position: absolute;
+  bottom: -30px;
+  left: -70px;
+  max-height: 230px;
+}
+#blobSvg3 {
+  position: absolute;
+  top: -250px;
+  right: -10px;
+  height: 600px;
+  width: 500px;
+}

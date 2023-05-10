@@ -1,6 +1,6 @@
 import { TextField, InputAdornment } from "@mui/material";
-const customWhite="#cccccc"
-const customGrey="#7f7f7f"
+const customWhite = "#cccccc";
+const customGrey = "#7f7f7f";
 const SurfaceFilter = ({
   surfaceTypeEsp,
   surfaceType,

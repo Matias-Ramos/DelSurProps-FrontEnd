@@ -1,132 +1,132 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@1,700&family=Tajawal:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@1,700&family=Tajawal:wght@300&display=swap");
 
 #welcome {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    position: relative;
-    background: linear-gradient(90deg, hsla(17, 83%, 54%, 1) 0%, hsla(31, 94%, 61%, 1) 100%);
-    color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    hsla(17, 83%, 54%, 1) 0%,
+    hsla(31, 94%, 61%, 1) 100%
+  );
+  color: white;
+  z-index: 2;
+
+  #brand {
     z-index: 2;
+    font-family: "Libre Franklin", sans-serif;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
 
-    #brand {
-        z-index: 2;
-        font-family: 'Libre Franklin', sans-serif;
-        position: absolute;
-        margin-left: 10px;
-        margin-top: 10px;
-    }
+  #welcomeTxtOuter {
+    z-index: 2;
+    font-size: 2rem;
+    margin-top: auto;
+    margin-bottom: auto;
 
-    #welcomeTxtOuter {
-        z-index: 2;
-        font-size: 2rem;
-        margin-top: auto;
-        margin-bottom: auto;
+    #welcomeTxtInner {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
 
-        #welcomeTxtInner {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
+      span:first-child {
+        font-family: "Noto Serif", serif;
+        margin-bottom: 1.5rem;
+        font-size: 2.5rem;
+      }
 
-            span:first-child {
-                font-family: 'Noto Serif', serif;
-                margin-bottom: 1.5rem;
-                font-size: 2.5rem;
-            }
+      #preg {
+        margin-bottom: 0.3rem;
+      }
 
-            #preg {
-                margin-bottom: 0.3rem;
-            }
+      #preg,
+      button {
+        font-family: "Tajawal", sans-serif;
+      }
 
-            #preg,
-            button {
-                font-family: 'Tajawal', sans-serif;
-            }
+      .MuiButtonGroup-root {
+        justify-content: center;
 
-            .MuiButtonGroup-root {
-                justify-content: center;
-
-                a button {
-                    font-size: 1.2rem;
-                }
-
-                a:first-child {
-
-                    //buy
-                    button {
-                        box-shadow: -1px -1px 20px -7px rgba(191, 219, 247, 0.79) inset;
-                    }
-                }
-
-                a:nth-child(2) {
-
-                    //rent
-                    button {
-                        box-shadow: -1px -1px 20px -7px rgba(249, 229, 199, 0.79) inset;
-                    }
-
-                }
-
-                a:last-child {
-
-                    //entrepreneurship
-                    button {
-                        box-shadow: -1px -1px 20px -7px rgba(208, 237, 235, 0.79) inset;
-                    }
-                }
-            }
+        a button {
+          font-size: 1.2rem;
         }
+
+        a:first-child {
+          //buy
+          button {
+            box-shadow: -1px -1px 20px -7px rgba(191, 219, 247, 0.79) inset;
+          }
+        }
+
+        a:nth-child(2) {
+          //rent
+          button {
+            box-shadow: -1px -1px 20px -7px rgba(249, 229, 199, 0.79) inset;
+          }
+        }
+
+        a:last-child {
+          //entrepreneurship
+          button {
+            box-shadow: -1px -1px 20px -7px rgba(208, 237, 235, 0.79) inset;
+          }
+        }
+      }
     }
+  }
 }
 
 #hiddenBackground {
-    z-index: 1;
-    &:before {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: #fffcf2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        content: "DelSurProps";
-        font-family: 'Libre Franklin', sans-serif;
-        color:#252422;
-        font-size: 3rem;
-    }
+  z-index: 1;
+  &:before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #fffcf2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: "DelSurProps";
+    font-family: "Libre Franklin", sans-serif;
+    color: #252422;
+    font-size: 3rem;
+  }
 }
 
 /*Mobile (not small phones)*/
 @media only screen and (min-width: 370px) and (max-width: 768px) {
-    #welcome .MuiButtonGroup-root {
-        a:nth-child(2) {
-            //rent
-            margin: 0px 0.5rem;
-        }
+  #welcome .MuiButtonGroup-root {
+    a:nth-child(2) {
+      //rent
+      margin: 0px 0.5rem;
     }
+  }
 }
 
 /*Mobile*/
 @media only screen and (max-width: 768px) {
-    .MuiButtonGroup-root {
-        a button {
-            border-radius: 20px;
-        }
+  .MuiButtonGroup-root {
+    a button {
+      border-radius: 20px;
     }
+  }
 }
 
 /*Notebook and desktop*/
 @media only screen and (min-width: 768px) {
-    #welcomeTxtOuter {
-        padding: 1rem;
-        background: rgba(255, 255, 255, 0.25);
-        backdrop-filter: blur(4px);
-        border: 1px solid rgba(255, 255, 255, 0.18);
+  #welcomeTxtOuter {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
 
-        #preg,
-        span:nth-child(1) {
-            text-shadow: 0px 1px 1px black;
-        }
+    #preg,
+    span:nth-child(1) {
+      text-shadow: 0px 1px 1px black;
     }
+  }
 }

@@ -1,42 +1,39 @@
-#cardsContainer {
-    margin: 1.5rem auto 0px auto;
-    border-radius: 6px;
-}
-
 /*Mobile*/
 @media only screen and (max-width: 767px) {
-    #cardsContainer{
-        width: 90%;
-        
-        .cardOuterBackground{
-            padding: 1rem;
-            margin-bottom: 4rem;
-            background: rgba( 0, 0, 0, 0.3 );
-            border-radius:6px;
-            &:last-child{
-                margin-bottom:0;
-            }
-        }
+  #cardsContainer {
+    width: 90%;
+    margin: 1.5rem auto 0px auto;
+
+    .cardOuterBackground {
+      padding: 1rem;
+      margin-bottom: 4rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 6px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
+  }
 }
 
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 768px) {
-    #cardsContainer {
-        padding: 0.2rem 0px; //allows border-radius to work
-        width: 90%;
-        border:1px solid black;
-        background: radial-gradient(circle at 50% 53%, rgba(251, 249, 246, 1) 0%, rgba(252, 249, 247, 1) 0%, rgba(243, 242, 241, 1) 100%);
-        box-shadow: rgba(0, 0, 0, 0.56) 0px 12px 25px 4px;
-        .row{
-            justify-content: center;
-        }
-        .cardOuterBackground{
-            &:last-child{
-                .cardSeparator{
-                    display:none;
-                }
-            }
-        }
+  #cardsContainer {
+    padding: 0.2rem 0px; //allows border-radius to work
+    width: 95%;
+    margin: 2.5rem auto 0px auto;
+
+    .row {
+      justify-content: center;
     }
+
+    .cardOuterBackground {
+      &:last-child {
+        .cardSeparator {
+          display: none;
+        }
+      }
+    }
+  }
 }

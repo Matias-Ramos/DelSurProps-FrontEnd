@@ -6,17 +6,19 @@ import Button from "./Button.jsx";
 // Reducer
 import { colorModifier, defaultDotStatuses } from "./reducerUtils.js";
 // Mui Styling
-import { createTheme, ThemeProvider } from '@mui/material';
-import customTheme from './btnsTheme.js'
-
+import { createTheme, ThemeProvider } from "@mui/material";
+import customTheme from "./btnsTheme.js";
 
 const NavBtns = (props) => {
-  const {URLpath} = props || {};
+  const { URLpath } = props || {};
 
   /****************************** */
-  // Functions 
-  const [colorStatuses, dispatch] = useReducer(colorModifier,defaultDotStatuses);
-  const theme = createTheme(customTheme)
+  // Functions
+  const [colorStatuses, dispatch] = useReducer(
+    colorModifier,
+    defaultDotStatuses
+  );
+  const theme = createTheme(customTheme);
   const windowWidth = useRef(window.innerWidth);
   function handleClick(color) {
     dispatch({
@@ -38,9 +40,9 @@ const NavBtns = (props) => {
       handleHover: handleHover,
     };
   });
-  
+
   /****************************** */
-  
+
   // chgs dot color based on URL path
   useEffect(() => {
     switch (URLpath) {

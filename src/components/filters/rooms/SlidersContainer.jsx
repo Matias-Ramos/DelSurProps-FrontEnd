@@ -7,9 +7,8 @@ import { Container, Row, Col } from "react-bootstrap";
 const SlidersContainer = ({
   props: { updateQyParams, deleteQyParam, filters, dispatch },
 }) => {
-  
   /****************************** */
-  // Functions & variables 
+  // Functions & variables
 
   const chgReducerRoom = (newRoomValue, dispatchRoom, edge, roomName) => {
     dispatch({
@@ -59,7 +58,7 @@ const SlidersContainer = ({
     },
   };
   /****************************** */
-  // Components creation 
+  // Components creation
 
   const sliderProps = useMemo(() => {
     const roomsNomenclature = [
@@ -93,13 +92,21 @@ const SlidersContainer = ({
     <>
       <Container fluid>
         <Row className="justify-content-around">
-          <Col xs={1} sm={1} className="d-md-none d-lg-none d-xl-none d-xxl-none p-0">
+          <Col
+            xs={1}
+            sm={1}
+            className="d-md-none d-lg-none d-xl-none d-xxl-none p-0"
+          >
             <EdgeIndicator edge={"Min"} />
           </Col>
           <Col xs={9} sm={9} md={12} lg={12} xl={12} xxl={12}>
             {sliderProps && Sliders()}
           </Col>
-          <Col xs={1} sm={1} className="d-md-none d-lg-none d-xl-none d-xxl-none p-0">
+          <Col
+            xs={1}
+            sm={1}
+            className="d-md-none d-lg-none d-xl-none d-xxl-none p-0"
+          >
             <EdgeIndicator edge={"Max"} />
           </Col>
         </Row>

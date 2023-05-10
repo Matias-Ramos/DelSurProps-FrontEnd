@@ -36,12 +36,12 @@ const defaultFilterValues = {
     covered: {
       init: null,
       limit: null,
-    }
-  }
-}
+    },
+  },
+};
 
 function filterModifier(currentFilters, actionObj) {
-  const updatedEdgeValues = (actionObj,currentFilters) => {
+  const updatedEdgeValues = (actionObj, currentFilters) => {
     let newEnv = {};
     // triggered by useEffect
     if (actionObj.edge) {
@@ -62,27 +62,29 @@ function filterModifier(currentFilters, actionObj) {
     return newEnv;
   };
   const updatedBuildingStatus = (actionObj) => {
-    let updatedStatus = {}
-    switch(actionObj.status){
-      case "pozo":{
-        updatedStatus = {pozo:actionObj.isChecked};
+    let updatedStatus = {};
+    switch (actionObj.status) {
+      case "pozo": {
+        updatedStatus = { pozo: actionObj.isChecked };
         break;
       }
-      case "pre_sale":{
-        updatedStatus = {pre_sale:actionObj.isChecked};
+      case "pre_sale": {
+        updatedStatus = { pre_sale: actionObj.isChecked };
         break;
       }
-      case "in_progress":{
-        updatedStatus = {in_progress:actionObj.isChecked};
+      case "in_progress": {
+        updatedStatus = { in_progress: actionObj.isChecked };
         break;
       }
-      default:{
-        console.error('error at reducerUtils.js when updating the buildStatus useReducer.');
+      default: {
+        console.error(
+          "error at reducerUtils.js when updating the buildStatus useReducer."
+        );
         break;
       }
     }
     return updatedStatus;
-  }
+  };
   switch (actionObj.type) {
     case "locationChgd": {
       return {
@@ -98,10 +100,10 @@ function filterModifier(currentFilters, actionObj) {
           ...(actionObj.edge === "init"
             ? { init: actionObj.newPrice }
             : { limit: actionObj.newPrice }),
-        }
+        },
       };
     }
-    case "surfaceChgd":{
+    case "surfaceChgd": {
       return {
         ...currentFilters,
         surface: {
@@ -119,7 +121,7 @@ function filterModifier(currentFilters, actionObj) {
       return {
         ...currentFilters,
         env: {
-          ...updatedEdgeValues(actionObj,currentFilters),
+          ...updatedEdgeValues(actionObj, currentFilters),
         },
       };
     }
@@ -127,7 +129,7 @@ function filterModifier(currentFilters, actionObj) {
       return {
         ...currentFilters,
         garage: {
-          ...updatedEdgeValues(actionObj,currentFilters),
+          ...updatedEdgeValues(actionObj, currentFilters),
         },
       };
     }
@@ -135,7 +137,7 @@ function filterModifier(currentFilters, actionObj) {
       return {
         ...currentFilters,
         bathroom: {
-          ...updatedEdgeValues(actionObj,currentFilters),
+          ...updatedEdgeValues(actionObj, currentFilters),
         },
       };
     }
@@ -143,7 +145,7 @@ function filterModifier(currentFilters, actionObj) {
       return {
         ...currentFilters,
         bedroom: {
-          ...updatedEdgeValues(actionObj,currentFilters),
+          ...updatedEdgeValues(actionObj, currentFilters),
         },
       };
     }
@@ -152,13 +154,13 @@ function filterModifier(currentFilters, actionObj) {
         ...currentFilters,
         buildingStatus: {
           ...currentFilters.buildingStatus,
-          ...updatedBuildingStatus(actionObj)
-        }
+          ...updatedBuildingStatus(actionObj),
+        },
       };
     }
-    case "filtersResetted":{
-      return {...defaultFilterValues}
+    case "filtersResetted": {
+      return { ...defaultFilterValues };
     }
   }
 }
-export {filterModifier, defaultFilterValues}
+export { filterModifier, defaultFilterValues };

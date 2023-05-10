@@ -1,34 +1,33 @@
-
-#surfaceFilterContainer{
-    .surfaceInput{
-        display:flex;
-        flex-direction: column;
-        padding:1rem 0px 2rem 0px;
-        span{
-            display:block;
-            width: 100%;
-            margin-bottom: 1.1rem;
-        }
-        &:nth-child(2){
-            border-top:solid 1px #495057;
-        }
+#surfaceFilterContainer {
+  .surfaceInput {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0px 2rem 0px;
+    span {
+      display: block;
+      width: 100%;
+      margin-bottom: 1.1rem;
     }
-    .filterSubmClean{
-        margin:0;
-        padding-top:1rem;
-        border-top:1px solid #495057;
+    &:nth-child(2) {
+      border-top: solid 1px #495057;
     }
+  }
+  .filterSubmClean {
+    margin: 0;
+    padding-top: 1rem;
+    border-top: 1px solid #495057;
+  }
 }
 
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 992px) {
-    #surfaceFilterContainer{
-        width: 40vw;
-    }
+  #surfaceFilterContainer {
+    width: 40vw;
+  }
 }
 /*Mobile*/
 @media only screen and (max-width: 992px) {
-    .filterSubmClean{
-        margin-top: 1rem;
-    }
+  .filterSubmClean {
+    margin-top: 1rem;
+  }
 }

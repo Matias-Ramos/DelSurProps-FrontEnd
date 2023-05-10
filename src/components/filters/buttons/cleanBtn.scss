@@ -1,35 +1,35 @@
 #cleanAllFiltersBtn {
-    color: #979797;
-    border-radius: 0px;
-    text-transform: none;
+  color: #979797;
+  border-radius: 0px;
+  text-transform: none;
 
-    &:hover {
-        text-decoration: underline;
-        color: #cacaca;
-        background-color: transparent;
-    }
+  &:hover {
+    text-decoration: underline;
+    color: #cacaca;
+    background-color: transparent;
+  }
 
-    img {
-        margin-left: 0.2rem;
-        height: 20px;
-        margin-right: 4px;
-    }
+  img {
+    margin-left: 0.2rem;
+    height: 20px;
+    margin-right: 4px;
+  }
 }
 
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 992px) {
-    #cleanAllFiltersBtn {
-        border-left: 1px solid #999999;
-        margin-left: 0.7rem;
-        padding: 0.1rem 0.4rem;
-    }
+  #cleanAllFiltersBtn {
+    border-left: 1px solid #999999;
+    margin-left: 0.7rem;
+    padding: 0.1rem 0.4rem;
+  }
 }
 
 /*Mobile*/
 @media only screen and (max-width: 991px) {
-    #cleanAllFiltersBtn {
-        border-top: 1px solid #999999;
-        padding: 0.4rem 0.8rem 0.4rem 0.2rem;
-        margin-top: 0.5rem;
-    }
+  #cleanAllFiltersBtn {
+    border-top: 1px solid #999999;
+    padding: 0.4rem 0.8rem 0.4rem 0.2rem;
+    margin-top: 0.5rem;
+  }
 }
