@@ -5,6 +5,9 @@ footer {
   font-style: italic;
   a {
     color: #a99985;
+    &:hover{
+      color:#fafafa;
+    }
   }
 }
 

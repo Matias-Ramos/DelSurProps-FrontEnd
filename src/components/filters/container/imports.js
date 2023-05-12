@@ -13,7 +13,7 @@ import { queryCtxt } from "../../../context/QyParamsCtxt.jsx";
 import { filterModifier, defaultFilterValues } from "./reducerUtils.js";
 import useMediaQuery from "@mui/material/useMediaQuery";
 // Bts
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 // Animation
 import { motion } from "framer-motion";
 import getFiltersVariant from "./variants.js";
@@ -43,7 +43,6 @@ export {
   Container,
   Nav,
   Navbar,
-  NavDropdown,
   // Animation
   motion,
   getFiltersVariant,

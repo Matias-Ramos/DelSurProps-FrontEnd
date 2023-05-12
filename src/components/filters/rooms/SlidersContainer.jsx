@@ -89,39 +89,37 @@ const SlidersContainer = ({
   /****************************** */
   // Rendering
   return (
-    <>
-      <Container fluid>
-        <Row className="justify-content-around">
-          <Col
-            xs={1}
-            sm={1}
-            className="d-md-none d-lg-none d-xl-none d-xxl-none p-0"
-          >
-            <EdgeIndicator edge={"Min"} />
-          </Col>
-          <Col xs={9} sm={9} md={12} lg={12} xl={12} xxl={12}>
-            {sliderProps && Sliders()}
-          </Col>
-          <Col
-            xs={1}
-            sm={1}
-            className="d-md-none d-lg-none d-xl-none d-xxl-none p-0"
-          >
-            <EdgeIndicator edge={"Max"} />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <div className="filterSubmClean">
-              <ConfirmBtn handleSubmit={handleSubmit} />
-              <button className="cleanBtn" onClick={handleClean}>
-                Limpiar
-              </button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </>
+    <Container fluid>
+      <Row className="justify-content-around">
+        <Col
+          xs={1}
+          sm={1}
+          className="d-md-none d-lg-none d-xl-none d-xxl-none p-0"
+        >
+          <EdgeIndicator edge={"Min"} />
+        </Col>
+        <Col xs={9} sm={9} md={12} lg={12} xl={12} xxl={12}>
+          {sliderProps && Sliders()}
+        </Col>
+        <Col
+          xs={1}
+          sm={1}
+          className="d-md-none d-lg-none d-xl-none d-xxl-none p-0"
+        >
+          <EdgeIndicator edge={"Max"} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <div className="btnsSubmitClean-Container">
+            <ConfirmBtn handleSubmit={handleSubmit} />
+            <button className="cleanBtn" onClick={handleClean}>
+              Limpiar
+            </button>
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

@@ -4,10 +4,9 @@ import {
   Grid,
   Typography,
   Slider as SliderMui,
-  Input as MuiInput,
+  TextField,
   createTheme,
   ThemeProvider,
-  styled,
 } from "@mui/material";
 
 export default function Slider({
@@ -18,11 +17,9 @@ export default function Slider({
 
   const theme = createTheme(btsBreakpoints); // setting mui w/ same breakpoints as bts
   const windowWidth = useRef(window.innerWidth);
-  const Input = styled(MuiInput)`
-    width: 30px;
-  `;
+
   const valuetext = (value) => `${value} ${room}`; // slider accessibility
-  const handleBlur = () => {
+  const handleLimits = () => {
     if (roomFilter.init < 0) {
       handleChange(1, reducerVarName, "init");
     } else if (roomFilter.limit > 7) {
@@ -46,19 +43,19 @@ export default function Slider({
     handleChange(newValue, reducerVarName);
   };
   const handleChgInput = (event, edge) => {
-    const newValue = [];
+    const newEdges = [];
     edge === "init"
       ? // left input was used
-        newValue.push(
+        newEdges.push(
           Math.min(parseInt(event.target.value), parseInt(roomFilter.limit)),
           parseInt(roomFilter.limit)
         )
       : // right input was used
-        newValue.push(
+        newEdges.push(
           parseInt(roomFilter.init),
           Math.max(parseInt(event.target.value), parseInt(roomFilter.init))
         );
-    handleChange(newValue, reducerVarName);
+    handleChange(newEdges, reducerVarName);
   };
 
   /****************************** */
@@ -81,19 +78,24 @@ export default function Slider({
           <Grid container spacing={2} alignItems="center">
             <Grid item sx={{ display: { xs: "none", md: "block" } }}>
               <span className="minMaxSpan">Min:{"  "}</span>
-              <Input
-                sx={{ color: "#cccccc" }}
+              <TextField
+                sx={{
+                  color: "#cccccc",
+                  width: 30,
+                  input: { color: "#cccccc" },
+                }}
                 value={parseInt(roomFilter.init)}
                 size="small"
                 onChange={(event) => handleChgInput(event, "init")}
-                onBlur={handleBlur}
-                id={`${room}_input_left`} // accessibility purposes
+                onBlur={handleLimits}
+                variant="standard"
+                id={`${room}_input_izquierda`} // accessibility purposes
                 inputProps={{
                   step: 1,
                   min: 1,
                   max: 7,
-                  //prevents the user from changing the value through its keyboard, except if using ArrowUp/ArrowDown
                   onKeyDown: (event) => {
+                    //prevents the user from changing the value through its keyboard, except if using ArrowUp/ArrowDown
                     event.code === "ArrowUp" || event.code === "ArrowDown"
                       ? handleChgInput(event, "init")
                       : event.preventDefault();
@@ -121,13 +123,18 @@ export default function Slider({
             </Grid>
             <Grid item sx={{ display: { xs: "none", md: "block" } }}>
               <span className="minMaxSpan">Max:{"  "}</span>
-              <Input
-                sx={{ color: "#cccccc" }}
+              <TextField
+                sx={{
+                  color: "#cccccc",
+                  width: 30,
+                  input: { color: "#cccccc" },
+                }}
                 value={parseInt(roomFilter.limit)}
                 size="small"
                 onChange={(event) => handleChgInput(event, "limit")}
-                onBlur={handleBlur}
-                id={`${room}_input_right`} // accessibility purposes
+                onBlur={handleLimits}
+                variant="standard"
+                id={`${room}_input_derecha`} // accessibility purposes
                 inputProps={{
                   step: 1,
                   min: 1,

@@ -1,8 +1,10 @@
 import TextField from "@mui/material/TextField";
 import ConfirmBtn from "../../filters/buttons/ConfirmBtn.jsx";
+
 const LocationFilter = ({
   props: { updateQyParams, deleteQyParam, dispatch, filters },
 }) => {
+  
   /****************************** */
   // Functions
 
@@ -35,7 +37,7 @@ const LocationFilter = ({
           input: { color: "#cccccc", "&::placeholder": { color: "#bbbbbb" } },
         }}
       />
-      <div className="filterSubmClean">
+      <div className="btnsSubmitClean-Container">
         <ConfirmBtn handleSubmit={handleSubmit} />
         <button className="cleanBtn" onClick={handleClean}>
           Limpiar

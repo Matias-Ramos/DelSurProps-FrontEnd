@@ -1,7 +1,7 @@
 import NavBtns from "../../components/navbar/btns-desktop/NavBtns.jsx";
 import BlobContainer from "./blobs/BlobContainer.jsx";
 import { motion, useWillChange } from "framer-motion";
-import welcomeVariant from "./variant.js";
+import {welcomeVariant, brandVariant} from "./variants.js";
 
 const Welcome = () => {
   const willChange = useWillChange(); // smooths animation
@@ -14,7 +14,15 @@ const Welcome = () => {
         transition={{ duration: 0.8 }}
       >
         <BlobContainer />
-        <span id="brand">DelSurProps</span>
+        <motion.div
+          id="brandContainer"
+          variants={brandVariant}
+          initial="hidden"
+          animate="visible"
+        >
+          <span id="brand">DelSurProps {" "}</span>
+          <h1>Inmobiliaria</h1>
+        </motion.div>
         <motion.div id="welcomeTxtOuter">
           <motion.div
             variants={welcomeVariant}

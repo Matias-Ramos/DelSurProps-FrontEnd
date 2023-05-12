@@ -23,8 +23,8 @@ const CardTxt = ({
   }
   return (
     <>
-      <div>
-        <h2>{location}</h2>
+      <div className="locationAndCardPrice">
+        <span className="location">{location}</span>
         <span className="cardPrice">${improvePriceReadability(price)}</span>
       </div>
       <hr />

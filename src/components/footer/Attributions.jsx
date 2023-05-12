@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 
-const Attributions = () => {
+const Attributions = ({bckgName, bckgLink}) => {
   return (
     <Container>
       <Row>
@@ -20,11 +20,11 @@ const Attributions = () => {
           <i>
             Background:{" "}
             <a
-              href="https://www.svgbackgrounds.com/"
+              href={bckgLink}
               target="_blank"
               rel="noopener noreferrer"
             >
-              SVG backgrounds
+              {bckgName}
             </a>
           </i>
         </Col>

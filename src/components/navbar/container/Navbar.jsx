@@ -9,7 +9,7 @@ const Navbar = () => {
   const windowWidth = useRef(window.innerWidth);
   const URLpath = useLocation().pathname;
   return (
-    <div id="topBar">
+    <div id="topNavbar">
       {windowWidth.current >= 768 ? (
         <NavBtns URLpath={URLpath} />
       ) : (

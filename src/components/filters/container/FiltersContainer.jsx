@@ -22,7 +22,6 @@ import {
   Container,
   Nav,
   Navbar,
-  NavDropdown,
   Dropdown,
   // Animation
   motion,
@@ -31,7 +30,7 @@ import {
 
 const FiltersContainer = ({ previousURL }) => {
   /****************************** */
-  // Functions
+  // Functions & Values
 
   const { searchQyParams, updateQyParams, deleteQyParam } =
     useContext(queryCtxt);
@@ -45,13 +44,20 @@ const FiltersContainer = ({ previousURL }) => {
       deleteQyParam: deleteQyParam,
     };
   });
+
+  /****************************** */
+  // Animation & Style
+
   const isDesktop = useMediaQuery("(min-width:992px)");
   const isFirstRender =
     previousURL === "/" || previousURL === undefined ? true : false; //undefined = page loaded from url
   const filtersVariant = getFiltersVariant(isDesktop, isFirstRender);
   const alignCenter = { display: "flex", alignItems: "center" };
+
+  /****************************** */
   /* verifies qyParam on first render and if there are such,
    it updates the useReducer values (before even rendering the filters).*/
+
   useEffect(() => {
     searchQyParams.get("location") !== null &&
       dispatch({
@@ -149,7 +155,7 @@ const FiltersContainer = ({ previousURL }) => {
         <Navbar.Toggle aria-controls="navigation-bar" />
         <Navbar.Collapse id="navigation-bar">
           <motion.div
-            id="filtersMotionDiv"
+            id="filtersMotionParent"
             variants={filtersVariant}
             initial="initial"
             animate="animate"
@@ -157,63 +163,58 @@ const FiltersContainer = ({ previousURL }) => {
             <Nav navbarScroll>
               {/* ******** */}
               {/* Location */}
-              {/* <Dropdown
-                filtersVariant={filtersVariant}
+              <Dropdown
                 title="Ubicación"
-                filterComponent={()=><LocationFilter />}
-                filtersProps={filtersProps}
-              /> */}
-              <motion.div variants={filtersVariant} style={alignCenter}>
-                <NavDropdown title="Ubicación" menuVariant="dark">
-                  <NavDropdown.ItemText>
-                    <LocationFilter props={filtersProps} />
-                  </NavDropdown.ItemText>
-                </NavDropdown>
-              </motion.div>
+                filterComponent={<LocationFilter props={filtersProps} />}
+                filtersVariant={filtersVariant}
+                alignCenter={alignCenter}
+              />
 
               {/* ***** */}
               {/* Price */}
-              <motion.div variants={filtersVariant} style={alignCenter}>
-                <NavDropdown title="Precio" menuVariant="dark">
-                  <NavDropdown.ItemText>
-                    <PriceContainer props={filtersProps} />
-                  </NavDropdown.ItemText>
-                </NavDropdown>
-              </motion.div>
+              <Dropdown
+                title="Precio"
+                filterComponent={<PriceContainer props={filtersProps} />}
+                filtersVariant={filtersVariant}
+                previousURL={previousURL}
+                alignCenter={alignCenter}
+              />
 
               {/* ******* */}
               {/* Sliders */}
-              <motion.div variants={filtersVariant} style={alignCenter}>
-                <NavDropdown title="Habitaciones" menuVariant="dark">
-                  <NavDropdown.ItemText id="sliderNavDropdown-ItemText">
-                    <SlidersContainer props={filtersProps} />
-                  </NavDropdown.ItemText>
-                </NavDropdown>
-              </motion.div>
+              <Dropdown
+                title="Habitaciones"
+                filterComponent={<SlidersContainer props={filtersProps} />}
+                filtersVariant={filtersVariant}
+                previousURL={previousURL}
+                alignCenter={alignCenter}
+              />
 
               {/* ******* */}
               {/* Surface */}
               {(URLpath === "/venta-inmuebles" ||
                 URLpath === "/emprendimientos") && (
-                <motion.div variants={filtersVariant} style={alignCenter}>
-                  <NavDropdown title="Superficie" menuVariant="dark">
-                    <NavDropdown.ItemText>
-                      <SurfaceFilterContainer props={filtersProps} />
-                    </NavDropdown.ItemText>
-                  </NavDropdown>
-                </motion.div>
+                <Dropdown
+                  title="Superficie"
+                  filterComponent={
+                    <SurfaceFilterContainer props={filtersProps} />
+                  }
+                  filtersVariant={filtersVariant}
+                  previousURL={previousURL}
+                  alignCenter={alignCenter}
+                />
               )}
 
               {/* *********** */}
               {/* BuildStatus */}
               {URLpath === "/emprendimientos" && (
-                <motion.div variants={filtersVariant} style={alignCenter}>
-                  <NavDropdown title="Etapa" menuVariant="dark">
-                    <NavDropdown.ItemText>
-                      <BuildStatusFilter props={filtersProps} />
-                    </NavDropdown.ItemText>
-                  </NavDropdown>
-                </motion.div>
+                <Dropdown
+                  title="Etapa"
+                  filterComponent={<BuildStatusFilter props={filtersProps} />}
+                  filtersVariant={filtersVariant}
+                  previousURL={previousURL}
+                  alignCenter={alignCenter}
+                />
               )}
             </Nav>
             <motion.div variants={filtersVariant} style={alignCenter}>

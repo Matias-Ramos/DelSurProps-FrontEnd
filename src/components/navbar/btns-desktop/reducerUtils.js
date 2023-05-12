@@ -34,7 +34,7 @@ function manageHover(colorStatuses, action) {
 
     default:
       console.error(
-        "error on NavBtns.jsx > colorModifier fn > switch statement, when hovering over one of the navBar btns"
+        "error on NavBtns.jsx > manageHover fn > switch statement, when hovering over one of the navBar btns"
       );
       return colorStatuses;
   }
@@ -54,7 +54,7 @@ function manageClick(action) {
       return updateColorStatus(turquoiseDot, "turquoise");
     default:
       console.error(
-        "error on NavBtns.jsx > colorModifier fn > switch statement, when clicking one of the navBar btns"
+        "error on NavBtns.jsx > manageClick fn > switch statement, when clicking one of the navBar btns"
       );
       return defaultDotStatuses;
   }

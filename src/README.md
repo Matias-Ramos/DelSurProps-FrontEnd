@@ -1,48 +1,55 @@
 # Nombre del proyecto
 
-Inmobiliaria
+Inmobiliaria DelSurProps
 
 ## Sobre el proyecto
 
 ### Motivo
 
-El cliente ha solicitado la solución a un problema que se le presenta con regularidad:
-Cuando un cliente le consulta por los autos que posee en stock, el cliente debe responder con múltiples links individuales de MercadoL y/o imgs.
+El cliente ha solicitado una solución informática que le permita centralizar su catálogo de propiedades en un mismo sitio. 
 
 ### Solución
 
-Esta es una solución de React sencilla, de pocos elementos, que centraliza la totalidad del stock de vehículos en una única página web y redirige al cliente al link de MercadoLibre donde podrá encontrar mas información referida al auto que sea de su interés.
+Esta página web no muestra detalles de las propiedades, solo las características mas relevantes y tiene por objetivo redireccionar al usuario a una publicación detallada de la propiedad en MercadoLibre/ZonaProps/ArgenProp.
 
 ### Link
 
-orautomotores.com.ar
+delsurprops.com.ar
 
 ### Hosting
 
-app.netlify.com (from ghPages)
+app.netlify.com (desde ghPages)
 
-## Código
+## Estructura
 
-### Componentes principales del sitio
+### Nota **importante** para desarrolladores
+Si el viewport es modificado desde un navegador (vista desktop a vista mobile o viceversa), será necesario refrescar el página ya que hay algunos componentes que decidí no hacerlos dinámicamente adaptables por el costo beneficio que representaban.
 
-1. Header - Banner
-2. Galería - Filtros
-3. Galería - Cards
-4. Footer - Contacto
+### Páginas y estructura del sitio
 
-### Frameworks
+- Welcome.jsx
+- Main.jsx
+  - header > #topNavbar
+  - main > .navbar (filtros)
+  - main > #cardsContainer
+  - footer > Attributions.jsx
+- RouteError.jsx
 
-- react-bootstrap
-- MaterialUi
+### Frameworks & Librerías principales
 
-### Método de actualización de stock
+- react-bootstrap (grid y box modeling)
+- MaterialUi (componentes)
+- framer-motion (animación)
 
-El stock de vehículos se actualiza a traves del Firestore (servicio de Firebase, Google) propio de la cuenta gmail de or-automotores.
+
+### Método de actualización de catálogo
+
+De momento este proyecto tiene solo el front-end y está planificado armar a continuación un backend en GoLang para actualizar el catálogo de propiedades.
 
 ### Ejecución del proyecto
 
-Ejecutar "npm start" en la terminal del IDE. Acto siguiente la app debería abrirse automáticamente en modo desarrollo. De lo contrario, puede abrirse la app manualmente accediendo al host [http://localhost:3000] en el navegador.
+Ejecutar "npm install" y luego "npm run dev" en la terminal del IDE. Acto siguiente, abrir la app manualmente accediendo al host [http://127.0.0.1:5173/] en el navegador.
 
 ### Inicializacion del proyecto
 
-El proyecto fue inicializado con "npx create-react-app".
+El proyecto fue inicializado con Vite.

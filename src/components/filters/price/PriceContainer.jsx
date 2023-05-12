@@ -48,8 +48,8 @@ const PriceContainer = ({
   // Rendering
 
   return (
-    <div id="priceFilterOuter">
-      <div id="priceFilterInner">
+    <div id="priceFilterContainer">
+      <div id="priceTextBoxes">
         <PriceFilter
           sxObj={{ input: { color: "#cccccc" }, marginRight: "1rem" }}
           edgeLabel={"Desde"}
@@ -68,7 +68,7 @@ const PriceContainer = ({
           improvePriceReadability={improvePriceReadability}
         />
       </div>
-      <div className="filterSubmClean">
+      <div className="btnsSubmitClean-Container">
         <ConfirmBtn handleSubmit={handleSubmit} />
         <button className="cleanBtn" onClick={handleClean}>
           Limpiar

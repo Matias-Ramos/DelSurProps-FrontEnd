@@ -62,7 +62,7 @@ const SurfaceFilterContainer = ({
         surfaceFilterValues={filters.surface.total}
         handleChange={handleChange}
       />
-      <div className="filterSubmClean">
+      <div className="btnsSubmitClean-Container">
         <ConfirmBtn handleSubmit={handleSubmit} />
         <button className="cleanBtn" onClick={handleClean}>
           Limpiar

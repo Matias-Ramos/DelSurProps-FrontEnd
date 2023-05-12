@@ -5,37 +5,36 @@
 
 /*Mobile*/
 @media only screen and (max-width: 768px) {
-  #sliderNavDropdown-ItemText {
-    padding: 1rem 5px;
+  .edgeIndicator {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    .edgeIndicator {
-      position: relative;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      div {
-        writing-mode: vertical-lr;
-        text-orientation: mixed;
-        transform: scale(-1);
-        letter-spacing: 3px;
-        z-index: 2;
-        padding: 5px 0;
-        background-color: #343a40;
-        color: #999999;
-      }
-
-      #Max {
-        transform: scale(1);
-      }
-
-      .arrow {
-        height: 100%;
-        position: absolute;
-        z-index: 1;
-      }
+    div {
+      writing-mode: vertical-lr;
+      text-orientation: mixed;
+      transform: scale(-1);
+      letter-spacing: 3px;
+      z-index: 2;
+      padding: 5px 0;
+      background-color: #343a40;
+      color: #999999;
     }
+
+    #Max {
+      transform: scale(1);
+    }
+
+    .arrow {
+      height: 100%;
+      position: absolute;
+      z-index: 1;
+    }
+  }
+  .nav-item{
+    width: 100%;
   }
 }
 

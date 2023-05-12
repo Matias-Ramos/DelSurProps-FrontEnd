@@ -68,11 +68,7 @@ export default function SelectLabels({ URLpath }) {
           value={"emprendimientos"}
           onClick={() => navigate("/emprendimientos")}
         >
-          <img
-            src={turquoiseDot}
-            className="circleIcon"
-            alt="Ícono decorativo"
-          />
+          <img src={turquoiseDot} className="circleIcon" alt="Ícono decorativo" />
           Emprendimientos
         </MenuItem>
       </Select>

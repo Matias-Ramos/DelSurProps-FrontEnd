@@ -13,6 +13,7 @@ const Button = ({
 }) => {
   const location = useLocation().pathname; //used by Main.jsx
 
+  
   const getVariant = (thisPath) =>
     thisPath === URLpath ? contained : outlined;
   return (
@@ -24,7 +25,8 @@ const Button = ({
         onMouseLeave={() => handleHover(false, colorName)}
       >
         <img src={colorStatus} className="circleIcon" alt="Ícono decorativo" />
-        {btnTxt}
+        {location === "/" ? <h2>{btnTxt}</h2> : <h1>{btnTxt}</h1>}
+        {/* {btnTxt} */}
       </MuiBtn>
     </Link>
   );
