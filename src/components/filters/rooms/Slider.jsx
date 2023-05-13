@@ -102,12 +102,13 @@ export default function Slider({
                   },
                   type: "number",
                   "aria-labelledby": "input-slider",
+                  tabIndex:-1,
                 }}
               />
             </Grid>
             <Grid item xs>
               <SliderMui
-                getAriaLabel={() => `Rango de ${room}`}
+                getAriaLabel={() => `Define el min y max de ${room}`}
                 value={[parseInt(roomFilter.init), parseInt(roomFilter.limit)]}
                 getAriaValueText={valuetext}
                 valueLabelDisplay={windowWidth.current >= 768 ? "auto" : "on"}
@@ -119,6 +120,7 @@ export default function Slider({
                 min={1}
                 max={7}
                 disableSwap
+                tabIndex={0}
               />
             </Grid>
             <Grid item sx={{ display: { xs: "none", md: "block" } }}>
@@ -147,6 +149,7 @@ export default function Slider({
                   },
                   type: "number",
                   "aria-labelledby": "input-slider",
+                  tabIndex:-1,
                 }}
               />
             </Grid>

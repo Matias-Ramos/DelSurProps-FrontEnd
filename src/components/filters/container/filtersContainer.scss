@@ -7,6 +7,9 @@
   cursor: pointer;
   outline: inherit;
   margin-left: 1rem;
+  &:focus{
+    text-decoration: underline;
+  }
 }
 #filtersMotionParent {
   display: flex;

@@ -1,3 +1,4 @@
+import classNames from "classnames";
 // Hooks
 import { useReducer, useEffect, useMemo, useRef } from "react";
 // Components
@@ -9,11 +10,14 @@ import { colorModifier, defaultDotStatuses } from "./reducerUtils.js";
 import { createTheme, ThemeProvider } from "@mui/material";
 import customTheme from "./btnsTheme.js";
 
-const NavBtns = (props) => {
-  const { URLpath } = props || {};
+
+const NavBtns = ({ URLpath = "/" }) => {
+  
 
   /****************************** */
   // Functions
+
+
   const [colorStatuses, dispatch] = useReducer(
     colorModifier,
     defaultDotStatuses
@@ -33,11 +37,17 @@ const NavBtns = (props) => {
       focused: focused,
     });
   }
+  const getClasses = () => {
+    return classNames({
+      inWelcome: URLpath === "/",
+    });
+  };
   const btnSharedProps = useMemo(() => {
     return {
       URLpath: URLpath,
       handleClick: handleClick,
       handleHover: handleHover,
+      getClasses: getClasses,
     };
   });
 
@@ -60,6 +70,7 @@ const NavBtns = (props) => {
     }
   }, [URLpath]);
 
+  
   /****************************** */
   // Rendering
 

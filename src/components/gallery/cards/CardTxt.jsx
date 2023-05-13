@@ -24,12 +24,12 @@ const CardTxt = ({
   return (
     <>
       <div className="locationAndCardPrice">
-        <span className="location">{location}</span>
-        <span className="cardPrice">${improvePriceReadability(price)}</span>
+        <span className="location" tabIndex={0}>{location}</span>
+        <span className="cardPrice" tabIndex={0}>${improvePriceReadability(price)}</span>
       </div>
       <hr />
       <ul>
-        <li>
+        <li tabIndex={0}>
           <img
             src={doorIcon}
             alt="ícono puerta (representando ambientes)"
@@ -37,12 +37,12 @@ const CardTxt = ({
           />
           {parseInt(env) > 1 ? `${env} Ambientes` : "Monoambiente"}
         </li>
-        <li>
+        <li tabIndex={0}>
           <img src={bedIcon} alt="ícono cama" className="characteristicsIcon" />
           {bedrooms}
           {parseInt(bedrooms) > 1 ? " Dormitorios" : " Dormitorio"}
         </li>
-        <li>
+        <li tabIndex={0}>
           <img
             src={bathIcon}
             alt="ícono ducha"
@@ -51,7 +51,7 @@ const CardTxt = ({
           {bathrooms}
           {parseInt(bathrooms) > 1 ? " Baños" : " Baño"}
         </li>
-        <li>
+        <li tabIndex={0}>
           <img
             src={garageIcon}
             alt="ícono garage"

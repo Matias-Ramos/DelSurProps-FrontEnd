@@ -7,11 +7,7 @@
   align-items: center;
   height: 3rem;
   background-color: #fdfdff;
-  h1{
-    font-size: 0.9rem;
-    margin: 0;
-    font-family: "Tajawal", sans-serif;
-  }
+
   #brand {
     font-family: "Libre Franklin", sans-serif;
     z-index: 2;
@@ -28,16 +24,28 @@
     top: 50%;
   }
 }
+
 .circleIcon {
   // do not move inside #topNavbar (above) else Welcome lacks of it.
   max-width: 8px;
   margin-right: 5px;
 }
 
-/*Netbooks, Notebooks and Desktops*/
-.MuiButtonGroup-root {
-  margin-left: 0.5rem;
-  z-index: 2;
+
+/*Desktop*/
+@media only screen and (min-width: 768px) {
+
+  .MuiButtonGroup-root {
+    margin-left: 0.5rem;
+    z-index: 2;
+  }
+
+  header h1 {
+    font-size: 0.9rem;
+    margin: 0;
+    font-family: "Tajawal", sans-serif;
+  }
+  
 }
 
 /*Mobile*/

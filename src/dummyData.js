@@ -1,4 +1,4 @@
-export const cards = [
+export const data = [
   {
     id: 1,
     ubicacion: "Av. Garay 111",
@@ -11,9 +11,9 @@ export const cards = [
     superficieTotal: 1111,
     superficieCubierta: 222,
     tipo: "alquiler",
-    linkML: "",
-    linkZonaprop: "",
-    linkArgenprop: "",
+    linkML: "#",
+    linkZonaprop: "#",
+    linkArgenprop: "#",
   },
   {
     id: 2,
@@ -27,9 +27,9 @@ export const cards = [
     superficieTotal: 3333,
     superficieCubierta: 4444,
     tipo: "alquiler",
-    linkML: "",
-    linkZonaprop: "",
-    linkArgenprop: "",
+    linkML: "#",
+    linkZonaprop: "#",
+    linkArgenprop: "#",
   },
   {
     id: 3,
@@ -43,9 +43,9 @@ export const cards = [
     superficieTotal: 777,
     superficieCubierta: 888,
     tipo: "venta",
-    linkML: "",
-    linkZonaprop: "",
-    linkArgenprop: "",
+    linkML: "#",
+    linkZonaprop: "#",
+    linkArgenprop: "#",
   },
   {
     id: 4,
@@ -59,9 +59,9 @@ export const cards = [
     superficieTotal: 900,
     superficieCubierta: 990,
     tipo: "pozo",
-    linkML: "",
-    linkZonaprop: "",
-    linkArgenprop: "",
+    linkML: "#",
+    linkZonaprop: "#",
+    linkArgenprop: "#",
   },
   {
     id: 5,
@@ -75,9 +75,9 @@ export const cards = [
     superficieTotal: 900,
     superficieCubierta: 990,
     tipo: "preventa",
-    linkML: "",
-    linkZonaprop: "",
-    linkArgenprop: "",
+    linkML: "#",
+    linkZonaprop: "#",
+    linkArgenprop: "#",
   },
   {
     id: 6,
@@ -91,8 +91,8 @@ export const cards = [
     superficieTotal: 900,
     superficieCubierta: 990,
     tipo: "en construccion",
-    meli: "",
-    zonaprop: "",
-    argenprop: "",
+    linkML: "#",
+    linkZonaprop: "#",
+    linkArgenprop: "#",
   },
 ];

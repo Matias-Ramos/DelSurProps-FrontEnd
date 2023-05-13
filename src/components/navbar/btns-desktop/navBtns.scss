@@ -4,10 +4,12 @@
   button {
     border: 1px solid #6c757d;
     color: black;
-    padding: 8px 18px;
+    padding: 4px 18px;
     font-family: "Tajawal", sans-serif;
+    height: 100%;
   }
 }
+
 
 /*Netbooks, Notebooks and Desktops*/
 @media only screen and (min-width: 768px) {
@@ -30,6 +32,19 @@
       button {
         border-radius: 0px 20px 20px 0px;
       }
+    }
+
+    a .inWelcome {
+      padding: 0px 18px;
+      height: 85%;
+    }
+  }
+}
+/*Mobile*/
+@media only screen and (max-width: 768px) {
+  .MuiButtonGroup-root {
+    a:nth-child(2) {
+        margin:10px 0;
     }
   }
 }

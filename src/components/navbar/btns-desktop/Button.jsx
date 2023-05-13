@@ -1,9 +1,9 @@
 // Components
 import MuiBtn from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+
 const Button = ({
-  btnSharedProps: { URLpath, handleClick, handleHover },
+  btnSharedProps: { URLpath , handleClick, handleHover, getClasses },
   thisPath,
   contained,
   outlined,
@@ -11,22 +11,21 @@ const Button = ({
   colorStatus,
   btnTxt,
 }) => {
-  const location = useLocation().pathname; //used by Main.jsx
-
-  
-  const getVariant = (thisPath) =>
+  const getVariant = () =>
     thisPath === URLpath ? contained : outlined;
+
+    //activeKmRange is the className value to define, if the condition on the right side is true
   return (
-    <Link to={{ pathname: thisPath }} state={{ prevPath: location }}>
+    <Link to={{ pathname: thisPath }} state={{ prevPath: URLpath }}>
       <MuiBtn
-        variant={getVariant(thisPath)}
+        className={getClasses()}
+        variant={getVariant()}
         onClick={() => handleClick(colorName)}
         onMouseEnter={() => handleHover(true, colorName)}
         onMouseLeave={() => handleHover(false, colorName)}
       >
         <img src={colorStatus} className="circleIcon" alt="Ícono decorativo" />
-        {location === "/" ? <h2>{btnTxt}</h2> : <h1>{btnTxt}</h1>}
-        {/* {btnTxt} */}
+        {URLpath === thisPath ? <h1>{btnTxt}</h1> : <span>{btnTxt}</span>}
       </MuiBtn>
     </Link>
   );
