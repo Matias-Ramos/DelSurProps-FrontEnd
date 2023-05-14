@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import Attributions from "../../components/footer/Attributions.jsx";
 const RouteError = () => {
   const navigate = useNavigate();
   return (
@@ -18,12 +17,6 @@ const RouteError = () => {
           <button onClick={() => navigate("/")}>Volver al Inicio</button>
         </div>
       </motion.main>
-      <footer>
-        <Attributions
-          bckgName={"IRA Design"}
-          bckgLink={"https://iradesign.io"}
-        />
-      </footer>
     </div>
   );
 };
