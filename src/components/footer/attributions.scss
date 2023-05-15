@@ -1,12 +1,18 @@
+$footerFontColor : #a99985;
+$footerBckgColor : #4b4e58;
+$footerFontHoverColor : #fafafa;
+
 footer {
-  background-color: #4b4e58;
-  color: #a99985;
+  background-color: $footerBckgColor;
+  color: $footerFontColor;
   text-align: center;
   font-style: italic;
+
   a {
-    color: #a99985;
-    &:hover{
-      color:#fafafa;
+    color: $footerFontColor;
+
+    &:hover {
+      color: $footerFontHoverColor;
     }
   }
 }
@@ -25,6 +31,6 @@ footer {
 @media only screen and (max-width: 992px) {
   footer {
     font-size: 0.9rem;
-    border-bottom: 1px solid #4b4e58;
+    border-bottom: 1px solid $footerBckgColor;
   }
 }
