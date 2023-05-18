@@ -1,6 +1,6 @@
 // Components
 import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import SelectMui from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 // Icons
 import orangeDot from "../../../assets/icons/orange-circle.svg";
@@ -9,13 +9,12 @@ import blueDot from "../../../assets/icons/blue-circle.svg";
 // Hooks
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
-export default function SelectLabels({ URLpath = "/" }) {
-
+const Select = ({ URLpath = "/" }) => {
   /****************************** */
   // Functions
 
-  
   const [category, setCategory] = useState("");
   const navigate = useNavigate();
   const handleChange = (event) => {
@@ -46,7 +45,6 @@ export default function SelectLabels({ URLpath = "/" }) {
     }
   }, []);
 
-
   /****************************** */
   // Rendering
 
@@ -55,7 +53,7 @@ export default function SelectLabels({ URLpath = "/" }) {
       sx={{ m: 1, minWidth: 190, backgroundColor: "#f8f9fa", zIndex: 2 }}
       id="select"
     >
-      <Select
+      <SelectMui
         value={category}
         onChange={handleChange}
         displayEmpty
@@ -65,7 +63,6 @@ export default function SelectLabels({ URLpath = "/" }) {
             "Grupo de botones para definir si mostrar propiedades en venta, en alquiler o emprendimientos",
         }}
       >
-        
         <MenuItem
           value={"venta-inmuebles"}
           onClick={() => navigate("/venta-inmuebles")}
@@ -86,10 +83,22 @@ export default function SelectLabels({ URLpath = "/" }) {
           value={"emprendimientos"}
           onClick={() => navigate("/emprendimientos")}
         >
-          <img src={turquoiseDot} className="circleIcon" alt="Ícono decorativo"/>
+          <img
+            src={turquoiseDot}
+            className="circleIcon"
+            alt="Ícono decorativo"
+          />
           {getProperTag("/emprendimientos", "Emprendimientos")}
         </MenuItem>
-      </Select>
+      </SelectMui>
     </FormControl>
   );
+};
+
+/****************************** */
+// TypeChecking
+Select.propTypes = {
+  URLpath: PropTypes.string,
 }
+/****************************** */
+export default Select;

@@ -1,8 +1,12 @@
+// Components
 import ConfirmBtn from "../../filters/buttons/ConfirmBtn.jsx";
 import SurfaceFilter from "./SurfaceFilter.jsx";
+// Typechecking
+import PropTypes from "prop-types";
 
 const SurfaceFilterContainer = ({
-  props: { updateQyParams, deleteQyParam, dispatch, filters },
+  filterModifiers: { updateQyParams, deleteQyParam, dispatch },
+  surfacesFilter,
 }) => {
   /****************************** */
   // Functions
@@ -18,17 +22,17 @@ const SurfaceFilterContainer = ({
   const handleChange = (newValue, surfaceType, edge) => {
     const regex = /^[0-9\b]+$/;
     if (newValue === "" || regex.test(newValue)) {
-      chgReducerSurface(newValue, surfaceType, edge);
+      chgReducerSurface(parseInt(newValue), surfaceType, edge);
     }
   };
   const handleSubmit = () => {
-    // properties inside filters.surface can either be "covered" or "total"
-    for (const surfaceType in filters.surface) {
-      for (const edge in filters.surface[surfaceType]) {
-        filters.surface[surfaceType][edge]
+    // properties inside surfacesFilter can either be "covered" or "total"
+    for (const surfaceType in surfacesFilter) {
+      for (const edge in surfacesFilter[surfaceType]) {
+        surfacesFilter[surfaceType][edge]
           ? updateQyParams(
               `${surfaceType}_surface_${edge}`,
-              filters.surface[surfaceType][edge]
+              surfacesFilter[surfaceType][edge]
             )
           : deleteQyParam(`${surfaceType}_surface_${edge}`);
       }
@@ -51,15 +55,15 @@ const SurfaceFilterContainer = ({
   return (
     <div id="surfaceFilterContainer">
       <SurfaceFilter
-        surfaceTypeEsp={"cubierta"}
+        surfaceTypeInSpanish={"cubierta"}
         surfaceType={"covered"}
-        surfaceFilterValues={filters.surface.covered}
+        surfaceFilterValues={surfacesFilter.covered}
         handleChange={handleChange}
       />
       <SurfaceFilter
-        surfaceTypeEsp={"total"}
+        surfaceTypeInSpanish={"total"}
         surfaceType={"total"}
-        surfaceFilterValues={filters.surface.total}
+        surfaceFilterValues={surfacesFilter.total}
         handleChange={handleChange}
       />
       <div className="btnsSubmitClean-Container">
@@ -71,5 +75,24 @@ const SurfaceFilterContainer = ({
     </div>
   );
 };
-
+/****************************** */
+// TypeChecking
+SurfaceFilterContainer.propTypes = {
+  filterModifiers: PropTypes.shape({
+    updateQyParams: PropTypes.func,
+    deleteQyParams: PropTypes.func,
+    dispatch: PropTypes.func,
+  }),
+  surfacesFilter: PropTypes.shape({
+    total: PropTypes.shape({
+      init: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([""])]),
+      limit: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([""])]),
+    }),
+    covered: PropTypes.shape({
+      init: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([""])]),
+      limit: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([""])]),
+    }),
+  }),
+};
+/****************************** */
 export default SurfaceFilterContainer;

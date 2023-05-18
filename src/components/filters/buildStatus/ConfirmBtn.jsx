@@ -1,8 +1,11 @@
+// Component
 import Button from "@mui/material/Button";
+// Typechecking
+import PropTypes from "prop-types";
 
 const ConfirmBtn = ({
   handleSubmit,
-  filters: { in_progress, pre_sale, pozo },
+  buildingStatusFilter: { in_progress, pre_sale, pozo },
 }) => (
   <Button
     variant="contained"
@@ -13,4 +16,15 @@ const ConfirmBtn = ({
   </Button>
 );
 
+/****************************** */
+// TypeChecking
+ConfirmBtn.propTypes = {
+  handleSubmit: PropTypes.func,
+  buildingStatusFilter: PropTypes.shape({
+    in_progress: PropTypes.bool,
+    pre_sale: PropTypes.bool,
+    pozo: PropTypes.bool,
+  }),
+};
+/****************************** */
 export default ConfirmBtn;

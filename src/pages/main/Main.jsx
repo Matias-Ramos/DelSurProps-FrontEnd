@@ -34,10 +34,7 @@ const Main = () => {
         </main>
       </QyParamsCtxtProvider>
       <footer>
-        <Attributions
-          bckgName={"SVG backgrounds"}
-          bckgLink={"https://www.svgbackgrounds.com/"}
-        />
+        <Attributions />
       </footer>
     </motion.div>
   );

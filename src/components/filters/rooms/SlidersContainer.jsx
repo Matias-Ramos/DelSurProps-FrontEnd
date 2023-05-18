@@ -1,11 +1,17 @@
+// Hooks
+import { useMemo } from "react";
+// Grid sys
+import { Container, Row, Col } from "react-bootstrap";
+// Typechecking
+import PropTypes from "prop-types";
+// Components
 import ConfirmBtn from "../buttons/ConfirmBtn.jsx";
 import Slider from "./Slider.jsx";
 import EdgeIndicator from "./EdgeIndicator.jsx";
-import { useMemo } from "react";
-import { Container, Row, Col } from "react-bootstrap";
 
 const SlidersContainer = ({
-  props: { updateQyParams, deleteQyParam, filters, dispatch },
+  filterModifiers: { updateQyParams, deleteQyParam, dispatch },
+  filters,
 }) => {
   /****************************** */
   // Functions & variables
@@ -122,5 +128,34 @@ const SlidersContainer = ({
     </Container>
   );
 };
+
+/****************************** */
+// TypeChecking
+SlidersContainer.propTypes = {
+  filterModifiers: PropTypes.exact({
+    updateQyParams: PropTypes.func.isRequired,
+    deleteQyParam: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
+  }),
+  filters: PropTypes.shape({
+    bathroom: PropTypes.exact({
+      init: PropTypes.number.isRequired,
+      limit: PropTypes.number.isRequired,
+    }),
+    bedroom: PropTypes.exact({
+      init: PropTypes.number.isRequired,
+      limit: PropTypes.number.isRequired,
+    }),
+    garage: PropTypes.exact({
+      init: PropTypes.number.isRequired,
+      limit: PropTypes.number.isRequired,
+    }),
+    env: PropTypes.exact({
+      init: PropTypes.number.isRequired,
+      limit: PropTypes.number.isRequired,
+    }),
+  }),
+};
+/****************************** */
 
 export default SlidersContainer;

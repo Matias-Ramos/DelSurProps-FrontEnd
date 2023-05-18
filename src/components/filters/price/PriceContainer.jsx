@@ -1,9 +1,14 @@
+// Components
 import ConfirmBtn from "../buttons/ConfirmBtn.jsx";
 import PriceFilter from "./PriceFilter.jsx";
+// Typechecking
+import PropTypes from 'prop-types';
 
 const PriceContainer = ({
-  props: { updateQyParams, deleteQyParam, dispatch, filters },
+  filterModifiers: { updateQyParams, deleteQyParam, dispatch },
+  priceFilter
 }) => {
+
   /****************************** */
   // Functions
 
@@ -23,9 +28,9 @@ const PriceContainer = ({
     }
   };
   const handleSubmit = () => {
-    for (const edge in filters.price) {
-      filters.price[edge]
-        ? updateQyParams(`price_${edge}`, filters.price[edge])
+    for (const edge in priceFilter) {
+      priceFilter[edge]
+        ? updateQyParams(`price_${edge}`, priceFilter[edge])
         : deleteQyParam(`price_${edge}`);
     }
   };
@@ -55,7 +60,7 @@ const PriceContainer = ({
           edgeLabel={"Desde"}
           edge={"init"}
           inputPosition={"start"}
-          filters={filters}
+          priceFilter={priceFilter}
           handleChange={handleChange}
           improvePriceReadability={improvePriceReadability}
         />
@@ -63,7 +68,7 @@ const PriceContainer = ({
           sxObj={{ input: { color: "#cccccc" } }}
           edgeLabel={"Hasta"}
           edge={"limit"}
-          filters={filters}
+          priceFilter={priceFilter}
           handleChange={handleChange}
           improvePriceReadability={improvePriceReadability}
         />
@@ -78,4 +83,22 @@ const PriceContainer = ({
   );
 };
 
+/****************************** */
+// TypeChecking
+PriceContainer.propTypes = {
+  filterModifiers: PropTypes.shape({
+    updateQyParams: PropTypes.func,
+    deleteQyParams: PropTypes.func,
+    dispatch: PropTypes.func,
+  }),
+  priceFilter: PropTypes.shape({
+    init: PropTypes.oneOfType(
+      [PropTypes.number, PropTypes.oneOf([""])]
+    ),
+    limit: PropTypes.oneOfType(
+      [PropTypes.number, PropTypes.oneOf([""])]
+    ),
+  }),
+}
+/****************************** */
 export default PriceContainer;

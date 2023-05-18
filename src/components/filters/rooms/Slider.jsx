@@ -1,4 +1,8 @@
+// Hook
 import { useRef } from "react";
+// Typechecking
+import PropTypes from "prop-types";
+// Components
 import {
   Box,
   Grid,
@@ -9,9 +13,9 @@ import {
   ThemeProvider,
 } from "@mui/material";
 
-export default function Slider({
+const Slider = ({
   props: { handleChange, room, reducerVarName, roomFilter, btsBreakpoints },
-}) {
+}) => {
   /****************************** */
   // Functions & variables
 
@@ -102,7 +106,7 @@ export default function Slider({
                   },
                   type: "number",
                   "aria-labelledby": "input-slider",
-                  tabIndex:-1,
+                  tabIndex: -1,
                 }}
               />
             </Grid>
@@ -149,7 +153,7 @@ export default function Slider({
                   },
                   type: "number",
                   "aria-labelledby": "input-slider",
-                  tabIndex:-1,
+                  tabIndex: -1,
                 }}
               />
             </Grid>
@@ -158,4 +162,21 @@ export default function Slider({
       </ThemeProvider>
     </div>
   );
-}
+};
+/****************************** */
+// TypeChecking
+Slider.propTypes = {
+  props: PropTypes.exact({
+    handleChange: PropTypes.func.isRequired,
+    room: PropTypes.string.isRequired,
+    reducerVarName: PropTypes.string.isRequired,
+    roomFilter: PropTypes.exact({
+      init: PropTypes.number.isRequired,
+      limit: PropTypes.number.isRequired,
+    }),
+    btsBreakpoints: PropTypes.object,
+  }),
+};
+/****************************** */
+
+export default Slider;

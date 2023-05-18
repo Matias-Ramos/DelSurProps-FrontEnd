@@ -1,10 +1,15 @@
+// Components
 import TextField from "@mui/material/TextField";
 import ConfirmBtn from "../../filters/buttons/ConfirmBtn.jsx";
+// Typechecking
+import PropTypes from 'prop-types';
 
 const LocationFilter = ({
-  props: { updateQyParams, deleteQyParam, dispatch, filters },
+  filterModifiers: { updateQyParams, deleteQyParam, dispatch },
+  locationFilter
 }) => {
-  
+
+
   /****************************** */
   // Functions
 
@@ -13,10 +18,11 @@ const LocationFilter = ({
       type: "locationChgd",
       location: newLocation,
     });
+  
   const handleChange = (evt) => chgReducerLocation(evt.target.value);
   const handleSubmit = () =>
-    filters.location
-      ? updateQyParams("location", filters.location)
+    locationFilter
+      ? updateQyParams("location", locationFilter)
       : deleteQyParam("location");
   const handleClean = () => {
     deleteQyParam("location");
@@ -30,7 +36,7 @@ const LocationFilter = ({
     <div id="locationFilter">
       <TextField
         placeholder="Barrio, ciudad..."
-        value={filters.location || ""}
+        value={locationFilter || ""}
         variant="outlined"
         onChange={handleChange}
         sx={{
@@ -46,5 +52,17 @@ const LocationFilter = ({
     </div>
   );
 };
+
+/****************************** */
+// TypeChecking
+LocationFilter.propTypes = {
+  filterModifiers: PropTypes.shape({
+    updateQyParams: PropTypes.func,
+    deleteQyParam: PropTypes.func,
+    dispatch: PropTypes.func,
+    }),
+  locationFilter: PropTypes.string,
+}
+/****************************** */
 
 export default LocationFilter;

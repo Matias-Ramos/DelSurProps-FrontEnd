@@ -1,6 +1,7 @@
 // Components
 import MuiBtn from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types"
 
 const Button = ({
   btnSharedProps: { URLpath , handleClick, handleHover, getClasses },
@@ -11,6 +12,7 @@ const Button = ({
   colorStatus,
   btnTxt,
 }) => {
+  
   const getVariant = () =>
     thisPath === URLpath ? contained : outlined;
 
@@ -30,5 +32,23 @@ const Button = ({
     </Link>
   );
 };
+
+/****************************** */
+// TypeChecking
+Button.propTypes = {
+  btnSharedProps: PropTypes.exact({
+    URLpath: PropTypes.string,
+    handleClick: PropTypes.func,
+    handleHover: PropTypes.func,
+    getClasses: PropTypes.func,
+  }),
+  thisPath: PropTypes.string,
+  contained: PropTypes.string,
+  outlined: PropTypes.string,
+  colorName: PropTypes.string,
+  colorStatus: PropTypes.string,
+  btnTxt: PropTypes.string,
+};
+/****************************** */
 
 export default Button;

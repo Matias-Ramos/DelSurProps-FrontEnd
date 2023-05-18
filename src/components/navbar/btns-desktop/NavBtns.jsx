@@ -9,14 +9,14 @@ import { colorModifier, defaultDotStatuses } from "./reducerUtils.js";
 // Mui Styling
 import { createTheme, ThemeProvider } from "@mui/material";
 import customTheme from "./btnsTheme.js";
+// PropTypes
+import PropTypes from "prop-types"
 
 
 const NavBtns = ({ URLpath = "/" }) => {
-  
 
   /****************************** */
   // Functions
-
 
   const [colorStatuses, dispatch] = useReducer(
     colorModifier,
@@ -111,5 +111,12 @@ const NavBtns = ({ URLpath = "/" }) => {
     </ThemeProvider>
   );
 };
+
+/****************************** */
+// TypeChecking
+NavBtns.propTypes = {
+  URLpath: PropTypes.string,
+}
+/****************************** */
 
 export default NavBtns;

@@ -1,7 +1,9 @@
 // Bts
 import { NavDropdown } from "react-bootstrap";
-//Animation
+// Animation
 import { motion } from "framer-motion";
+// Typechecking
+import PropTypes from "prop-types";
 
 const Dropdown = ({ title, filterComponent, filtersVariant, alignCenter }) => (
   <motion.div variants={filtersVariant} style={alignCenter}>
@@ -10,5 +12,15 @@ const Dropdown = ({ title, filterComponent, filtersVariant, alignCenter }) => (
     </NavDropdown>
   </motion.div>
 );
+
+/****************************** */
+// TypeChecking
+Dropdown.propTypes = {
+  title: PropTypes.string,
+  filterComponent: PropTypes.element,
+  filtersVariant: PropTypes.object,
+  alignCenter: PropTypes.object,
+};
+/****************************** */
 
 export default Dropdown;

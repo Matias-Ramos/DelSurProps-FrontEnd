@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const CardLink = ({ link, eCommerceName, logo, typography }) => (
   <div className="linkOuter">
     <div className="linkInner">
@@ -19,5 +21,14 @@ const CardLink = ({ link, eCommerceName, logo, typography }) => (
     </div>
   </div>
 );
-
+/****************************** */
+// TypeChecking
+CardLink.propTypes = {
+  imgUrl: PropTypes.string,
+  link: PropTypes.string,
+  eCommerceName: PropTypes.string,
+  logo: PropTypes.string,
+  typography: PropTypes.string,
+};
+/****************************** */
 export default CardLink;

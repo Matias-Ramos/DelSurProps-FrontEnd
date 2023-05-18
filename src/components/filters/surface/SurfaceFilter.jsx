@@ -1,14 +1,18 @@
+// Components
 import { TextField, InputAdornment } from "@mui/material";
+// Typechecking
+import PropTypes from "prop-types";
+
 const customWhite = "#cccccc";
 const customGrey = "#7f7f7f";
 const SurfaceFilter = ({
-  surfaceTypeEsp,
+  surfaceTypeInSpanish,
   surfaceType,
   surfaceFilterValues,
   handleChange,
 }) => (
   <div className="surfaceInput">
-    <span>Superficie {surfaceTypeEsp}:</span>
+    <span>Superficie {surfaceTypeInSpanish}:</span>
     <div>
       <TextField
         id="outlined-basic"
@@ -63,5 +67,17 @@ const SurfaceFilter = ({
     </div>
   </div>
 );
+
+/****************************** */
+// TypeChecking
+SurfaceFilter.propTypes = {
+  surfaceTypeInSpanish: PropTypes.string,
+  surfaceType: PropTypes.string,
+  surfaceFilterValues: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([""])])
+  ),
+  handleChange: PropTypes.func,
+};
+/****************************** */
 
 export default SurfaceFilter;

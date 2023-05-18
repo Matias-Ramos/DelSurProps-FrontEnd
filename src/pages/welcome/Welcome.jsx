@@ -15,12 +15,11 @@ const Welcome = () => {
       >
         <BlobContainer />
         <motion.div
-          id="brandContainer"
+          id="h1Container"
           variants={brandVariant}
           initial="hidden"
           animate="visible"
         >
-          <span id="brand">DelSurProps {" "}</span>
           <h1>Inmobiliaria</h1>
         </motion.div>
         <motion.div id="welcomeTxtOuter">
@@ -31,7 +30,8 @@ const Welcome = () => {
             id="welcomeTxtInner"
             style={{ willChange }}
           >
-            <motion.span variants={welcomeVariant}>Bienvenid@</motion.span>
+            <motion.span variants={welcomeVariant} id="brand">DelSurProps</motion.span>
+            
             <motion.span id="preg" variants={welcomeVariant}>
               ¿Qué estás buscando?
             </motion.span>

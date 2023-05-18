@@ -2,7 +2,7 @@
 import LocationFilter from "../location/LocationFilter.jsx";
 import PriceContainer from "../price/PriceContainer.jsx";
 import SlidersContainer from "../rooms/SlidersContainer.jsx";
-import BuildStatusFilter from "../buildStatus/BuildStatusFilter.jsx";
+import BuildingStatusFilter from "../buildStatus/BuildingStatusFilter.jsx";
 import SurfaceFilterContainer from "../surface/SurfaceFilterContainer.jsx";
 import CleanBtn from "../../filters/buttons/CleanBtn.jsx";
 import Dropdown from "./Dropdown.jsx";
@@ -17,13 +17,15 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 // Animation
 import { motion } from "framer-motion";
 import getFiltersVariant from "./variants.js";
+// TypeChecking
+import PropTypes from "prop-types"
 
 export {
   // Components
   LocationFilter,
   PriceContainer,
   SlidersContainer,
-  BuildStatusFilter,
+  BuildingStatusFilter,
   SurfaceFilterContainer,
   CleanBtn,
   Dropdown,
@@ -46,4 +48,6 @@ export {
   // Animation
   motion,
   getFiltersVariant,
+  // TypeChecking
+  PropTypes,
 };

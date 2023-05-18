@@ -1,9 +1,13 @@
+// Components
 import { FormGroup, FormControlLabel, Checkbox } from "@mui/material";
 import ConfirmBtn from "./ConfirmBtn.jsx"; // not using default ConfitmBtn.jsx as the other components
+// Typechecking
+import PropTypes from "prop-types";
 
-export default function BuildStatusFilter({
-  props: { updateQyParams, dispatch, filters },
-}) {
+const BuildingStatusFilter = ({
+  filterModifiers: { updateQyParams, dispatch },
+  buildingStatusFilter,
+}) => {
   /****************************** */
   // Functions
 
@@ -17,8 +21,8 @@ export default function BuildStatusFilter({
     chgReducerBuildingSt(status, isChecked);
   };
   const handleSubmit = () => {
-    const query = Object.keys(filters.buildingStatus)
-      .filter((key) => filters.buildingStatus[key]) // filters boolean true statuses
+    const query = Object.keys(buildingStatusFilter)
+      .filter((key) => buildingStatusFilter[key]) // filters boolean true statuses
       .join("-or-");
     updateQyParams("building_status", query);
   };
@@ -31,25 +35,43 @@ export default function BuildStatusFilter({
       <span>Etapa constructiva:</span>
       <FormGroup>
         <FormControlLabel
-          control={<Checkbox checked={filters.buildingStatus.pozo} />}
+          control={<Checkbox checked={buildingStatusFilter.pozo} />}
           onChange={(evt) => handleChange("pozo", evt.target.checked)}
           label="En pozo"
         />
         <FormControlLabel
-          control={<Checkbox checked={filters.buildingStatus.in_progress} />}
+          control={<Checkbox checked={buildingStatusFilter.in_progress} />}
           onChange={(evt) => handleChange("in_progress", evt.target.checked)}
           label="En construcción"
         />
         <FormControlLabel
-          control={<Checkbox checked={filters.buildingStatus.pre_sale} />}
+          control={<Checkbox checked={buildingStatusFilter.pre_sale} />}
           onChange={(evt) => handleChange("pre_sale", evt.target.checked)}
           label="Pre-venta"
         />
       </FormGroup>
       <ConfirmBtn
         handleSubmit={handleSubmit}
-        filters={filters.buildingStatus}
+        buildingStatusFilter={buildingStatusFilter}
       />
     </div>
   );
-}
+};
+
+/****************************** */
+// TypeChecking
+BuildingStatusFilter.propTypes = {
+  filterModifiers: PropTypes.shape({
+    updateQyParams: PropTypes.func,
+    deleteQyParams: PropTypes.func,
+    dispatch: PropTypes.func,
+  }),
+  buildingStatusFilter: PropTypes.shape({
+    in_progress: PropTypes.bool,
+    pre_sale: PropTypes.bool,
+    pozo: PropTypes.bool,
+  }),
+};
+/****************************** */
+
+export default BuildingStatusFilter;

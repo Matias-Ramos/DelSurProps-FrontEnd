@@ -1,7 +1,11 @@
+// Components
 import CardImg from "./CardImg.jsx";
 import CardTxt from "./CardTxt.jsx";
 import CardLinksContainer from "./CardLinksContainer.jsx";
+// Grid sys
 import { Container, Row, Col } from "react-bootstrap";
+// Typechecking
+import PropTypes from 'prop-types';
 
 const Card = ({ building }) => (
   <Container fluid className="Card" tabIndex={0}>
@@ -29,5 +33,27 @@ const Card = ({ building }) => (
     </Row>
   </Container>
 );
+
+/****************************** */
+// TypeChecking
+Card.propTypes = {
+  building: PropTypes.shape( {
+    id: PropTypes.number.isRequired,
+    ubicacion: PropTypes.string,
+    precio: PropTypes.number,
+    img: PropTypes.string,
+    ambientes: PropTypes.number,
+    baños: PropTypes.number,
+    dormitorios: PropTypes.number,
+    garage: PropTypes.number,
+    superficieTotal: PropTypes.number,
+    superficieCubierta: PropTypes.number,
+    tipo: PropTypes.string.isRequired,
+    linkML: PropTypes.string,
+    linkZonaprop: PropTypes.string,
+    linkArgenprop: PropTypes.string,
+  } ),
+}
+/****************************** */
 
 export default Card;

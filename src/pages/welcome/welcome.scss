@@ -12,7 +12,7 @@
   color: white;
   z-index: 2;
 
-  #brandContainer {
+  #h1Container {
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -20,13 +20,9 @@
     margin-left: 10px;
     margin-top: 10px;
 
-    #brand {
-      font-family: "Libre Franklin", sans-serif;
-    }
-
     h1 {
       font-family: "Tajawal", sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #3C3D3D;
     }
   }
@@ -42,8 +38,11 @@
       flex-direction: column;
       text-align: center;
 
+      #brand {
+        font-family: "Libre Franklin", sans-serif;
+      }
+
       span:first-child {
-        font-family: "Noto Serif", serif;
         margin-bottom: 1.5rem;
         font-size: 2.5rem;
       }
@@ -51,17 +50,7 @@
       #preg {
         margin-bottom: 0.3rem;
         font-family: "Tajawal", sans-serif;
-      }
-
-
-      #preg {
         font-size: 2rem;
-      }
-
-      button h2 {
-        font-size: 1.2rem;
-        margin: 0;
-        font-family: "Tajawal", sans-serif;
       }
 
       .MuiButtonGroup-root {
@@ -69,30 +58,6 @@
 
         a button {
           font-size: 1.2rem;
-        }
-
-        a:first-child {
-
-          //buy
-          button {
-            box-shadow: -1px -1px 20px -7px rgba(191, 219, 247, 0.79) inset;
-          }
-        }
-
-        a:nth-child(2) {
-
-          //rent
-          button {
-            box-shadow: -1px -1px 20px -7px rgba(249, 229, 199, 0.79) inset;
-          }
-        }
-
-        a:last-child {
-
-          //entrepreneurship
-          button {
-            box-shadow: -1px -1px 20px -7px rgba(208, 237, 235, 0.79) inset;
-          }
         }
       }
     }
@@ -129,6 +94,9 @@
 
 /*Mobile*/
 @media only screen and (max-width: 768px) {
+  h1{
+    text-shadow: 0px -1px 8px white;
+  }
   .MuiButtonGroup-root {
     a button {
       border-radius: 20px;
@@ -144,7 +112,12 @@
     backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.18);
 
+    h1 {
+      color: #f4f4f4;
+    }
+
     #preg,
+    h1,
     span:nth-child(1) {
       text-shadow: 0px 1px 1px black;
     }

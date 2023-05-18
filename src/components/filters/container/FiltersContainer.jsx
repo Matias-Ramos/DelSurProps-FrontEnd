@@ -3,7 +3,7 @@ import {
   LocationFilter,
   PriceContainer,
   SlidersContainer,
-  BuildStatusFilter,
+  BuildingStatusFilter,
   SurfaceFilterContainer,
   CleanBtn,
   // Hooks
@@ -26,9 +26,12 @@ import {
   // Animation
   motion,
   getFiltersVariant,
+  // TypeChecking
+  PropTypes,
 } from "./imports.js";
 
 const FiltersContainer = ({ previousURL }) => {
+
   /****************************** */
   // Functions & Values
 
@@ -36,9 +39,8 @@ const FiltersContainer = ({ previousURL }) => {
     useContext(queryCtxt);
   const [filters, dispatch] = useReducer(filterModifier, defaultFilterValues);
   const URLpath = useLocation().pathname;
-  const filtersProps = useMemo(() => {
+  const filterModifiers = useMemo(() => {
     return {
-      filters: filters,
       dispatch: dispatch,
       updateQyParams: updateQyParams,
       deleteQyParam: deleteQyParam,
@@ -165,29 +167,42 @@ const FiltersContainer = ({ previousURL }) => {
               {/* Location */}
               <Dropdown
                 title="Ubicación"
-                filterComponent={<LocationFilter props={filtersProps} />}
                 filtersVariant={filtersVariant}
                 alignCenter={alignCenter}
+                filterComponent={
+                  <LocationFilter
+                    filterModifiers={filterModifiers}
+                    locationFilter={filters.location}
+                  />
+                }
               />
 
               {/* ***** */}
               {/* Price */}
               <Dropdown
                 title="Precio"
-                filterComponent={<PriceContainer props={filtersProps} />}
                 filtersVariant={filtersVariant}
-                previousURL={previousURL}
                 alignCenter={alignCenter}
+                filterComponent={
+                  <PriceContainer
+                    filterModifiers={filterModifiers}
+                    priceFilter={filters.price}
+                  />
+                }
               />
 
               {/* ******* */}
               {/* Sliders */}
               <Dropdown
                 title="Habitaciones"
-                filterComponent={<SlidersContainer props={filtersProps} />}
                 filtersVariant={filtersVariant}
-                previousURL={previousURL}
                 alignCenter={alignCenter}
+                filterComponent={
+                  <SlidersContainer
+                    filterModifiers={filterModifiers}
+                    filters={filters}
+                  />
+                }
               />
 
               {/* ******* */}
@@ -196,12 +211,14 @@ const FiltersContainer = ({ previousURL }) => {
                 URLpath === "/emprendimientos") && (
                 <Dropdown
                   title="Superficie"
-                  filterComponent={
-                    <SurfaceFilterContainer props={filtersProps} />
-                  }
                   filtersVariant={filtersVariant}
-                  previousURL={previousURL}
                   alignCenter={alignCenter}
+                  filterComponent={
+                    <SurfaceFilterContainer 
+                      filterModifiers={filterModifiers}
+                      surfacesFilter={filters.surface}
+                    />
+                  }
                 />
               )}
 
@@ -210,10 +227,14 @@ const FiltersContainer = ({ previousURL }) => {
               {URLpath === "/emprendimientos" && (
                 <Dropdown
                   title="Etapa"
-                  filterComponent={<BuildStatusFilter props={filtersProps} />}
                   filtersVariant={filtersVariant}
-                  previousURL={previousURL}
                   alignCenter={alignCenter}
+                  filterComponent={
+                    <BuildingStatusFilter 
+                      filterModifiers={filterModifiers}
+                      buildingStatusFilter={filters.buildingStatus}
+                    />
+                  }
                 />
               )}
             </Nav>
@@ -228,5 +249,12 @@ const FiltersContainer = ({ previousURL }) => {
     </Navbar>
   );
 };
+
+/****************************** */
+// TypeChecking
+FiltersContainer.propTypes = {
+  previousURL: PropTypes.string,
+}
+/****************************** */
 
 export default FiltersContainer;
