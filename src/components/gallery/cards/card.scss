@@ -41,6 +41,7 @@
     .characteristicsIcon {
       max-width: 25px;
       margin-right: 5px;
+      height: auto;
     }
 
     //caracteristics (bedrooms, bathrooms,...)
@@ -105,13 +106,15 @@
           flex-direction: column;
 
           img {
-            max-height: 35px;
+            height: 35px;
             max-width: 60px;
           }
 
           .typography {
             margin-top: auto;
             margin-bottom: auto;
+            width: 100%;
+            height: auto;
           }
         }
       }
