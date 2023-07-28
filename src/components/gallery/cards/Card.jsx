@@ -19,15 +19,15 @@ const Card = ({ building }) => (
         xxl={7}
         className="cardPicture p-0"
       >
-        <CardImg imgUrl={building.img} />
+        <CardImg images={building.images} />
       </Col>
       <Col xs={12} sm={12} md={5} lg={5} xl={4} xxl={5} className="cardTxt">
         <CardTxt building={building} />
         <hr />
         <CardLinksContainer
-          linkZP={building.zonaprop}
-          linkAP={building.argenprop}
-          linkML={building.meli}
+          linkZP={building.linkZonaprop}
+          linkAP={building.linkArgenprop}
+          linkML={building.linkML}
         />
       </Col>
     </Row>
@@ -39,19 +39,45 @@ const Card = ({ building }) => (
 Card.propTypes = {
   building: PropTypes.shape( {
     id: PropTypes.number.isRequired,
-    ubicacion: PropTypes.string,
-    precio: PropTypes.number,
-    img: PropTypes.string,
-    ambientes: PropTypes.number,
-    baños: PropTypes.number,
-    dormitorios: PropTypes.number,
-    garage: PropTypes.number,
-    superficieTotal: PropTypes.number,
-    superficieCubierta: PropTypes.number,
-    tipo: PropTypes.string.isRequired,
-    linkML: PropTypes.string,
-    linkZonaprop: PropTypes.string,
-    linkArgenprop: PropTypes.string,
+    location: PropTypes.string,
+    price: PropTypes.number,
+    images: PropTypes.array,
+    env: PropTypes.shape({
+      String : PropTypes.string,
+      Valid : PropTypes.bool,
+    }),
+    bathrooms: PropTypes.shape({
+      String : PropTypes.string,
+      Valid : PropTypes.bool,
+    }),
+    bedrooms: PropTypes.shape({
+      String : PropTypes.string,
+      Valid : PropTypes.bool,
+    }),
+    garages: PropTypes.shape({
+      String : PropTypes.string,
+      Valid : PropTypes.bool,
+    }),
+    total_surface: PropTypes.shape({
+      Int16 : PropTypes.number,
+      Valid : PropTypes.bool,
+    }),
+    covered_surface: PropTypes.shape({
+      Int16 : PropTypes.number,
+      Valid : PropTypes.bool,
+    }),
+    linkML: PropTypes.shape({
+      String : PropTypes.string,
+      Valid : PropTypes.bool,
+    }),
+    linkZonaprop: PropTypes.shape({
+      String : PropTypes.string,
+      Valid : PropTypes.bool,
+    }),
+    linkArgenprop: PropTypes.shape({
+      String : PropTypes.string,
+      Valid : PropTypes.bool,
+    }),
   } ),
 }
 /****************************** */

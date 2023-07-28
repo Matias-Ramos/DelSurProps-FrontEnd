@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 
-const CardImg = ({ imgUrl }) => <img src={imgUrl} alt="Imagen vivienda" />;
+const CardImg = ({ images }) => <p>Pendiente poner un carousel</p>/*<img src={imgUrl} alt="Imagen vivienda" />;*/
 
 /****************************** */
 // TypeChecking
 CardImg.propTypes = {
-  imgUrl: PropTypes.string,
+  images: PropTypes.array,
 };
 /****************************** */
 

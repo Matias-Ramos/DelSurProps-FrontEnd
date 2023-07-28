@@ -10,12 +10,20 @@ import garageIcon from "../../../assets/icons/garage-icon.svg";
 
 const CardTxt = ({
   building: {
-    ubicacion: location,
-    precio: price,
-    ambientes: env,
-    baños: bathrooms,
-    dormitorios: bedrooms,
-    garage,
+    location,
+    price,
+    env:{
+      Int16: env
+    },
+    bathrooms:{
+      Int16: bathrooms
+    },
+    bedrooms:{
+      Int16: bedrooms
+    },
+    garages:{
+      Int16: garages
+    },
   },
 }) => (
   <>
@@ -39,12 +47,12 @@ const CardTxt = ({
       </li>
       <li tabIndex={0}>
         <img src={bedIcon} alt="ícono cama" className="characteristicsIcon" />
-        {bedrooms}
+        {bedrooms || "?"}
         {parseInt(bedrooms) > 1 ? " Dormitorios" : " Dormitorio"}
       </li>
       <li tabIndex={0}>
         <img src={bathIcon} alt="ícono ducha" className="characteristicsIcon" />
-        {bathrooms}
+        {bathrooms || "?"}
         {parseInt(bathrooms) > 1 ? " Baños" : " Baño"}
       </li>
       <li tabIndex={0}>
@@ -53,8 +61,8 @@ const CardTxt = ({
           alt="ícono garage"
           className="characteristicsIcon"
         />
-        {garage}
-        {parseInt(garage) > 1 || parseInt(garage) === 0
+        {garages || "?"}
+        {parseInt(garages) > 1 || parseInt(garages) === 0
           ? " Garages"
           : " Garage"}
       </li>
@@ -66,12 +74,24 @@ const CardTxt = ({
 // TypeChecking
 CardTxt.propTypes = {
   building: PropTypes.shape( {
-    ubicacion: PropTypes.string,
-    precio: PropTypes.number,
-    ambientes: PropTypes.number,
-    baños: PropTypes.number,
-    dormitorios: PropTypes.number,
-    garage: PropTypes.number,
+    price: PropTypes.number,
+    location: PropTypes.string,
+    env: PropTypes.shape({
+      Int16 : PropTypes.number,
+      Valid : PropTypes.bool,
+    }),
+    bathrooms: PropTypes.shape({
+      Int16 : PropTypes.number,
+      Valid : PropTypes.bool,
+    }),
+    bedrooms: PropTypes.shape({
+      Int16 : PropTypes.number,
+      Valid : PropTypes.bool,
+    }),
+    garages: PropTypes.shape({
+      Int16 : PropTypes.number,
+      Valid : PropTypes.bool,
+    }),
   } ),
 }
 /****************************** */
