@@ -5,7 +5,7 @@ import ConfirmBtn from "./ConfirmBtn.jsx"; // not using default ConfitmBtn.jsx a
 import PropTypes from "prop-types";
 
 const BuildingStatusFilter = ({
-  filterModifiers: { updateQyParams, dispatch },
+  filterModifiers: { updateQyParams,dispatch },
   buildingStatusFilter,
 }) => {
   /****************************** */

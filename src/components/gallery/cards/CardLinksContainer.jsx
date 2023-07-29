@@ -60,30 +60,6 @@ const CardLinksContainer = ({ linkZP, linkAP, linkML }) => {
     <Container className="cardLinksContainer">
       <Row>
         {links && CardLinks()}
-        {/* <Col xs={4} sm={3} md={4} lg={3} xl={3} xxl={2} className={cardsPadding}>
-        <CardLink
-          link={linkML}
-          eCommerceName={"Mercado Libre"}
-          logo={MLlogo}
-          typography={MLtypo}
-        />
-      </Col>
-      <Col xs={4} sm={3} md={4} lg={3} xl={3} xxl={2} className={cardsPadding}>
-        <CardLink
-          link={linkAP}
-          eCommerceName={"ArgenProp"}
-          logo={APlogo}
-          typography={APtypo}
-        />
-      </Col>
-      <Col xs={4} sm={3} md={4} lg={3} xl={3} xxl={2} className={cardsPadding}>
-        <CardLink
-          link={linkZP}
-          eCommerceName={"ZonaProp"}
-          logo={ZPlogo}
-          typography={ZPtypo}
-        />
-      </Col> */}
       </Row>
     </Container>
   );
