@@ -1,5 +1,5 @@
 // Components
-import CardImg from "./CardImg.jsx";
+import CardImg from "./CardCarousel.jsx";
 import CardTxt from "./CardTxt.jsx";
 import CardLinksContainer from "./CardLinksContainer.jsx";
 // Grid sys
@@ -7,7 +7,7 @@ import { Container, Row, Col } from "react-bootstrap";
 // Typechecking
 import PropTypes from 'prop-types';
 
-const Card = ({ building }) => (
+const Card = ({ building, urlPath }) => (
   <Container fluid className="Card" tabIndex={0}>
     <Row>
       <Col
@@ -22,7 +22,7 @@ const Card = ({ building }) => (
         <CardImg images={building.images} />
       </Col>
       <Col xs={12} sm={12} md={5} lg={5} xl={4} xxl={5} className="cardTxt">
-        <CardTxt building={building} />
+        <CardTxt building={building} urlPath={urlPath} />
         <hr />
         <CardLinksContainer
           linkZP={building.linkZonaprop}

@@ -44,11 +44,6 @@ const BuildingStatusFilter = ({
           onChange={(evt) => handleChange("in_progress", evt.target.checked)}
           label="En construcción"
         />
-        <FormControlLabel
-          control={<Checkbox checked={buildingStatusFilter.pre_sale} />}
-          onChange={(evt) => handleChange("pre_sale", evt.target.checked)}
-          label="Pre-venta"
-        />
       </FormGroup>
       <ConfirmBtn
         handleSubmit={handleSubmit}

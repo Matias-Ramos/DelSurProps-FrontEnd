@@ -25,7 +25,6 @@ const defaultFilterValues = {
   },
   buildingStatus: {
     in_progress: true,
-    pre_sale: true,
     pozo: true,
   },
   surface: {
@@ -66,10 +65,6 @@ function filterModifier(currentFilters, actionObj) {
     switch (actionObj.status) {
       case "pozo": {
         updatedStatus = { pozo: actionObj.isChecked };
-        break;
-      }
-      case "pre_sale": {
-        updatedStatus = { pre_sale: actionObj.isChecked };
         break;
       }
       case "in_progress": {

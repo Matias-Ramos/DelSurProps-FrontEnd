@@ -13,9 +13,16 @@
 
   .cardPicture {
     overflow: hidden;
+    position: relative;
 
     img {
       width: 100%;
+    }
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+      background-color: #94A1A6;
+      width: 30px;
+      height: 30px;
     }
   }
 
@@ -24,15 +31,17 @@
     flex-direction: column;
     justify-content: center;
     background-color: #fff;
-    .locationAndCardPrice{
+
+    .locationAndCardPrice {
       display: flex;
       flex-direction: column;
+
       .location {
         font-family: "Taviraj", serif;
         font-size: calc(1.325rem + .9vw);
-        margin-bottom:7px;
+        margin-bottom: 7px;
       }
-  
+
       .cardPrice {
         font-family: "Heebo", sans-serif;
       }
@@ -51,6 +60,12 @@
       li {
         display: inline-block;
         font-family: "Source Sans Pro", sans-serif;
+      }
+
+      .buildingStatusLi {
+        display: flex;
+        margin-top: 0.7rem;
+        font-weight: bold;
       }
     }
 
@@ -159,6 +174,7 @@
       .cardLinksContainer {
         .row {
           justify-content: space-evenly;
+
           .linkOuter {
             margin: 0.5rem 0px 1rem 0px;
           }
@@ -183,8 +199,9 @@
     .Card {
       margin: 0;
       box-shadow: rgb(50, 50, 50) 0px 16px 14px -10px;
+
       .cardPicture {
-        z-index:2;
+        z-index: 2;
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.8);
@@ -192,6 +209,7 @@
         align-items: center;
         background-color: #edede9;
         background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23aaaaaa' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+
         img {
           max-height: 90%;
           box-shadow: 0px -3px 3px -1px rgba(80, 80, 80, 0.6), 0px 3px 3px -1px rgba(80, 80, 80, 0.6);
@@ -201,7 +219,7 @@
       }
 
       .cardTxt {
-        z-index:3;
+        z-index: 3;
         border: 1px solid #e5e5e5;
         border-left: none;
         border-top-right-radius: 6px;
@@ -209,6 +227,7 @@
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23aaaaaa' fill-opacity='0.17' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
         border-left: 1px solid rgba(50, 50, 50, 0.3);
+
         .location {
           margin-top: 1.5rem;
         }
@@ -224,8 +243,10 @@
 
       .cardLinksContainer {
         margin-bottom: 0.7rem;
+
         .row {
           justify-content: flex-start !important;
+
           .cardLinkCol {
             padding: 0px 1.4rem;
           }
