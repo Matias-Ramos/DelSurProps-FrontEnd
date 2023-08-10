@@ -10,11 +10,11 @@ const GalleryContainer = () => {
   useEffect(() => {
     fetchData();
   }, [urlPath, urlQyParams]);
-
+  
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8080" + urlPath + urlQyParams
+        ((process.env.NODE_ENV === 'development' && "http://localhost:8080") + urlPath + urlQyParams)
       );
       const jsonData = await response.json();
       setData(jsonData);
