@@ -64,7 +64,6 @@ const Slider = ({
 
   /****************************** */
   // Rendering
-
   return (
     <div className="sliderContainer">
       <ThemeProvider theme={theme}>
@@ -96,7 +95,7 @@ const Slider = ({
                 id={`${room}_input_izquierda`} // accessibility purposes
                 inputProps={{
                   step: 1,
-                  min: 1,
+                  min: (room == "Garage" ? 0 : 1),
                   max: 7,
                   onKeyDown: (event) => {
                     //prevents the user from changing the value through its keyboard, except if using ArrowUp/ArrowDown
@@ -121,7 +120,7 @@ const Slider = ({
                 }
                 step={1}
                 marks
-                min={1}
+                min={room == "Garage" ? 0 : 1}
                 max={7}
                 disableSwap
                 tabIndex={0}

@@ -167,7 +167,10 @@
 
         li {
           text-align: left;
-          width: 50%;
+          width: 49%;
+          &:nth-child(even){
+            margin-left: 2%;
+          }
         }
       }
 

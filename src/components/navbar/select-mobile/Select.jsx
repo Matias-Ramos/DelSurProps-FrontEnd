@@ -31,11 +31,11 @@ const Select = ({ URLpath = "/" }) => {
   this effect updates select value with it on first render.*/
   useEffect(() => {
     switch (URLpath) {
-      case "/alquiler-inmuebles":
-        setCategory("alquiler-inmuebles");
+      case "/alquiler_inmuebles":
+        setCategory("alquiler_inmuebles");
         break;
-      case "/venta-inmuebles":
-        setCategory("venta-inmuebles");
+      case "/venta_inmuebles":
+        setCategory("venta_inmuebles");
         break;
       case "/emprendimientos":
         setCategory("emprendimientos");
@@ -64,19 +64,19 @@ const Select = ({ URLpath = "/" }) => {
         }}
       >
         <MenuItem
-          value={"venta-inmuebles"}
-          onClick={() => navigate("/venta-inmuebles")}
+          value={"venta_inmuebles"}
+          onClick={() => navigate("/venta_inmuebles")}
         >
           <img src={blueDot} className="circleIcon" alt="Ícono decorativo" />
-          {getProperTag("/venta-inmuebles", "Comprar")}
+          {getProperTag("/venta_inmuebles", "Comprar")}
         </MenuItem>
 
         <MenuItem
-          value={"alquiler-inmuebles"}
-          onClick={() => navigate("/alquiler-inmuebles")}
+          value={"alquiler_inmuebles"}
+          onClick={() => navigate("/alquiler_inmuebles")}
         >
           <img src={orangeDot} className="circleIcon" alt="Ícono decorativo" />
-          {getProperTag("/alquiler-inmuebles", "Alquilar")}
+          {getProperTag("/alquiler_inmuebles", "Alquilar")}
         </MenuItem>
 
         <MenuItem

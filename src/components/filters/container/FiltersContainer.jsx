@@ -207,7 +207,7 @@ const FiltersContainer = ({ previousURL }) => {
 
               {/* ******* */}
               {/* Surface */}
-              {(URLpath === "/venta-inmuebles" ||
+              {(URLpath === "/venta_inmuebles" ||
                 URLpath === "/emprendimientos") && (
                 <Dropdown
                   title="Superficie"

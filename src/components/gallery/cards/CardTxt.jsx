@@ -50,7 +50,7 @@ const CardTxt = ({
           {formattedLocation}
         </span>
         <span className="cardPrice" tabIndex={0}>
-          {urlPath == "/venta-inmuebles" || urlPath == "/emprendimientos"
+          {urlPath == "/venta_inmuebles" || urlPath == "/emprendimientos"
             ? "US$"
             : "AR$"}
           {improvePriceReadability(price)}
@@ -86,7 +86,7 @@ const CardTxt = ({
             alt="ícono garage"
             className="characteristicsIcon"
           />
-          {garages || "?"}
+          {garages >= 0 ? garages : "?"}
           {parseInt(garages) > 1 || parseInt(garages) === 0
             ? " Garages"
             : " Garage"}

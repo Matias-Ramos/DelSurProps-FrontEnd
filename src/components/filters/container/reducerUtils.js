@@ -12,7 +12,7 @@ const defaultFilterValues = {
     limit: 7,
   },
   garage: {
-    init: 1,
+    init: 0,
     limit: 7,
   },
   bathroom: {

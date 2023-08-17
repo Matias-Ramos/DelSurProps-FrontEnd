@@ -56,10 +56,10 @@ const NavBtns = ({ URLpath = "/" }) => {
   // chgs dot color based on URL path
   useEffect(() => {
     switch (URLpath) {
-      case "/alquiler-inmuebles":
+      case "/alquiler_inmuebles":
         handleClick("orange");
         break;
-      case "/venta-inmuebles":
+      case "/venta_inmuebles":
         handleClick("blue");
         break;
       case "/emprendimientos":
@@ -82,7 +82,7 @@ const NavBtns = ({ URLpath = "/" }) => {
       >
         <Button
           btnSharedProps={btnSharedProps}
-          thisPath={"/venta-inmuebles"}
+          thisPath={"/venta_inmuebles"}
           contained="containedBlue"
           outlined="outlinedBlue"
           colorName={"blue"}
@@ -91,7 +91,7 @@ const NavBtns = ({ URLpath = "/" }) => {
         />
         <Button
           btnSharedProps={btnSharedProps}
-          thisPath={"/alquiler-inmuebles"}
+          thisPath={"/alquiler_inmuebles"}
           contained="containedOrange"
           outlined="outlinedOrange"
           colorName={"orange"}

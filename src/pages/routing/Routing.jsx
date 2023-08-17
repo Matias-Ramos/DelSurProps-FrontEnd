@@ -9,8 +9,8 @@ const Routing = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Welcome />} />
-        <Route path="/alquiler-inmuebles" element={<Main />} />
-        <Route path="/venta-inmuebles" element={<Main />} />
+        <Route path="/alquiler_inmuebles" element={<Main />} />
+        <Route path="/venta_inmuebles" element={<Main />} />
         <Route path="/emprendimientos" element={<Main />} />
         <Route path='*' element={<RouteError />} />
       </Routes>

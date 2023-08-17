@@ -7,9 +7,9 @@ export const getBackground = (URLpath) => {
   switch (URLpath) {
     case "/emprendimientos":
       return turquoisBkg;
-    case "/alquiler-inmuebles":
+    case "/alquiler_inmuebles":
       return orangeBkg;
-    case "/venta-inmuebles":
+    case "/venta_inmuebles":
       return blueBkg;
     default:
       console.error("getBackground fn at Main.jsx throws error.");

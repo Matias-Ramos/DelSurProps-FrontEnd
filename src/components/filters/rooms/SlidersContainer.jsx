@@ -40,6 +40,10 @@ const SlidersContainer = ({
     const defaultValues = { init: 1, limit: 7 };
     rooms.forEach((room) => {
       for (let i = 0; i <= 1; i++) {
+        // Initializes garage to 0.
+        if (room === "garage" && Object.keys(defaultValues)[i] === "init") {
+          defaultValues[Object.keys(defaultValues)[i]] = 0;
+        }
         deleteQyParam(`${room}_${Object.keys(defaultValues)[i]}`);
         chgReducerRoom(
           Object.values(defaultValues)[i],
@@ -50,6 +54,8 @@ const SlidersContainer = ({
       }
     });
   };
+  
+  
   const btsBreakpoints = {
     // sets mui breakpoints same as bts
     breakpoints: {
