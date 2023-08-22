@@ -1,0 +1,17 @@
+#dinamicInputs{
+    .linkInput:not(:first-child) {
+        margin-top:2rem;
+      }
+    #linksActnBtns{
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: space-evenly;
+        button{
+            font-size: 1.2rem;
+            border-radius: "50%";
+            padding: 0;
+            width: 50px;
+            height: 40px;
+        }
+    }
+}

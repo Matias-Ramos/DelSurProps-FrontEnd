@@ -1,0 +1,46 @@
+#adminPanel{
+    min-height: 100vh;
+    .nav, .nav-tabs{
+        background-color: #FAFAFA;
+    }
+    .formItem{
+        padding:2rem;
+        &:nth-child(odd){
+            background-color: #f8f9fa;
+        }
+        &:nth-child(even){
+            background-color: #e9ecef;
+        }
+    }
+    .form-label{
+        font-weight: bold;
+    }
+    #submitForm{
+        display: block;
+        margin:2rem auto;
+    }
+    margin-bottom:2rem;
+}
+/*Mobile*/
+@media only screen and (max-width: 991px) {
+    #adminPanel {
+        .tab-content{
+            padding:5px
+        }
+        .nav-item {
+            // prevents one tab below the other.
+            width: auto;
+        }
+        .dropdown button{
+            width: 50%;
+        }
+    }
+}
+/*Desktop*/
+@media only screen and (min-width: 991px) {
+    #adminPanel {
+        .btn{
+            width: 35%;
+        }
+    }
+}

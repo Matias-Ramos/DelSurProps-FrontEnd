@@ -7,16 +7,20 @@ const GalleryContainer = () => {
   const [data, setData] = useState([]);
   const urlPath = useLocation().pathname;
   const urlQyParams = useLocation().search;
-  
+
   useEffect(() => {
     fetchData();
   }, [urlPath, urlQyParams]);
-  
+
   //API fetch data
   const fetchData = async () => {
     try {
       const response = await fetch(
-        ((process.env.NODE_ENV === 'development' && "http://localhost:8080/api") + urlPath + urlQyParams)
+        (process.env.NODE_ENV === "development"
+          ? "http://localhost:8080/api"
+          : "/api") +
+          urlPath +
+          urlQyParams
       );
       const jsonData = await response.json();
       setData(jsonData);
