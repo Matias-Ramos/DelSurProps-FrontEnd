@@ -4,7 +4,7 @@ import { useState } from "react";
 import Inputs from "./Inputs.jsx";
 import ActnBtns from "./ActnBtns.jsx";
 
-const DinamicInputs = () => {
+const ImgDinamicInputs = () => {
 
   //********************
   // Value mgmt.
@@ -36,4 +36,4 @@ const DinamicInputs = () => {
   );
 };
 
-export default DinamicInputs;
+export default ImgDinamicInputs;

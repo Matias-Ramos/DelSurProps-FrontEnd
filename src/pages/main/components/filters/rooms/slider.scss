@@ -1,0 +1,47 @@
+.sliderContainer {
+  margin: 0.3rem 0rem;
+  border-bottom: solid 1px #495057;
+}
+
+/*Mobile*/
+@media only screen and (max-width: 768px) {
+  .edgeIndicator {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div {
+      writing-mode: vertical-lr;
+      text-orientation: mixed;
+      transform: scale(-1);
+      letter-spacing: 3px;
+      z-index: 2;
+      padding: 5px 0;
+      background-color: #343a40;
+      color: #999999;
+    }
+
+    #Max {
+      transform: scale(1);
+    }
+
+    .arrow {
+      height: 100%;
+      position: absolute;
+      z-index: 1;
+    }
+  }
+  .nav-item{
+    width: 100%;
+  }
+}
+
+/*Notebooks and Desktops*/
+@media only screen and (min-width: 992px) {
+  .sliderContainer {
+    padding-bottom: 0.5rem;
+    width: 550px;
+  }
+}
