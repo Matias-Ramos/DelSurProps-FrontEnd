@@ -2,6 +2,7 @@ import Card from "../cards/Card.jsx";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import NoBuildings from "../noBuildings/NoBuildings.jsx";
+import { getData } from "../../../../../api/fetches.js";
 
 const GalleryContainer = () => {
   const [data, setData] = useState([]);
@@ -9,25 +10,9 @@ const GalleryContainer = () => {
   const urlQyParams = useLocation().search;
 
   useEffect(() => {
-    fetchData();
+    getData(urlPath, urlQyParams)
+    .then(buildings => setData(buildings))
   }, [urlPath, urlQyParams]);
-
-  //API fetch data
-  const fetchData = async () => {
-    try {
-      const response = await fetch(
-        (process.env.NODE_ENV === "development"
-          ? "http://localhost:8080/api"
-          : "/api") +
-          urlPath +
-          urlQyParams
-      );
-      const jsonData = await response.json();
-      setData(jsonData);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
 
   return (
     <div id="cardsContainer">

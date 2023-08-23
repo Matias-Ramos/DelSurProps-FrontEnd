@@ -18,7 +18,7 @@ delsurprops.com.ar
 
 ### Hosting
 
-app.netlify.com (desde ghPages)
+donweb.com
 
 ## Estructura
 
@@ -27,13 +27,16 @@ Si el viewport es modificado desde un navegador (vista desktop a vista mobile o 
 
 ### Páginas y estructura del sitio
 
-- Welcome.jsx
-- Main.jsx
+- Welcome.jsx (/)
+- Main.jsx (/emprendimientos, /alquiler_inmuebles, /venta_inmuebles)
   - header > #topNavbar
   - main > .navbar (filtros)
   - main > #cardsContainer
   - footer > Attributions.jsx
 - RouteError.jsx
+- AdminPanel.jsx (/admin)
+  - create 
+  - delete 
 
 ### Frameworks & Librerías principales
 
@@ -44,7 +47,7 @@ Si el viewport es modificado desde un navegador (vista desktop a vista mobile o 
 
 ### Método de actualización de catálogo
 
-De momento este proyecto tiene solo el front-end y está planificado armar a continuación un backend en GoLang para actualizar el catálogo de propiedades.
+Esta aplicación fue desarrollada para trabajar en conjunto con este backend (https://github.com/Matias-Ramos/Inmobiliaria-backend-go)
 
 ### Ejecución del proyecto
 

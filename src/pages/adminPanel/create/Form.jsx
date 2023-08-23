@@ -16,21 +16,14 @@ import {
     StatusInput,
     PublicationLinkInputs,
     // Hooks
-    useState
+    useState,
+    // API
+    getData,
+    postData,
 } from "./imports.js";
 
 const Form = ({ category }) => {
   const [validated, setValidated] = useState(false);
-
-  const sendData = async (formData) => {
-    const res = await fetch("http://localhost:8080/admin/post", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-      },
-      body: formData,
-    });
-  };
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -43,7 +36,7 @@ const Form = ({ category }) => {
     const imageLinksArray = formData.getAll("imageLinks");
     formDataObj.imagesInputs = imageLinksArray;
     console.log(formDataObj);
-    sendData(formDataObj);
+    postData(formDataObj).then(apiAnswer => console.log(apiAnswer));
     setValidated(true);
   };
 

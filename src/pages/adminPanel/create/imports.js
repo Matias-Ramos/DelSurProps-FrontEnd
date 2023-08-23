@@ -16,7 +16,8 @@ import StatusInput from "./inputs/statusInput/StatusInput.jsx";
 import PublicationLinkInputs from "./inputs/publicationLinkInputs/PublicationLinkInputs.jsx";
 // Hooks
 import { useState } from "react";
-
+// API
+import { postData, getData } from "../../../api/fetches.js";
 export{
     // BTS
     Button,
@@ -36,4 +37,7 @@ export{
     PublicationLinkInputs,
     // Hooks
     useState,
+    // API
+    getData,
+    postData,
 }
