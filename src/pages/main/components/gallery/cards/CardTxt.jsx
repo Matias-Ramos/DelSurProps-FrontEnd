@@ -3,12 +3,12 @@ import { improvePriceReadability } from "./utils.js";
 // Typechecking
 import PropTypes from "prop-types";
 // Icons
-import doorIcon from "../../../assets/icons/door-icon.svg";
-import bathIcon from "../../../assets/icons/bath-icon.svg";
-import bedIcon from "../../../assets/icons/bed-icon.svg";
-import garageIcon from "../../../assets/icons/garage-icon.svg";
-import coveredSurfaceIcon from "../../../assets/icons/covered_surface.svg";
-import totalSurfaceIcon from "../../../assets/icons/total_surface.svg";
+import doorIcon from "../../../../../assets/icons/door-icon.svg";
+import bathIcon from "../../../../../assets/icons/bath-icon.svg";
+import bedIcon from "../../../../../assets/icons/bed-icon.svg";
+import garageIcon from "../../../../../assets/icons/garage-icon.svg";
+import coveredSurfaceIcon from "../../../../../assets/icons/covered_surface.svg";
+import totalSurfaceIcon from "../../../../../assets/icons/total_surface.svg";
 
 const CardTxt = ({
   urlPath,

@@ -1,4 +1,4 @@
-import searchFilterIcon from "../../../assets/icons/search-filter-icon.svg";
+import searchFilterIcon from "../../../../../assets/icons/search-filter-icon.svg";
 
 function NoBuildings() {
   return (

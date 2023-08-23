@@ -1,10 +1,10 @@
 // Hooks
 import { useContext } from "react";
-import { queryCtxt } from "../../../context/QyParamsCtxt.jsx";
+import { queryCtxt } from "../../../../../context/QyParamsCtxt.jsx";
 // Component
 import Button from "@mui/material/Button";
 // Icon
-import Broom from "../../../assets/icons/broom-solid.svg";
+import Broom from "../../../../../assets/icons/broom-solid.svg";
 // Typechecking
 import PropTypes from "prop-types"
 

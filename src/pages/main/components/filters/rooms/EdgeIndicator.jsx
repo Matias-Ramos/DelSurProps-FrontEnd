@@ -1,5 +1,5 @@
 // Icon
-import arrow from "../../../assets/icons/arrow.svg";
+import arrow from "../../../../../assets/icons/arrow.svg";
 // Typechecking
 import PropTypes from 'prop-types';
 

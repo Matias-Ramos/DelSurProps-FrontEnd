@@ -9,12 +9,12 @@ import PropTypes from "prop-types";
 // Utils
 import { cardsPadding } from "./utils.js";
 // Icons
-import MLlogo from "../../../assets/shop-logos/mercado-libre-logo.svg";
-import MLtypo from "../../../assets/shop-logos/mercado-libre-typography.svg";
-import ZPlogo from "../../../assets/shop-logos/zona-prop-logo.svg";
-import ZPtypo from "../../../assets/shop-logos/zona-prop-typography.svg";
-import APlogo from "../../../assets/shop-logos/argen-prop-logo.svg";
-import APtypo from "../../../assets/shop-logos/argen-prop-typography.svg";
+import MLlogo from "../../../../../assets/shop-logos/mercado-libre-logo.svg";
+import MLtypo from "../../../../../assets/shop-logos/mercado-libre-typography.svg";
+import ZPlogo from "../../../../../assets/shop-logos/zona-prop-logo.svg";
+import ZPtypo from "../../../../../assets/shop-logos/zona-prop-typography.svg";
+import APlogo from "../../../../../assets/shop-logos/argen-prop-logo.svg";
+import APtypo from "../../../../../assets/shop-logos/argen-prop-typography.svg";
 
 const CardLinksContainer = ({ linkZP, linkAP, linkML }) => {
 
