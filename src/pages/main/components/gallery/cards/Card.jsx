@@ -7,7 +7,9 @@ import { Container, Row, Col } from "react-bootstrap";
 // Typechecking
 import PropTypes from 'prop-types';
 
-const Card = ({ building, urlPath }) => (
+const Card = ({ building, urlPath }) => {
+  console.log(building)
+  return(
   <Container fluid className="Card" tabIndex={0}>
     <Row>
       <Col
@@ -32,7 +34,9 @@ const Card = ({ building, urlPath }) => (
       </Col>
     </Row>
   </Container>
-);
+  )
+}
+;
 
 /****************************** */
 // TypeChecking
@@ -42,20 +46,21 @@ Card.propTypes = {
     location: PropTypes.string,
     price: PropTypes.number,
     images: PropTypes.array,
+    currency: PropTypes.string,
     env: PropTypes.shape({
-      String : PropTypes.string,
+      Int16 : PropTypes.number,
       Valid : PropTypes.bool,
     }),
     bathrooms: PropTypes.shape({
-      String : PropTypes.string,
+      Int16 : PropTypes.number,
       Valid : PropTypes.bool,
     }),
     bedrooms: PropTypes.shape({
-      String : PropTypes.string,
+      Int16 : PropTypes.number,
       Valid : PropTypes.bool,
     }),
     garages: PropTypes.shape({
-      String : PropTypes.string,
+      Int16 : PropTypes.number,
       Valid : PropTypes.bool,
     }),
     total_surface: PropTypes.shape({

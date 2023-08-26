@@ -34,9 +34,11 @@ const Form = ({ category }) => {
 
     // saves array instead of the last value
     const imageLinksArray = formData.getAll("imageLinks");
-    formDataObj.imagesInputs = imageLinksArray;
-    console.log(formDataObj);
-    postData(formDataObj).then(apiAnswer => console.log(apiAnswer));
+    formDataObj.image_links = imageLinksArray;
+    delete formDataObj.imageLinks;
+
+    
+    postData(formDataObj, category).then(apiAnswer => console.log(apiAnswer));
     setValidated(true);
   };
 

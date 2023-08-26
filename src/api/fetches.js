@@ -1,15 +1,21 @@
-const postData = async (formData) => {
+const postData = async (formData, category) => {
+  const categoryMap = {
+    "Venta inmueble": "venta_inmueble",
+    "Alquiler inmueble": "alquiler_inmueble",
+    "Emprendimiento": "emprendimiento",
+  };
+  const apiCategory = categoryMap[category];
   try {
     const apiAnswer = await fetch(
       process.env.NODE_ENV === "development"
-        ? "http://localhost:8080/admin/post"
-        : "/admin/post",
+        ? `http://localhost:8080/admin/post/${apiCategory}`
+        : `/admin/post/${apiCategory}`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
         },
-        body: formData,
+        body: JSON.stringify(formData),
       }
     );
     return apiAnswer;

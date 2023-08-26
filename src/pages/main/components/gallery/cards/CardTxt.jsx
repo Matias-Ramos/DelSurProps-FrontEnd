@@ -1,5 +1,5 @@
 // Utils
-import { improvePriceReadability } from "./utils.js";
+import { improvePriceReadability, printCurrencyStr } from "./utils.js";
 // Typechecking
 import PropTypes from "prop-types";
 // Icons
@@ -15,7 +15,8 @@ const CardTxt = ({
   building: {
     location = "",
     price,
-    env: { Int16: env },
+    currency,
+    env: { Int16: env }, // override the obj with Int16's.
     bathrooms: { Int16: bathrooms },
     bedrooms: { Int16: bedrooms },
     garages: { Int16: garages },
@@ -50,9 +51,7 @@ const CardTxt = ({
           {formattedLocation}
         </span>
         <span className="cardPrice" tabIndex={0}>
-          {urlPath == "/venta_inmuebles" || urlPath == "/emprendimientos"
-            ? "US$"
-            : "AR$"}
+          {printCurrencyStr(urlPath, currency)}
           {improvePriceReadability(price)}
         </span>
       </div>
@@ -126,6 +125,7 @@ CardTxt.propTypes = {
   building: PropTypes.shape({
     price: PropTypes.number,
     location: PropTypes.string,
+    currency: PropTypes.string,
     env: PropTypes.shape({
       Int16: PropTypes.number,
       Valid: PropTypes.bool,
