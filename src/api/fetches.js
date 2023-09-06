@@ -1,29 +1,3 @@
-const postData = async (formData, category) => {
-  const categoryMap = {
-    "Venta inmueble": "venta_inmueble",
-    "Alquiler inmueble": "alquiler_inmueble",
-    "Emprendimiento": "emprendimiento",
-  };
-  const apiCategory = categoryMap[category];
-  try {
-    const apiAnswer = await fetch(
-      process.env.NODE_ENV === "development"
-        ? `http://localhost:8080/admin/post/${apiCategory}`
-        : `/admin/post/${apiCategory}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-        },
-        body: JSON.stringify(formData),
-      }
-    );
-    return apiAnswer;
-  } catch (error) {
-    console.error("Error fetching data (post method):", error);
-  }
-};
-
 const getData = async (urlPath, urlQyParams) => {
   try {
     const response = await fetch(
@@ -40,4 +14,43 @@ const getData = async (urlPath, urlQyParams) => {
   }
 };
 
-export { getData, postData };
+const postData = async (formData, category, jwtToken) => {
+  try {
+    const apiAnswer = await fetch(
+      process.env.NODE_ENV === "development"
+        ? `http://localhost:8080/admin/post/${category}`
+        : `/admin/post/${category}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+          "Authentication": jwtToken
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+    return apiAnswer;
+  } catch (error) {
+    console.error("Error fetching data (post method):", error);
+  }
+};
+
+
+const loginCredentials = async (pwd) => {
+  try {
+    const apiAnswer = await fetch(
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:8080/admin/jwt"
+        : "/admin/jwt/",
+      {
+        method: "POST",
+        body: JSON.stringify({"Access": pwd})
+      }
+    )
+    return apiAnswer;
+  } catch (error) {
+    console.error("Error fetching data in loginCredentials: ", error);
+  }
+};
+
+export { getData, postData, loginCredentials };

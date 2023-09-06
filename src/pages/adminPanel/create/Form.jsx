@@ -1,44 +1,45 @@
 import {
-    // BTS
-    Button,
-    FormBTS,
-    // Components
-    ImgDinamicInputs,
-    LocationInput,
-    PriceInput,
-    CurrencyInput,
-    EnvInput,
-    BedroomsInput,
-    BathroomsInput,
-    GaragesInput,
-    CoveredSurfaceInput,
-    TotalSurfaceInput,
-    StatusInput,
-    PublicationLinkInputs,
-    // Hooks
-    useState,
-    // API
-    getData,
-    postData,
+  // BTS
+  Button,
+  FormBTS,
+  // Components
+  ImgDinamicInputs,
+  LocationInput,
+  PriceInput,
+  CurrencyInput,
+  EnvInput,
+  BedroomsInput,
+  BathroomsInput,
+  GaragesInput,
+  CoveredSurfaceInput,
+  TotalSurfaceInput,
+  StatusInput,
+  PublicationLinkInputs,
+  // Hooks
+  useState,
+  // API
+  postData,
+  // Utils
+  formatCategForAPI,
+  formatDataForAPI,
 } from "./imports.js";
 
-const Form = ({ category }) => {
+const Form = ({ category, jwtToken }) => {
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
     event.stopPropagation();
-    const formData = new FormData(form),
+    let formData = new FormData(form),
       formDataObj = Object.fromEntries(formData.entries());
 
-    // saves array instead of the last value
-    const imageLinksArray = formData.getAll("imageLinks");
-    formDataObj.image_links = imageLinksArray;
-    delete formDataObj.imageLinks;
+    formDataObj = formatDataForAPI(formData, formDataObj);
+    const apiCategory = formatCategForAPI(category);
 
-    
-    postData(formDataObj, category).then(apiAnswer => console.log(apiAnswer));
+    postData(formDataObj, apiCategory, jwtToken).then((apiAnswer) =>
+      console.log(apiAnswer)
+    );
     setValidated(true);
   };
 
@@ -53,11 +54,11 @@ const Form = ({ category }) => {
           <BedroomsInput />
           <BathroomsInput />
           <GaragesInput />
-          {category === "Emprendimiento" || category === "Venta inmueble" && (
-              <>
-                <TotalSurfaceInput />
-                <CoveredSurfaceInput />
-              </>
+          {(category === "Emprendimiento" || category === "Venta inmueble") && (
+            <>
+              <TotalSurfaceInput />
+              <CoveredSurfaceInput />
+            </>
           )}
           {category === "Emprendimiento" && <StatusInput />}
           <PublicationLinkInputs />

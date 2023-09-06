@@ -7,9 +7,8 @@ import Col from "react-bootstrap/Col";
 // Components
 import Form from "./Form.jsx";
 import Dropdown from "./Dropdown.jsx";
-import Attribution from "../../../components/footer/Attribution.jsx";
 
-const ContainerCreateBuilding = () => {
+const ContainerCreateBuilding = ({jwtToken}) => {
   const [category, setCategory] = useState("Categoría");
 
   return (
@@ -26,7 +25,7 @@ const ContainerCreateBuilding = () => {
           xl={7}
           xxl={6}
         >
-          <Form category={category} />
+          <Form category={category} jwtToken={jwtToken} />
         </Col>
       </Row>
     </Container>

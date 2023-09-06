@@ -6,38 +6,61 @@ import Tabs from "react-bootstrap/Tabs";
 import ContainerCreateBuilding from "./create/ContainerCreateBuilding.jsx";
 import DeleteForm from "./delete/DeleteForm.jsx";
 import Attribution from "../../components/footer/Attribution.jsx";
+import Login from "./login/Login.jsx";
+import Cookies from "universal-cookie";
+import { useState, useEffect } from "react";
 
-function AdminPanel() {
+const AdminPanel = () => {
+  const [isAuthorized, setAuthorization] = useState(false);
+  const [jwtToken, setJwtToken] = useState("");
+
+
+  useEffect(() => {
+    const cookies = new Cookies();
+    const cookieToken = cookies.get("Token");
+    if(cookieToken){
+      setAuthorization(true);
+      setJwtToken(cookieToken);
+    }
+  }, []);
+
+
   return (
     <>
-      <div id="adminPanel">
-        <Nav className="pt-1">
-          <Nav.Item>
-            <Nav.Link href="/">{"< "}Volver al inicio</Nav.Link>
-          </Nav.Item>
-        </Nav>
+      {isAuthorized === false ? (
+        <Login setAuthorization={setAuthorization} setJwtToken={setJwtToken}/>
+      ) : (
+        <>
+          <div id="adminPanel">
+            <Nav className="pt-1">
+              <Nav.Item>
+                <Nav.Link href="/">{"< "}Volver al inicio</Nav.Link>
+              </Nav.Item>
+            </Nav>
 
-        <Tabs
-          className="justify-content-center mb-3"
-          defaultActiveKey="createTab"
-        >
-          <Tab eventKey="createTab" title="Alta inmueble">
-            <ContainerCreateBuilding />
-          </Tab>
-          <Tab eventKey="deleteTab" title="Baja inmueble">
-            <DeleteForm />
-          </Tab>
-        </Tabs>
-      </div>
-      <footer>
-        <Attribution
-          role="Developer"
-          link="https://www.linkedin.com/in/matias-ramos-computacion/"
-          name="Matias Ramos"
-        />
-      </footer>
+            <Tabs
+              className="justify-content-center mb-3"
+              defaultActiveKey="createTab"
+            >
+              <Tab eventKey="createTab" title="Alta inmueble">
+                <ContainerCreateBuilding jwtToken={jwtToken}/>
+              </Tab>
+              <Tab eventKey="deleteTab" title="Baja inmueble">
+                <DeleteForm jwtToken={jwtToken}/>
+              </Tab>
+            </Tabs>
+          </div>
+          <footer>
+            <Attribution
+              role="Developer"
+              link="https://www.linkedin.com/in/matias-ramos-computacion/"
+              name="Matias Ramos"
+            />
+          </footer>
+        </>
+      )}
     </>
   );
-}
+};
 
 export default AdminPanel;

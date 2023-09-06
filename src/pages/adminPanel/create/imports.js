@@ -17,7 +17,9 @@ import PublicationLinkInputs from "./inputs/publicationLinkInputs/PublicationLin
 // Hooks
 import { useState } from "react";
 // API
-import { postData, getData } from "../../../api/fetches.js";
+import { postData } from "../../../api/fetches.js";
+// utils
+import { formatCategForAPI, formatDataForAPI } from "./utils.js";
 export{
     // BTS
     Button,
@@ -38,6 +40,8 @@ export{
     // Hooks
     useState,
     // API
-    getData,
     postData,
+    // Utils
+    formatCategForAPI, 
+    formatDataForAPI,
 }

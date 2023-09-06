@@ -1,4 +1,4 @@
-const DeleteForm = () => {
+const DeleteForm = ({jwtToken}) => {
   return (
     <div>DeleteForm</div>
   )

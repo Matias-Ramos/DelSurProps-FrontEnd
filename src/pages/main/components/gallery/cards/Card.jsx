@@ -8,7 +8,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import PropTypes from 'prop-types';
 
 const Card = ({ building, urlPath }) => {
-  console.log(building)
   return(
   <Container fluid className="Card" tabIndex={0}>
     <Row>
@@ -21,15 +20,15 @@ const Card = ({ building, urlPath }) => {
         xxl={7}
         className="cardPicture p-0"
       >
-        <CardImg images={building.images} />
+        <CardImg image_links={building.image_links} />
       </Col>
       <Col xs={12} sm={12} md={5} lg={5} xl={4} xxl={5} className="cardTxt">
         <CardTxt building={building} urlPath={urlPath} />
         <hr />
         <CardLinksContainer
-          linkZP={building.linkZonaprop}
-          linkAP={building.linkArgenprop}
-          linkML={building.linkML}
+          linkZP={building.link_zonaprop}
+          linkAP={building.link_argenprop}
+          linkML={building.link_ml}
         />
       </Col>
     </Row>
