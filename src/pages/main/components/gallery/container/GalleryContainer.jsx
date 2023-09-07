@@ -10,8 +10,15 @@ const GalleryContainer = () => {
   const urlQyParams = useLocation().search;
 
   useEffect(() => {
-    getData(urlPath, urlQyParams)
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+    getData(urlPath, urlQyParams, signal)
     .then(buildings => setData(buildings))
+
+    // Cleanup to cancel fetch on unmount
+    return () => {
+      abortController.abort();
+    };
   }, [urlPath, urlQyParams]);
 
   return (

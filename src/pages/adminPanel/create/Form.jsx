@@ -37,9 +37,7 @@ const Form = ({ category, jwtToken }) => {
     formDataObj = formatDataForAPI(formData, formDataObj);
     const apiCategory = formatCategForAPI(category);
 
-    postData(formDataObj, apiCategory, jwtToken).then((apiAnswer) =>
-      console.log(apiAnswer)
-    );
+    postData(formDataObj, apiCategory, jwtToken);
     setValidated(true);
   };
 

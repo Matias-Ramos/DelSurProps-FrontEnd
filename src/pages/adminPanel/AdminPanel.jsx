@@ -4,7 +4,7 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 // Components
 import ContainerCreateBuilding from "./create/ContainerCreateBuilding.jsx";
-import DeleteForm from "./delete/DeleteForm.jsx";
+import ContainerDeleteBuilding from "./delete/ContainerDeleteBuilding.jsx";
 import Attribution from "../../components/footer/Attribution.jsx";
 import Login from "./login/Login.jsx";
 import Cookies from "universal-cookie";
@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 const AdminPanel = () => {
   const [isAuthorized, setAuthorization] = useState(false);
   const [jwtToken, setJwtToken] = useState("");
+  // currentSection, setCurrentSection
 
 
   useEffect(() => {
@@ -43,10 +44,10 @@ const AdminPanel = () => {
               defaultActiveKey="createTab"
             >
               <Tab eventKey="createTab" title="Alta inmueble">
-                <ContainerCreateBuilding jwtToken={jwtToken}/>
+                <ContainerCreateBuilding jwtToken={jwtToken}/> 
               </Tab>
               <Tab eventKey="deleteTab" title="Baja inmueble">
-                <DeleteForm jwtToken={jwtToken}/>
+                <ContainerDeleteBuilding jwtToken={jwtToken}/>
               </Tab>
             </Tabs>
           </div>
