@@ -12,6 +12,7 @@ const ContainerCreateBuilding = ({jwtToken}) => {
   const [category, setCategory] = useState("Categoría"); 
 
   return (
+    
     <Container>
       <Row className="flex-column align-items-center">
         <Col className="text-center mb-4">

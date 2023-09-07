@@ -10,36 +10,32 @@ import { useState } from "react";
 // Fetch
 import { getData, deleteData } from "../../../api/fetches.js";
 import { useEffect } from "react";
-
+// Utils
+import { formatCategForAPI } from "../create/utils.js";
 const ContainerDeleteBuilding = ({ jwtToken }) => {
-
   // Variables
   const [category, setCategory] = useState("Categoría");
   const [buildings, setBuildings] = useState({});
+
   const handleDelete = (buildingId) => {
-    deleteData(jwtToken, category, buildingId).then((apiAnswer) =>
-      console.log(apiAnswer)
+    const apiCategory = formatCategForAPI(category, "delete");
+
+    deleteData(jwtToken, apiCategory, buildingId.toString()).then(
+      (apiAnswer) => {
+        if (apiAnswer.status === 200) {
+          window.location.reload(true);
+        }
+      }
     );
   };
 
   useEffect(() => {
-    const abortController = new AbortController();
-    const signal = abortController.signal;
-    const categoryAPImapping = {
-      "Alquiler inmueble": "/alquiler_inmuebles",
-      "Venta inmueble": "/venta_inmuebles",
-      Emprendimiento: "/emprendimientos",
-    };
-
     if (category !== "Categoría") {
-      getData(categoryAPImapping[category], "", signal).then((buildings) =>
-        setBuildings(buildings)
-      );
+      const apiCategory = "/" + formatCategForAPI(category, "delete");
+      getData(apiCategory, "").then((buildings) => {
+        setBuildings(buildings);
+      });
     }
-
-    return () => {
-      abortController.abort();
-    };
   }, [category]);
 
   return (
@@ -53,21 +49,20 @@ const ContainerDeleteBuilding = ({ jwtToken }) => {
               category={category}
             />
           </Col>
-          <Col
-            style={{ border: "1px solid #ced4da", padding: 0 }}
-            sm={12}
-            md={12}
-            lg={8}
-            xl={7}
-            xxl={6}
-          ></Col>
+
 
           {category !== "Categoría" && (
             <>
               {Object.keys(buildings).length === 0 ? (
                 <span>No hay inmuebles registrados en esta categoría.</span>
               ) : (
-                <Col>
+                <Col
+                sm={12}
+                md={12}
+                lg={9}
+                xl={7}
+                xxl={6}
+                >
                   <Table buildings={buildings} handleDelete={handleDelete} />
                 </Col>
               )}

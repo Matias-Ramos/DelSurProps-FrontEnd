@@ -19,12 +19,17 @@ const formatDataForAPI = (formData, formDataObj) => {
     return formDataObj;
 }
 
-const formatCategForAPI = (category) => {
-    const categoryMap = {
+const formatCategForAPI = (category, httpMethod) => {
+    const categoryMap = httpMethod === "post" ?{
         "Venta inmueble": "venta_inmueble",
         "Alquiler inmueble": "alquiler_inmueble",
         "Emprendimiento": "emprendimiento",
-      };
+      }:
+      {
+        "Venta inmueble": "venta_inmuebles",
+        "Alquiler inmueble": "alquiler_inmuebles",
+        "Emprendimiento": "emprendimientos",
+      }
       const apiCategory = categoryMap[category];
       return apiCategory
 }

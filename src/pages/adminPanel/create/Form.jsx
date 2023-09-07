@@ -15,6 +15,7 @@ import {
   TotalSurfaceInput,
   StatusInput,
   PublicationLinkInputs,
+  Modal,
   // Hooks
   useState,
   // API
@@ -25,7 +26,7 @@ import {
 } from "./imports.js";
 
 const Form = ({ category, jwtToken }) => {
-  const [validated, setValidated] = useState(false);
+  const [validatedForm, setValidatedForm] = useState(false);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -35,16 +36,25 @@ const Form = ({ category, jwtToken }) => {
       formDataObj = Object.fromEntries(formData.entries());
 
     formDataObj = formatDataForAPI(formData, formDataObj);
-    const apiCategory = formatCategForAPI(category);
+    const apiCategory = formatCategForAPI(category, "post");
 
-    postData(formDataObj, apiCategory, jwtToken);
-    setValidated(true);
+    postData(formDataObj, apiCategory, jwtToken).then(apiAnswer => {
+      if (apiAnswer.status === 200){
+        setValidatedForm(true);
+        setShowModal(true);
+      }
+    })
   };
 
+  const [showModal, setShowModal] = useState(false);
+  const handleCloseModal = () => {
+    setShowModal(false);
+    window.location.reload(true);
+  }
   return (
     <>
       {category != "Categoría" && (
-        <FormBTS noValidate validated={validated} onSubmit={handleSubmit}>
+        <FormBTS noValidate validated={validatedForm} onSubmit={handleSubmit}>
           <LocationInput />
           <PriceInput />
           {category == "Alquiler inmueble" && <CurrencyInput />}
@@ -68,6 +78,9 @@ const Form = ({ category, jwtToken }) => {
           </Button>
         </FormBTS>
       )}
+      {showModal === true &&
+      <Modal showModal={showModal} handleCloseModal={handleCloseModal}/>
+      }
     </>
   );
 };

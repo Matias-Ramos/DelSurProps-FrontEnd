@@ -1,5 +1,5 @@
 import BtsTable from "react-bootstrap/Table";
-import Modal from "./Modal.jsx";
+import DeleteBtn from "./DeleteBtn.jsx";
 
 const Table = ({ buildings, handleDelete }) => (
   <BtsTable responsive>
@@ -7,8 +7,8 @@ const Table = ({ buildings, handleDelete }) => (
       {buildings.map((building) => (
         <tr key={building.id}>
           <th>{building.location}</th>
-          <td>
-            <Modal building={building} handleDelete={handleDelete}/>
+          <td style={{display:"flex", justifyContent:"flex-end"}}>
+            <DeleteBtn building={building} handleDelete={handleDelete}/>
           </td>
         </tr>
       ))}

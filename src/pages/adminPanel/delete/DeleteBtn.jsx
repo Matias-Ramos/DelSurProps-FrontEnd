@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import BtsModal from 'react-bootstrap/Modal';
 
-function Modal({building, handleDelete}) {
-    
+function DeleteBtn({building, handleDelete}) {
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -14,7 +14,7 @@ function Modal({building, handleDelete}) {
   
   return (
     <>
-      <Button variant="secondary" onClick={handleShow}>
+      <Button variant="secondary" onClick={handleShow} style={{width:"75%"}}>
         Eliminar
       </Button>
 
@@ -36,4 +36,4 @@ function Modal({building, handleDelete}) {
   );
 }
 
-export default Modal;
+export default DeleteBtn;

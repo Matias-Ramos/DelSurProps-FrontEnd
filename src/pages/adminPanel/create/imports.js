@@ -14,6 +14,8 @@ import CoveredSurfaceInput from "./inputs/coveredSurfaceInput/CoveredSurfaceInpu
 import TotalSurfaceInput from "./inputs/totalSurfaceInput/TotalSurfaceInput.jsx";
 import StatusInput from "./inputs/statusInput/StatusInput.jsx";
 import PublicationLinkInputs from "./inputs/publicationLinkInputs/PublicationLinkInputs.jsx";
+import Modal from "./Modal.jsx";
+
 // Hooks
 import { useState } from "react";
 // API
@@ -37,6 +39,7 @@ export{
     TotalSurfaceInput,
     StatusInput,
     PublicationLinkInputs,
+    Modal,
     // Hooks
     useState,
     // API
