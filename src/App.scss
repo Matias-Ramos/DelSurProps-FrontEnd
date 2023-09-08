@@ -22,5 +22,5 @@
 // NoRoute
 @use "./pages/routeError/routeError.scss";
 // Admin
-@use "./pages/adminPanel/adminPanel.scss";
+@use "./pages/adminPanel/baseComponents/adminPanel.scss";
 @use "./pages/adminPanel/create/createBuildingForm.scss";

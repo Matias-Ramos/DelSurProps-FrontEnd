@@ -23,11 +23,17 @@ import {
   // Utils
   formatCategForAPI,
   formatDataForAPI,
+  // Typechecking
+  PropTypes
 } from "./imports.js";
 
 const Form = ({ category, jwtToken }) => {
-  const [validatedForm, setValidatedForm] = useState(false);
 
+  // ********************
+  // Variables & functions
+
+  const [validatedForm, setValidatedForm] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
@@ -42,15 +48,20 @@ const Form = ({ category, jwtToken }) => {
       if (apiAnswer.status === 200){
         setValidatedForm(true);
         setShowModal(true);
+      } else if (apiAnswer.status === 401){
+        // credentials expired
+        alert("Refrescar la página para continuar")
       }
     })
-  };
-
-  const [showModal, setShowModal] = useState(false);
+  }; 
   const handleCloseModal = () => {
     setShowModal(false);
     window.location.reload(true);
   }
+
+  // ********************
+  // Rendering
+
   return (
     <>
       {category != "Categoría" && (
@@ -84,5 +95,13 @@ const Form = ({ category, jwtToken }) => {
     </>
   );
 };
+
+/****************************** */
+// TypeChecking
+Form.propTypes = {
+  category: PropTypes.string,
+  jwtToken: PropTypes.string,
+};
+/****************************** */
 
 export default Form;

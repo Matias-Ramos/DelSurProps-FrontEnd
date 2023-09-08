@@ -1,6 +1,6 @@
 // Route
 import { BrowserRouter } from "react-router-dom";
-import Routing from "./pages/routing/Routing.jsx";
+import Routing from "./routing/Routing.jsx";
 // Css
 import "./App.scss";
 // Bts

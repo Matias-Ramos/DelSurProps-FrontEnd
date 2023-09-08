@@ -1,4 +1,5 @@
 import Button from "react-bootstrap/Button";
+import PropTypes from "prop-types";
 
 const CredentialsInput = ({setPwd, submitPwd}) => (
   <>
@@ -11,5 +12,11 @@ const CredentialsInput = ({setPwd, submitPwd}) => (
     </Button>
   </>
 );
-
+/****************************** */
+// TypeChecking
+CredentialsInput.propTypes = {
+  setPwd: PropTypes.func,
+  submitPwd: PropTypes.func,
+};
+/****************************** */
 export default CredentialsInput;

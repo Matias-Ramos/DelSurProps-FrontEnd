@@ -15,13 +15,14 @@ import TotalSurfaceInput from "./inputs/totalSurfaceInput/TotalSurfaceInput.jsx"
 import StatusInput from "./inputs/statusInput/StatusInput.jsx";
 import PublicationLinkInputs from "./inputs/publicationLinkInputs/PublicationLinkInputs.jsx";
 import Modal from "./Modal.jsx";
-
 // Hooks
 import { useState } from "react";
 // API
 import { postData } from "../../../api/fetches.js";
-// utils
-import { formatCategForAPI, formatDataForAPI } from "./utils.js";
+// Utils
+import { formatCategForAPI, formatDataForAPI } from "../utils.js";
+// Typechecking
+import PropTypes from "prop-types"
 export{
     // BTS
     Button,
@@ -47,4 +48,6 @@ export{
     // Utils
     formatCategForAPI, 
     formatDataForAPI,
+    // Typechecking
+    PropTypes,
 }

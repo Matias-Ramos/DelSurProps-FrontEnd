@@ -1,20 +1,31 @@
-// Components
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import PwdAlert from "./PwdAlert.jsx"
-import CredentialsInput from "./CredentialsInput.jsx";
-// Fetch
-import { cssLoginContainer, cssLoginRow, cssLoginColInput, cssLoginColAlert } from "./loginUtils.js";
-// Hooks
-import { useState } from "react";
-// Fetch
-import { loginCredentials } from "../../../api/fetches";
-// Cookie mgmt.
-import Cookies from "universal-cookie";
-import jwtDecode from "jwt-decode";
+import {
+  // Components
+  Container,
+  Row,
+  Col,
+  CredentialsInput,
+  PwdAlert,
+  // Fetch
+  cssLoginContainer,
+  cssLoginRow,
+  cssLoginColInput,
+  cssLoginColAlert,
+  // Hooks
+  useState,
+  // Fetch
+  loginCredentials,
+  // Cookie mgmt.
+  Cookies,
+  jwtDecode,
+  // Typechecking
+  PropTypes,
+} from "./imports.js"
 
 const Login = ({ setAuthorization, setJwtToken }) => {
+
+  // *************************
+  // Variables & Functions
+
   const [pwd, setPwd] = useState("");
   const [showAlert, setShowAlert] = useState(false)
   const submitPwd = async () => {
@@ -45,6 +56,9 @@ const Login = ({ setAuthorization, setJwtToken }) => {
     }
   };
 
+  // *************************
+  // Rendering
+
   return (
     <Container style={cssLoginContainer}>
       <Row style={cssLoginRow}>
@@ -58,5 +72,13 @@ const Login = ({ setAuthorization, setJwtToken }) => {
     </Container>
   );
 };
+
+/****************************** */
+// TypeChecking
+Login.propTypes = {
+  setAuthorization: PropTypes.func,
+  setJwtToken: PropTypes.func,
+};
+/****************************** */
 
 export default Login;

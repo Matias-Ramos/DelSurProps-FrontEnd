@@ -1,9 +1,9 @@
 import { useLocation, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import Welcome from "../welcome/Welcome.jsx";
-import AdminPanel from "../adminPanel/AdminPanel.jsx"
-import Main from "../main/Main.jsx";
-import RouteError from "../routeError/RouteError.jsx";
+import Welcome from "../pages/welcome/Welcome.jsx";
+import AdminPanel from "../pages/adminPanel/baseComponents/AdminPanel.jsx"
+import Main from "../pages/main/Main.jsx";
+import RouteError from "../pages/routeError/RouteError.jsx";
 const Routing = () => {
   const location = useLocation();
   return (

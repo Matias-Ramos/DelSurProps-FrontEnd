@@ -1,39 +1,49 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import BtsModal from 'react-bootstrap/Modal';
+// Components
+import Button from "react-bootstrap/Button";
+import ConfirmationModal from "./ConfirmationModal.jsx";
+// Hooks
+import { useState } from "react";
+// Typechecking
+import PropTypes from "prop-types";
 
-function DeleteBtn({building, handleDelete}) {
+const DeleteBtn = ({ handleDelete, building }) => {
+
+  // *********************
+  // Variables & Functions
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const confirmDeletion = () => {
-    handleDelete(building.id)
+  const confirmDeletion = (buildingId) => {
+    handleDelete(buildingId);
     setShow(false);
-  }
-  
+  };
+
+  // *********************
+  // Rendering
+
   return (
     <>
-      <Button variant="secondary" onClick={handleShow} style={{width:"75%"}}>
+      <Button variant="secondary" onClick={handleShow} style={{ width: "75%" }}>
         Eliminar
       </Button>
 
-      <BtsModal show={show} onHide={handleClose}>
-        <BtsModal.Header closeButton>
-          <BtsModal.Title>Confirmación</BtsModal.Title>
-        </BtsModal.Header>
-        <BtsModal.Body>Vas a eliminar <b>"{building.location}"</b></BtsModal.Body>
-        <BtsModal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cancelar
-          </Button>
-          <Button variant="danger" onClick={confirmDeletion}>
-            Eliminar
-          </Button>
-        </BtsModal.Footer>
-      </BtsModal>
+      <ConfirmationModal
+        show={show}
+        handleClose={handleClose}
+        building={building}
+        confirmDeletion={confirmDeletion}
+      />
     </>
   );
-}
+};
+
+/****************************** */
+// TypeChecking
+DeleteBtn.propTypes = {
+  handleDelete : PropTypes.func,
+  building: PropTypes.object,
+};
+/****************************** */
 
 export default DeleteBtn;
