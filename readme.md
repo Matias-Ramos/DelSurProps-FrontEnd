@@ -1,45 +1,46 @@
-# Nombre del proyecto
+# Project Name
 DelSurProps
 
-## Sobre el proyecto
+## About the Project
 
-### Motivo
-El cliente ha solicitado la solución la cual centralice las propiedades que administra: En venta, Alquileres y Emprendimientos.
+### Purpose
+The client has requested a solution that centralizes the properties they manage: For sale, Rentals, and Entrepreneurships.
 
-### Solución
-Esta es una solución construída en React.js, que centraliza las propiedades en cuestión en una única página web y redirige al cliente al link de MercadoLibre/Zonaprop/Argenprop, donde podrá encontrar mas información referida la propiedad que sea de su interés.
+### Solution
+This is a solution built in React.js, which centralizes the properties on a single website and redirects the client to the link on MercadoLibre/Zonaprop/Argenprop, where they can find more information related to the property of their interest.
 
 ### Link
 delsurprops.com.ar
 
-### Hosting
-donweb.com
+### Full stack architecture
+This is a full-stack project, designed to work in conjunction with this backend: [https://github.com/Matias-Ramos/Inmobiliaria-backend-go] and with an SQL database:
 
-## Código
+![architecture](https://github.com/Matias-Ramos/Inmobiliaria-backend-go/assets/99888423/4f67262f-89db-4f54-8064-90209e185364)
 
-Este es un proyecto full stack, pensado para trabajar en conjunto con este backend: [https://github.com/Matias-Ramos/Inmobiliaria-backend-go] y con una base de datos SQL.
+## Code
 
-### Páginas
+### Pages
 - Welcome.jsx
 - Main.jsx
 - RouteError.jsx
+- AdminPanel.jsx
 
-### Componentes de Main.jsx
-1. Navbar - Filtros de categoría.
-2. FiltersContainer - Filtros de contenido.
+### Components in Main.jsx
+1. Navbar - Category filters.
+2. FiltersContainer - Content filters.
 3. GalleryContainer - Cards.
 4. Footer - Attributions.
 
-### Frameworks & Librerias
+### Frameworks & Libraries
 - react-bootstrap
 - MaterialUi
 - Framermotion
 
-### Método de actualización de stock
-tbd
+### Stock Update Method
+localhost/admin
 
-### Ejecución del proyecto
-Ejecutar "npm run dev" en la terminal del IDE. Acto siguiente, acceder a la url [http://127.0.0.1:5173/] en el navegador. 
+### Running the Project
+Run "npm run dev" in the IDE terminal. Next, go to the url [http://127.0.0.1:5173/] in the browser.
 
-### Inicializacion del proyecto
-El proyecto fue inicializado con Vite.
+### Project Initialization
+The project was initialized with Vite.
