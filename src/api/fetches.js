@@ -36,6 +36,7 @@ const postData = async (formData, category, jwtToken) => {
 };
 
 const deleteData = async (jwtToken, category, buildingId) => {
+  console.log(JSON.stringify({"buildingId": buildingId}))
   try {
     const apiAnswer = await fetch(
       process.env.NODE_ENV === "development"
