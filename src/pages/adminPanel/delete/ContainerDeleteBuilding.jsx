@@ -36,7 +36,7 @@ const ContainerDeleteBuilding = ({ jwtToken }) => {
     if (category !== "Categoría") {
       const apiCategory = "/" + formatCategForAPI(category, "delete");
       getData(apiCategory, "").then((buildings) => {
-        setBuildings(buildings);
+        setBuildings(buildings||{});
       });
     }
   }, [category]);

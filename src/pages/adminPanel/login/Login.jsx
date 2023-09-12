@@ -40,6 +40,7 @@ const Login = ({ setAuthorization, setJwtToken }) => {
       }
       else if (apiAnswer.status === 200){
         const jwtToken = await apiAnswer.text();
+        
         const decodedToken = jwtDecode(jwtToken);
         const tokenExpiration = new Date(decodedToken.exp * 1000);
         const cookies = new Cookies();

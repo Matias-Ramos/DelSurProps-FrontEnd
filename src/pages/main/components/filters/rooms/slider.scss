@@ -37,6 +37,12 @@
     width: 100%;
   }
 }
+/*Tablet*/
+@media only screen and (min-width: 769px) and (max-width: 991px){
+  .nav-item{
+    width: 75%;
+  }
+}
 
 /*Notebooks and Desktops*/
 @media only screen and (min-width: 992px) {

@@ -36,12 +36,11 @@ const postData = async (formData, category, jwtToken) => {
 };
 
 const deleteData = async (jwtToken, category, buildingId) => {
-  console.log(JSON.stringify({"buildingId": buildingId}))
   try {
     const apiAnswer = await fetch(
       process.env.NODE_ENV === "development"
       ? `http://localhost:8080/admin/delete/${category}`
-      : `/admin/delete${category}`,
+      : `/admin/delete/${category}`,
       {
         method: "DELETE",
         headers: {
@@ -62,7 +61,7 @@ const loginCredentials = async (pwd) => {
     const apiAnswer = await fetch(
       process.env.NODE_ENV === "development"
         ? "http://localhost:8080/admin/jwt"
-        : "/admin/jwt/",
+        : "/admin/jwt",
       {
         method: "POST",
         body: JSON.stringify({"Access": pwd})

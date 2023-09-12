@@ -1,5 +1,5 @@
 // Utils
-import { improvePriceReadability, printCurrencyStr } from "./utils.js";
+import { improvePriceReadability, printCurrencyStr, stringifyRoom } from "./utils.js";
 // Typechecking
 import PropTypes from "prop-types";
 // Icons
@@ -42,7 +42,12 @@ const CardTxt = ({
       return location;
     }
   };
+
   const formattedLocation = formatLocation(location);
+  const formattedBathrooms = stringifyRoom(bathrooms, "Baños");
+  const formattedBedrooms = stringifyRoom(bedrooms, "Dormitorios");
+  const formattedEnv = stringifyRoom(env, "Ambientes");
+  const formattedGarages = stringifyRoom(garages, "Garages");
 
   return (
     <>
@@ -63,12 +68,11 @@ const CardTxt = ({
             alt="ícono puerta (representando ambientes)"
             className="characteristicsIcon"
           />
-          {parseInt(env) > 1 ? `${env} Ambientes` : "Monoambiente"}
+          {formattedEnv}
         </li>
         <li tabIndex={0}>
           <img src={bedIcon} alt="ícono cama" className="characteristicsIcon" />
-          {bedrooms || "?"}
-          {parseInt(bedrooms) > 1 ? " Dormitorios" : " Dormitorio"}
+          {formattedBedrooms}
         </li>
         <li tabIndex={0}>
           <img
@@ -76,8 +80,7 @@ const CardTxt = ({
             alt="ícono ducha"
             className="characteristicsIcon"
           />
-          {bathrooms || "?"}
-          {parseInt(bathrooms) > 1 ? " Baños" : " Baño"}
+          {formattedBathrooms}
         </li>
         <li tabIndex={0}>
           <img
@@ -85,12 +88,9 @@ const CardTxt = ({
             alt="ícono garage"
             className="characteristicsIcon"
           />
-          {garages >= 0 ? garages : "?"}
-          {parseInt(garages) > 1 || parseInt(garages) === 0
-            ? " Garages"
-            : " Garage"}
+          {formattedGarages}
         </li>
-        {totalSurface && (
+        {totalSurface !== 0 && coveredSurface !== null && (
           <li tabIndex={0}>
             <img
               src={totalSurfaceIcon}
@@ -101,7 +101,7 @@ const CardTxt = ({
             totales
           </li>
         )}
-        {coveredSurface && (
+        {coveredSurface !== 0 && coveredSurface !== null && (
           <li tabIndex={0}>
             <img
               src={coveredSurfaceIcon}
