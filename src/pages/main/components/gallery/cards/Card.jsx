@@ -1,5 +1,5 @@
 // Components
-import CardImg from "./CardCarousel.jsx";
+import CardCarousel from "./CardCarousel.jsx";
 import CardTxt from "./CardTxt.jsx";
 import CardLinksContainer from "./CardLinksContainer.jsx";
 // Grid sys
@@ -18,9 +18,9 @@ const Card = ({ building, urlPath }) => {
         lg={7}
         xl={8}
         xxl={7}
-        className="cardPicture p-0"
+        className="cardPicture"
       >
-        <CardImg image_links={building.image_links} />
+        <CardCarousel image_links={building.image_links} />
       </Col>
       <Col xs={12} sm={12} md={5} lg={5} xl={4} xxl={5} className="cardTxt">
         <CardTxt building={building} urlPath={urlPath} />

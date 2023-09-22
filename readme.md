@@ -15,7 +15,7 @@ delsurprops.com.ar
 ### Full stack architecture
 This is a full-stack project, designed to work in conjunction with this backend: [https://github.com/Matias-Ramos/Inmobiliaria-backend-go] and with an SQL database:
 
-![architecture](https://github.com/Matias-Ramos/Inmobiliaria-backend-go/assets/99888423/4f67262f-89db-4f54-8064-90209e185364)
+![Diagrama full stack de la aplicación](architecture-1.png)
 
 ## Code
 
@@ -37,7 +37,7 @@ This is a full-stack project, designed to work in conjunction with this backend:
 - Framermotion
 
 ### Stock Update Method
-localhost/admin
+https://localhost/admin
 
 ### Running the Project
 Run "npm run dev" in the IDE terminal. Next, go to the url [http://127.0.0.1:5173/] in the browser.

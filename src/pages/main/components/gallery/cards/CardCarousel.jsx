@@ -2,10 +2,8 @@ import PropTypes from "prop-types";
 import Carousel from "react-bootstrap/Carousel";
 
 const CardCarousel = ({ image_links }) => (
-  <div className="carousels"
-    style={{ maxHeight: "350px", overflow: "hidden", margin: "auto" }}
-  >
-    <Carousel slide={false} style={{position: "static"}}>
+  <div className="carouselContainer">
+    <Carousel slide={false} className="btsCarousel">
       {image_links.map((link, i) => (
         <Carousel.Item key={i}>
           <img
