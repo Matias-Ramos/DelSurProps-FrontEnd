@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Heebo&family=Source+Sans+Pro:wght@300&family=Taviraj:wght@200&display=swap");
-
 .Card {
   background-color: rgba(0, 0, 0, 0); //all card transparent by default
 
@@ -21,12 +20,11 @@
       max-height: 350px;
       overflow: "hidden";
       margin: "auto";
-      .btsCarousel{
-        position: "static"
-      }
-    }
-    img {
-      width: 100%;
+        img {
+          width: 100%;
+          height: 350px;
+          object-fit: contain;
+        }
     }
     .carousel-control-next-icon,
     .carousel-control-prev-icon {

@@ -46,11 +46,15 @@ const Form = ({ category, jwtToken }) => {
 
     postData(formDataObj, apiCategory, jwtToken).then(apiAnswer => {
       if (apiAnswer.status === 200){
+        console.log("apiAnswer")
+        console.log(apiAnswer)
         setValidatedForm(true);
         setShowModal(true);
       } else if (apiAnswer.status === 401){
         // credentials expired
         alert("Refrescar la página para continuar")
+      } else {
+        alert("Error al cargar los datos - Código de error API: ",apiAnswer.status )
       }
     })
   }; 
@@ -58,28 +62,32 @@ const Form = ({ category, jwtToken }) => {
     setShowModal(false);
     window.location.reload(true);
   }
+  const droppdownValueEmprendimiento = "Emprendimiento"
+  const droppdownValueAlquiler = "Alquiler inmueble"
+  const droppdownValueVenta = "Venta inmueble"
+  const dropdownDefaultValue = "Categoría"
 
   // ********************
   // Rendering
 
   return (
     <>
-      {category != "Categoría" && (
+      {category != dropdownDefaultValue && (
         <FormBTS noValidate validated={validatedForm} onSubmit={handleSubmit}>
           <LocationInput />
           <PriceInput />
-          {category == "Alquiler inmueble" && <CurrencyInput />}
+          {category == droppdownValueAlquiler && <CurrencyInput />}
           <EnvInput />
           <BedroomsInput />
           <BathroomsInput />
           <GaragesInput />
-          {(category === "Emprendimiento" || category === "Venta inmueble") && (
+          {(category === droppdownValueEmprendimiento || category === droppdownValueVenta) && (
             <>
               <TotalSurfaceInput />
               <CoveredSurfaceInput />
             </>
           )}
-          {category === "Emprendimiento" && <StatusInput />}
+          {category === droppdownValueEmprendimiento && <StatusInput />}
           <PublicationLinkInputs />
           {/* Image Links */}
           <ImgDinamicInputs />

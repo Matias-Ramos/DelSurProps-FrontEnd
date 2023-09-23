@@ -1,5 +1,7 @@
 #adminPanel{
     min-height: 100vh;
+    margin-bottom:2rem;
+
     .nav, .nav-tabs{
         background-color: #FAFAFA;
     }
@@ -19,7 +21,17 @@
         display: block;
         margin:2rem auto;
     }
-    margin-bottom:2rem;
+    #adminTableDelete{
+        display: flex;
+        justify-content: flex-end;
+        button{
+            width: 75%;
+        }
+        .noResultsSpan{
+            margin-top:2rem;
+            text-align: center;
+        }
+    }
 }
 /*Mobile*/
 @media only screen and (max-width: 991px) {

@@ -8,7 +8,7 @@ const Table = ({ buildings, handleDelete }) => (
       {buildings.map((building) => (
         <tr key={building.id}>
           <th>{building.location}</th>
-          <td style={{ display: "flex", justifyContent: "flex-end" }}>
+          <td id="adminTableDelete" >
             <DeleteBtn handleDelete={handleDelete} building={building} />
           </td>
         </tr>

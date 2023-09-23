@@ -9,7 +9,7 @@ const PublicationLinkInputs = () => (
     </FormBTS.Group>
 
     {/* Link Zonaprop */}
-    <FormBTS.Group controlId="ZonapropInput" style={{ marginTop: "2rem" }}>
+    <FormBTS.Group controlId="ZonapropInput" className="mt-3">
       <FormBTS.Label>Link Zonaprop</FormBTS.Label>
       <FormBTS.Control
         type="text"
@@ -19,7 +19,7 @@ const PublicationLinkInputs = () => (
     </FormBTS.Group>
 
     {/* Link Argenprop */}
-    <FormBTS.Group controlId="ArgenpropInput" style={{ marginTop: "2rem" }}>
+    <FormBTS.Group controlId="ArgenpropInput" className="mt-3">
       <FormBTS.Label>Link Argenprop</FormBTS.Label>
       <FormBTS.Control
         type="text"

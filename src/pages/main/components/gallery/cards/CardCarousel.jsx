@@ -3,13 +3,12 @@ import Carousel from "react-bootstrap/Carousel";
 
 const CardCarousel = ({ image_links }) => (
   <div className="carouselContainer">
-    <Carousel slide={false} className="btsCarousel">
+    <Carousel slide={false} className="btsCarousel" style={{position: "static"}}>
       {image_links.map((link, i) => (
         <Carousel.Item key={i}>
           <img
             src={link}
             alt={"Imagen de propiedad " + i}
-            style={{ objectFit: "contain", width: "100%", height: "350px" }}
           />
         </Carousel.Item>
       ))}

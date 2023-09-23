@@ -25,15 +25,21 @@ const ContainerDeleteBuilding = ({ jwtToken }) => {
 
   const [category, setCategory] = useState("Categoría");
   const [buildings, setBuildings] = useState({});
+  const dropdownDefaultValue = "Categoría"
   const handleDelete = (buildingId) => {
     const apiCategory = formatCategForAPI(category, "delete");
     deleteData(jwtToken, apiCategory, buildingId.toString()).then(
-      (apiAnswer) => apiAnswer.status === 200 && window.location.reload(true)
+      (apiAnswer) => {
+        if(apiAnswer.status === 200)
+          window.location.reload(true)
+        else
+          alert("Error al borrar el inmueble - Código de error API: ",apiAnswer.status )
+      }
     );
   };
 
   useEffect(() => {
-    if (category !== "Categoría") {
+    if (category !== dropdownDefaultValue) {
       const apiCategory = "/" + formatCategForAPI(category, "delete");
       getData(apiCategory, "").then((buildings) => {
         setBuildings(buildings||{});
@@ -55,10 +61,10 @@ const ContainerDeleteBuilding = ({ jwtToken }) => {
           />
         </Col>
 
-        {category !== "Categoría" && (
+        {category !== dropdownDefaultValue && (
           <>
             {Object.keys(buildings).length === 0 ? (
-              <span className="mt-4">
+              <span className="noResultsSpan">
                 No hay inmuebles registrados en esta categoría.
               </span>
             ) : (

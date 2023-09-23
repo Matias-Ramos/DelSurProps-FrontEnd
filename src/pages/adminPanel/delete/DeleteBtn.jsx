@@ -24,7 +24,7 @@ const DeleteBtn = ({ handleDelete, building }) => {
 
   return (
     <>
-      <Button variant="secondary" onClick={handleShow} style={{ width: "75%" }}>
+      <Button variant="secondary" onClick={handleShow}>
         Eliminar
       </Button>
 

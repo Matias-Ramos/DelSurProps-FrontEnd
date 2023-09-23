@@ -15,29 +15,34 @@ delsurprops.com.ar
 ### Full stack architecture
 This is a full-stack project, designed to work in conjunction with this backend: [https://github.com/Matias-Ramos/Inmobiliaria-backend-go] and with an SQL database:
 
-![Diagrama full stack de la aplicación](architecture-1.png)
+![Full stack application diagram](architecture-1.png)
 
 ## Code
 
-### Pages
-- Welcome.jsx
-- Main.jsx
+### Pages & Core components
+- Welcome.jsx (/)
+- Main.jsx (/emprendimientos, /alquiler_inmuebles, /venta_inmuebles)
+  - header > Navbar.jsx
+  - main > FiltersContainer.jsx
+  - main > GalleryContainer.jsx
+  - footer > Attributions.jsx
+- AdminPanel.jsx (/admin)
+  - create > ContainerCreateBuilding.jsx
+  - delete > ContainerDeleteBuilding.jsx
 - RouteError.jsx
-- AdminPanel.jsx
-
-### Components in Main.jsx
-1. Navbar - Category filters.
-2. FiltersContainer - Content filters.
-3. GalleryContainer - Cards.
-4. Footer - Attributions.
 
 ### Frameworks & Libraries
-- react-bootstrap
-- MaterialUi
-- Framermotion
+- react-bootstrap (grid and box modeling)
+- MaterialUi (components)
+- Framermotion (animation)
 
 ### Stock Update Method
+
 https://localhost/admin
+
+
+### **Important** note for developers
+If the viewport is modified from a browser (desktop view to mobile view or vice versa), it will be necessary to refresh the page, since there are some components that are not dynamically adaptable. Basically, due to the cost benefit it represented to do that, I decided not to.
 
 ### Running the Project
 Run "npm run dev" in the IDE terminal. Next, go to the url [http://127.0.0.1:5173/] in the browser.
