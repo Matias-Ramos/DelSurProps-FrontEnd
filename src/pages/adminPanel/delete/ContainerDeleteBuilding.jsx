@@ -63,7 +63,7 @@ const ContainerDeleteBuilding = ({ jwtToken }) => {
 
         {category !== dropdownDefaultValue && (
           <>
-            {Object.keys(buildings).length === 0 ? (
+            {Object.keys(buildings).length ? (
               <span className="noResultsSpan">
                 No hay inmuebles registrados en esta categoría.
               </span>
