@@ -27,7 +27,7 @@ const Button = ({
         onMouseLeave={() => handleHover(false, colorName)}
       >
         <img src={colorStatus} className="circleIcon" alt="Ícono decorativo" />
-        {URLpath === thisPath ? <h1>{btnTxt}</h1> : <span>{btnTxt}</span>}
+        {URLpath === thisPath ? <h1>{btnTxt}</h1> : <span className="categorySpan">{btnTxt}</span>}
       </MuiBtn>
     </Link>
   );
