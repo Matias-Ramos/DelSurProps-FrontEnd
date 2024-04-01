@@ -17,7 +17,7 @@ It is a solution built in React.js, which centralizes the properties on a single
 
 ### Full stack architecture
 This is a full-stack project, designed to work in conjunction with this backend: [https://github.com/Matias-Ramos/Inmobiliaria-backend-go] and with an SQL database.
-The filtering is made in the backend.
+The filtering and ADM (Add, Delete, Modify) are made in the backend.
 
 ![Full stack application diagram](architecture-1.png)
 
