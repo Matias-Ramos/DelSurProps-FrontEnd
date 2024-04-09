@@ -11,7 +11,7 @@ This site provides a quick overview of the real state in stock.
 It is a solution built in React.js, which centralizes the properties on a single website and redirects the client to the link on MercadoLibre/Zonaprop/Argenprop, where they can find more information related to the property of their interest. 
 
 ### Link
-- endearing-melomakarona-8df72e.netlify.app
+- [endearing-melomakarona-8df72e.netlify.app](https://endearing-melomakarona-8df72e.netlify.app)
 - delsurprops.com.ar was shut down as per client request.
 - Video of the working app w/ backend and frontend: https://youtu.be/kzu_LFJki7s
 
