@@ -15,7 +15,7 @@ const Navbar = () => {
       ) : (
         <Select URLpath={URLpath} />
       )}
-      <span id="brand">DelSurProps</span>
+      <span id="brand">DelSurProps [DEMO]</span>
       <div id="hr"></div>
     </div>
   );

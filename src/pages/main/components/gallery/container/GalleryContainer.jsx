@@ -3,16 +3,12 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import NoBuildings from "../noBuildings/NoBuildings.jsx";
 import { getData } from "../../../../../api/fetches.js";
+import {dummyData} from '../../../../../dummyData/dummyData.js'
 
 const GalleryContainer = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(dummyData);
   const urlPath = useLocation().pathname;
   const urlQyParams = useLocation().search;
-
-  useEffect(() => {
-    getData(urlPath, urlQyParams)
-    .then(buildings => setData(buildings))
-  }, [urlPath, urlQyParams]);
 
   return (
     <div id="cardsContainer">

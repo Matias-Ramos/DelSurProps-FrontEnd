@@ -16,15 +16,15 @@ import ZPtypo from "../../../../../assets/shop-logos/zona-prop-typography.svg";
 import APlogo from "../../../../../assets/shop-logos/argen-prop-logo.svg";
 import APtypo from "../../../../../assets/shop-logos/argen-prop-typography.svg";
 
-const CardLinksContainer = ({ linkZP, linkAP, linkML }) => {
+const CardLinksContainer = ({ link_zonaprop, link_argenprop, link_ml }) => {
 
   const [links, setLinks] = useState([]);
   const eCommerceNames = ["Mercado Libre", "ArgenProp", "Zonaprop"];
   const logos = [MLlogo, APlogo, ZPlogo];
   const typographies = [MLtypo, APtypo, ZPtypo];
   useEffect(() => {
-    setLinks([linkZP, linkAP, linkML]);
-  }, [linkZP, linkAP, linkML]);
+    setLinks([link_zonaprop, link_argenprop, link_ml]);
+  }, [link_zonaprop, link_argenprop, link_ml]);
 
   const CardLinks = () => {
     const result = [];
@@ -68,15 +68,15 @@ const CardLinksContainer = ({ linkZP, linkAP, linkML }) => {
 /****************************** */
 // TypeChecking
 CardLinksContainer.propTypes = {
-  linkZP: PropTypes.shape({
+  link_zonaprop: PropTypes.shape({
     String: PropTypes.string,
     Valid: PropTypes.bool,
   }),
-  linkAP: PropTypes.shape({
+  link_argenprop: PropTypes.shape({
     String: PropTypes.string,
     Valid: PropTypes.bool,
   }),
-  linkML: PropTypes.shape({
+  link_ml: PropTypes.shape({
     String: PropTypes.string,
     Valid: PropTypes.bool,
   }),

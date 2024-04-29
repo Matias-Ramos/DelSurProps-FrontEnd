@@ -8,6 +8,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import PropTypes from 'prop-types';
 
 const Card = ({ building, urlPath }) => {
+
   return(
   <Container fluid className="Card" tabIndex={0}>
     <Row>
@@ -26,9 +27,9 @@ const Card = ({ building, urlPath }) => {
         <CardTxt building={building} urlPath={urlPath} />
         <hr />
         <CardLinksContainer
-          linkZP={building.link_zonaprop}
-          linkAP={building.link_argenprop}
-          linkML={building.link_ml}
+          link_zonaprop={building.link_zonaprop}
+          link_argenprop={building.link_argenprop}
+          link_ml={building.link_ml}
         />
       </Col>
     </Row>
@@ -44,7 +45,7 @@ Card.propTypes = {
     id: PropTypes.number.isRequired,
     location: PropTypes.string,
     price: PropTypes.number,
-    images: PropTypes.array,
+    image_links: PropTypes.array,
     currency: PropTypes.string,
     env: PropTypes.shape({
       Int16 : PropTypes.number,
@@ -70,15 +71,15 @@ Card.propTypes = {
       Int16 : PropTypes.number,
       Valid : PropTypes.bool,
     }),
-    linkML: PropTypes.shape({
+    link_ml: PropTypes.shape({
       String : PropTypes.string,
       Valid : PropTypes.bool,
     }),
-    linkZonaprop: PropTypes.shape({
+    link_zonaprop: PropTypes.shape({
       String : PropTypes.string,
       Valid : PropTypes.bool,
     }),
-    linkArgenprop: PropTypes.shape({
+    link_argenprop: PropTypes.shape({
       String : PropTypes.string,
       Valid : PropTypes.bool,
     }),

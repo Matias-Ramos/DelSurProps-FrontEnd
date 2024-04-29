@@ -1,12 +1,7 @@
+
 const getData = async (urlPath, urlQyParams) => {
   try {
-    const response = await fetch(
-      (process.env.NODE_ENV === "development"
-        ? "http://localhost:8080/api"
-        : "/api") +
-        urlPath +
-        urlQyParams
-    );
+    const response = await fetch("/dummyData/dummyData");
     const jsonData = await response.json();
     return jsonData;
   } catch (error) {
